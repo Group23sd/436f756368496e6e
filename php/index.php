@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+    require_once 'userSession.php';
+ ?>
 <html>
 <head>
     <title>CouchInn</title>
@@ -32,19 +35,11 @@
             </div>
             <!-- LOGIN -->
             <div class="navbar-user navbar-right">
-                <a class="btn btn-xs btn-primary btn-block" href="#" role="button">Crear cuenta</a>
-                <button id="btnAcceso" class="btn btn-xs btn-primary btn-block" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Acceder</button>
-                    <form class="form-block dropdown-menu" aria-labelledby="btnAcceso">
-                        <div class="form-group">
-                            <label class="sr-only" for="userEmail">Email</label>
-                            <input type="email" class="form-control" id="userEmail" placeholder="user@domain.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="userPassword">Password</label>
-                            <input type="password" class="form-control" id="userPassword" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-sm btn-primary">Ingresar</button>
-                    </form>
+                <?php
+                    $_SESSION['user'] -> isLogged() ?
+                        require_once 'navbarSessionManagerLogged.php' :
+                        require_once 'navbarSessionManagerNotLogged.php' ;
+                ?>
             </div>
         </div>
     </nav>
