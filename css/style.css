@@ -1,0 +1,26 @@
+.navbar {
+    margin-bottom: 0;
+}
+
+#logo-navbar {
+    width: 216px;
+    height: 50px;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+main {
+    background-color: #96AC3C;
+    min-height: 100vh;
+}
+
+footer {
+    background-color: #6D6D6D;
+    height: 100px;
+}
+
+.form-block {
+    padding: 10px;
+}
