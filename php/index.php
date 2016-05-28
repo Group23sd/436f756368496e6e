@@ -33,7 +33,7 @@
                     <li><a href="#">OPCION 5</a></li>
                 </ul>
             </div>
-            <!-- LOGIN -->
+            <!-- USER -->
             <div class="navbar-user navbar-right">
                 <?php
                     $_SESSION['user'] -> isLogged() ?
