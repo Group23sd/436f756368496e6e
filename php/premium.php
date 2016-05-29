@@ -47,7 +47,12 @@ require_once 'userSession.php';
   </nav>
   <div class="container-fluid">
     <!-- CONTENT -->
+
     <main class="row">
+      <div class="page-header">
+  <h1>Conviertete en usuario premium <small>accede a mas beneficios</small></h1>
+</div>
+
       <div class="span10">
         <form data-toggle="validator" name="pagar"  method="post" data-toggle="validator" role="form" class="form-block">
           <span class="help-block"><p>El pago premium de CouchInn tiene un coste de $200 ARS y se realiza una sola vez. Si eres usuario premium tendrás acceso a muchas más ventajas como: <p>• Podrás agregar más de una imagen a tu Couch.</p> <p> • Tu Couch aparecera entre los principales. </p> <p> • Mayor posibilidad de que te acepten una reserva por tu condicion. <p> • Y muchas mas! </p> </p></p></span>
@@ -59,17 +64,20 @@ require_once 'userSession.php';
             <label for="name" class="control-label">Nombre: </label>
 
             <input type="text" class="form-control "  maxlength="20" name="names" placeholder="Nombre" id="name" data-error="Debe ingresar un nombre" style="width: 300px;" required>
-            <div class="help-block with-errors"></div>
+            <div class="help-block with-errors">
+            </div>
           </div>
           <div class="form-group">
             <label for="card" class="control-label">Numero de tarjeta: </label>
             <input type="text" class="form-control" maxlength="19" name="num" placeholder="xxxx-xxxx-xxxx-xxxx" id="card" data-error="Debe ingresar un numero de tarjeta" style="width: 300px;" required>
-            <div class="help-block with-errors"></div>
+            <div class="help-block with-errors">
+            </div>
           </div>
           <div class="form-group">
             <label for="pass" class="control-label">Codigo de seguridad: </label>
             <input type="password" class="form-control" size="3" maxlength="3" data-minlength="3" name="pass" placeholder="***" id="pass" data-error="El cod. de seguridad debe tener 3 numeros" style="width: 300px;" required>
-            <div class="help-block with-errors"></div></div>
+            <div class="help-block with-errors">
+            </div>
           </div>
           <div class="form-group">
             <label for="date" class="control-label">Fecha de vencimiento: </label>
@@ -81,21 +89,20 @@ require_once 'userSession.php';
             <select name="year" class="btn btn-sm btn-primary" >
               <option selected>2016</option> <option>2017</option> <option>2018</option>
               <option>2019</option> <option>2020</option> </select>
-            </div>
-            <div class="form-group">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" id="terms" data-error="Debe estar seguro de pagar!" required>
-                  Acepto los terminos y condiciones de "CouchInn"
-                </label>
-                <div class="help-block with-errors"></div>
+          </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="terms" data-error="Debe estar seguro de pagar!" required>
+                Acepto los terminos y condiciones de "CouchInn"
+              </label>
+              <div class="help-block with-errors">
               </div>
             </div>
+
             <div class="alert alert-info form-group " style="width: 500px;">
               Si tienes alguna duda puedes leer el <a href="#" class="alert-link">acuerdo legal</a> del sitio
             </div>
-            <div>
-          </div>
+
             <button type="submit" class="btn btn-sm btn-primary" onclick="validar">Pagar</button> <button type="reset" class="btn btn-sm btn-primary">Borrar</button>
           </form>
 
