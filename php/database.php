@@ -18,4 +18,11 @@
         return $statement -> fetch(PDO::FETCH_ASSOC);
     }
 
+    function queryAllByAssoc($query) {
+        $database = connectDatabase();
+        $statement = $database -> prepare($query);
+        $statement -> execute();
+        return $statement -> fetchAll(PDO::FETCH_ASSOC);
+    }
+
 ?>

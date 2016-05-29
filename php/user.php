@@ -16,6 +16,7 @@
         private $confirmed;
         private $birthday;
         private $picture;
+        private $permissions;
         private $logged;
 
         public function login($email, $password) {
@@ -42,6 +43,7 @@
             $this -> confirmed = $anArray['confirmado'];
             $this -> birthday = $anArray['nacimiento'];
             $this -> setPicture($anArray['foto_path']);
+            $this -> setPermissions();
             $this -> logged = true;
         }
 
@@ -118,9 +120,9 @@
         }
 
         public function getCity() {
-            //Devuelve el nombre de la ciudad.
-            $query = "SELECT * FROM usuario WHERE email = '$email'";
+            $query = "SELECT nombre FROM city WHERE idciudad = '$cityId'";
             $result = queryByAssoc($query);
+            return $result['nombre'];
         }
 
         public function setConfirmed($aBoolean) {
@@ -146,6 +148,39 @@
 
         public function getPicture() {
              return $this -> picture;
+        }
+
+        public function getPermissions() {
+             return $this -> permissions;
+        }
+
+        private function setPermissions() {
+            $hola = $this -> getId();
+            $query = "SELECT permiso.nombre FROM usuario INNER JOIN permiso_usuario ON (usuario.idusuario = permiso_usuario.idusuario)
+            INNER JOIN permiso ON (permiso_usuario.idpermiso = permiso.idpermiso)";
+            $result = queryAllByAssoc($query);
+            foreach ($result as $row) {
+                $this -> permissions[] = $row['nombre'];
+            }
+
+        }
+
+        public function isStandard() {
+            if ($this->permissions) {
+                return in_array('standard',$this->permissions);
+            }
+        }
+
+        public function isPremium() {
+            if ($this->permissions) {
+                return in_array('premium',$this->permissions);
+            }
+        }
+
+        public function isAdmin() {
+            if ($this->permissions) {
+                return in_array('admin',$this->permissions);
+            }
         }
 
         public function isLogged() {
