@@ -43,7 +43,7 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid content-wrapper">
         <!-- CONTENT -->
         <main class="row">
             <p>Soy el content</p>
