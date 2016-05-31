@@ -14,20 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
-    <script type="text/javascript">
-        function showCity() {
-            var idciudad = document.getElementById('userCountry').value;
-            xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    document.getElementById("userCity").innerHTML = xmlhttp.responseText;
-                }
-            }
-            var url = "cityOptions.php?id=" + idciudad;
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
-        }
-    </script>
+    <script src="../js/ajax.js"></script>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -61,7 +48,7 @@
                     </div>
                     <div class="form-group has-feedback">
                         <label for="userEmail">Email</label>
-                        <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="Email" data-error="Ingrese email valido!" required></input>
+                        <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="Email" data-error="Ingrese un email valido!" required></input>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -72,8 +59,14 @@
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group has-feedback">
+                        <label for="userPassword">Confirmar</label>
+                        <input type="password" class="form-control" data-match="#userPassword" name="userPasswordConfirm" id="userPasswordConfirm" placeholder="Confirmar" data-error="El password no coincide!" required></input>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group has-feedback">
                         <label for="userCountry">Pais</label>
-                        <select class="form-control" name="userCountry" id="userCountry" data-error="Seleccione un pais!" required onchange="showCity()">
+                        <select class="form-control" name="userCountry" id="userCountry" data-error="Seleccione un pais!" required onchange="showCities()">
                             <option hidden>Pais</option>
                             <?php
                                 $query = "SELECT p.idpais, p.nombre FROM pais p";
@@ -89,13 +82,6 @@
                         <label for="userCity">Ciudad</label>
                         <select class="form-control" name="userCity" id="userCity" data-error="Seleccione una ciudad!" required>
                             <option hidden>Ciudad</option>
-                            <?php
-                                $query = "SELECT c.idciudad, c.nombre, c.region FROM ciudad c WHERE c.idciudad < 1000";
-                                $result = queryAllByAssoc($query);
-                                foreach ($result as $row) {
-                                    echo "<option value=".$row['idciudad'].">".$row['nombre'].", ".$row['region']."</option>";
-                                }
-                            ?>
                         </select>
                         <div class="help-block with-errors"></div>
                     </div>

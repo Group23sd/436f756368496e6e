@@ -9,16 +9,18 @@
             $email = $_POST['userEmail'];
             $password = password_hash($_POST['userPassword'],PASSWORD_DEFAULT);
             $idciudad = $_POST['userCity'];
-            $sql = "INSERT INTO usuario (nombre, apellido, email, password, idciudad)
-            VALUES ('$nombre','$apellido','$email','$password','$idciudad')";
-            insertRow($sql);
-
+            $confirmado = false;
+            $data = Array($nombre, $apellido, $email, $password, $idciudad, $confirmado);
+            $sql = "INSERT INTO usuario (nombre, apellido, email, password, idciudad, confirmado) VALUES (?, ?, ?, ?, ?, ?)";
+            $database = connectDatabase();
+            $statement = $database -> prepare($sql);
+            $statement -> execute($data);
         } catch (Exception $e) {
-            echo "<script type='text/javascript'> alert ('".$e->getMessage()."');";
-            echo "window.location='index.php' </script>";
+            echo "<script type='text/javascript'> alert('El email ya existe!');";
+            echo "window.location='index.php'</script>";
         }
-    } else {
-        echo "<script type='text/javascript'>window.location='index.php'</script>";
     }
+
+    echo "<script type='text/javascript'>window.location='index.php'</script>";
 
 ?>
