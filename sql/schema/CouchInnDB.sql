@@ -26,38 +26,20 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `CouchInnDB`.`provincia`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CouchInnDB`.`provincia` (
-  `idprovincia` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NOT NULL,
-  `idpais` INT NOT NULL,
-  PRIMARY KEY (`idprovincia`),
-  INDEX `NOMBRE` (`nombre` ASC),
-  INDEX `idpais_idx` (`idpais` ASC),
-  CONSTRAINT `fkpais`
-    FOREIGN KEY (`idpais`)
-    REFERENCES `CouchInnDB`.`pais` (`idpais`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `CouchInnDB`.`ciudad`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `CouchInnDB`.`ciudad` (
   `idciudad` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
-  `latitud` FLOAT(10,6) NOT NULL,
-  `longitud` FLOAT(10,6) NOT NULL,
-  `idprovincia` INT NOT NULL,
+  `idpais` INT NOT NULL,
+  `region` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idciudad`),
   INDEX `NOMBRE` (`nombre` ASC),
-  INDEX `idprovincia_idx` (`idprovincia` ASC),
-  CONSTRAINT `fkprovincia_ciudad`
-    FOREIGN KEY (`idprovincia`)
-    REFERENCES `CouchInnDB`.`provincia` (`idprovincia`)
+  INDEX `REGION` (`region` ASC),
+  INDEX `fkpais_ciudad_idx` (`idpais` ASC),
+  CONSTRAINT `fkpais_ciudad`
+    FOREIGN KEY (`idpais`)
+    REFERENCES `CouchInnDB`.`pais` (`idpais`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -81,7 +63,6 @@ CREATE TABLE IF NOT EXISTS `CouchInnDB`.`usuario` (
   `nacimiento` DATE NULL,
   `foto_path` VARCHAR(100) NULL,
   `foto_nombre` VARCHAR(45) NULL,
-  `foto_extension` VARCHAR(45) NULL,
   PRIMARY KEY (`idusuario`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
   INDEX `idciudad_idx` (`idciudad` ASC),

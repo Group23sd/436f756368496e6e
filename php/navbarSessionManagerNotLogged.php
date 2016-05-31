@@ -1,6 +1,6 @@
 <script src="../js/validator.js"></script>
 
-    <a class="btn btn-xs btn-success btn-block" href="signup.php" role="button">Crear cuenta</a>
+    <a class="btn btn-xs btn-success btn-block" href="newAccount.php" role="button">Crear cuenta</a>
     <button class="btn btn-xs btn-success btn-block" type="button" data-toggle="modal" data-target="#loginModal">Acceder</button>
 </div>
 </div>

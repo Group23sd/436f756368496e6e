@@ -53,3 +53,8 @@ img {
     background-size: cover;
     background-color: #96AC3C;
 }
+
+#signupForm {
+    background-color: white;
+    margin-top: 20px;
+}

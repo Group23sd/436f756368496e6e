@@ -11,18 +11,24 @@
         }
     }
 
-    function queryByAssoc($query) {
+    function queryByAssoc($sql) {
         $database = connectDatabase();
-        $statement = $database -> prepare($query);
+        $statement = $database -> prepare($sql);
         $statement -> execute();
         return $statement -> fetch(PDO::FETCH_ASSOC);
     }
 
-    function queryAllByAssoc($query) {
+    function queryAllByAssoc($sql) {
         $database = connectDatabase();
-        $statement = $database -> prepare($query);
+        $statement = $database -> prepare($sql);
         $statement -> execute();
         return $statement -> fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function insertRow($sql) {
+        $database = connectDatabase();
+        $statement = $database -> prepare($sql);
+        $statement -> execute();
     }
 
 ?>
