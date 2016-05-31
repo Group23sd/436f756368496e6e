@@ -1,7 +1,7 @@
 <script src="../js/validator.js"></script>
 
-    <a class="btn btn-xs btn-primary btn-block" href="signup.php" role="button">Crear cuenta</a>
-    <button class="btn btn-xs btn-primary btn-block" type="button" data-toggle="modal" data-target="#loginModal">Acceder</button>
+    <a class="btn btn-xs btn-success btn-block" href="signup.php" role="button">Crear cuenta</a>
+    <button class="btn btn-xs btn-success btn-block" type="button" data-toggle="modal" data-target="#loginModal">Acceder</button>
 </div>
 </div>
 </nav>
@@ -26,8 +26,8 @@
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <div class="help-block with-errors"></div>
                         </div>
-                        <button type="submit" class="btn btn-sm btn-primary btn-block">Ingresar</button>
-                        <a class="btn btn-sm btn-primary btn-block" href="passwordReset.php" role="button">Olvide mi contraseña</a>
+                        <button type="submit" class="btn btn-sm btn-success btn-block">Ingresar</button>
+                        <a class="btn btn-sm btn-success btn-block" href="passwordReset.php" role="button">Olvide mi contraseña</a>
                     </form>
                 </div>
             </div>
