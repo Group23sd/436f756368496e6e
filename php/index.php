@@ -17,10 +17,17 @@
     <!-- NAVBAR -->
     <?php require_once "navbar.php" ?>
     <!-- CONTENT -->
-    <div class="container-fluid content-wrapper">
+    <div class="container-fluid">
         <!-- MAIN -->
         <main class="row">
-            <p>Soy el content</p>
+            <div class="col-md-12">
+                <div class="row splash-page">
+
+                </div>
+                <div class="row main-content">
+
+                </div>
+            </div>
         </main>
         <!-- FOOTER -->
         <footer class="row footer">

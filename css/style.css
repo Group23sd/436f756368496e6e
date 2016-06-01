@@ -1,5 +1,4 @@
 .navbar {
-    margin-bottom: 0;
     padding: 10px 5px;
 }
 
@@ -13,7 +12,19 @@
 }
 
 main {
+    //border: red 5px dashed;
+}
+
+.main-content {
+    //border: blue 5px dashed;
+    background: url("https://i.ytimg.com/vi/Aqy85rE4__w/maxresdefault.jpg") no-repeat;
+    background-size: cover;
     height: 100vh;
+    margin-top: 70px;
+}
+
+body {
+    //border: green 5px dashed;
 }
 
 footer {
@@ -26,7 +37,7 @@ footer {
     padding: 10px;
 }
 
-a > img {
+.navbar-user-img {
     width: 50px;
     height: 50px;
 }
@@ -41,17 +52,6 @@ a > img {
 
 div > div > div > a {
     float: right;
-}
-
-img {
-    width:50px;
-    height:50px;
-}
-
-.content-wrapper {
-    background-image: url("https://i.ytimg.com/vi/Aqy85rE4__w/maxresdefault.jpg");
-    background-size: cover;
-    background-color: #96AC3C;
 }
 
 #signupForm {
