@@ -1,5 +1,11 @@
 .navbar {
     padding: 10px 5px;
+    background: rgba(0,0,0,0.8);
+}
+
+body.modal-open {
+overflow-y: scroll;
+padding-right: 0 !important;
 }
 
 #logo-navbar {
@@ -11,20 +17,18 @@
     padding: 0;
 }
 
-main {
-    //border: red 5px dashed;
-}
-
-.main-content {
-    //border: blue 5px dashed;
+.splash-page {
     background: url("https://i.ytimg.com/vi/Aqy85rE4__w/maxresdefault.jpg") no-repeat;
     background-size: cover;
     height: 100vh;
-    margin-top: 70px;
 }
 
-body {
-    //border: green 5px dashed;
+.splash-page-content {
+    margin-top: 80px;
+}
+
+main {
+    background-color: white;
 }
 
 footer {
@@ -56,5 +60,5 @@ div > div > div > a {
 
 #signupForm {
     background-color: white;
-    margin-top: 20px;
+    //margin-top: 20px;
 }

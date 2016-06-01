@@ -20,9 +20,13 @@
     <div class="container-fluid">
         <!-- MAIN -->
         <main class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 content-wrapper">
                 <div class="row splash-page">
+                    <div class="col-md-12">
+                        <div class="splash-page-content">
 
+                        </div>
+                    </div>
                 </div>
                 <div class="row main-content">
 

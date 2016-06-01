@@ -10,7 +10,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3>Iniciar sesion</h3>
+                    <h3>Iniciar Sesion</h3>
                 </div>
                 <div class="modal-body">
                     <form class="form-block" role="form" data-toggle="validator" action="login.php" method="post" name="loginForm" id="loginForm">
@@ -27,7 +27,7 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <button type="submit" class="btn btn-sm btn-success btn-block">Ingresar</button>
-                        <a class="btn btn-sm btn-success btn-block" href="passwordReset.php" role="button">Olvide mi contraseña</a>
+                        <button class="btn btn-sm btn-success btn-block" type="button" data-toggle="modal" data-target="#resetPass">Olvide mi password</button>
                     </form>
                 </div>
             </div>
