@@ -142,7 +142,7 @@
             $this -> birthday = $aDate;
         }
 
-        private function setPicture($aPath) {
+        public function setPicture($aPath) {
             $aPath ? $this -> picture = $aPath : $this -> picture = "../images/users/noUserPicture.jpg";
         }
 
@@ -154,7 +154,7 @@
              return $this -> permissions;
         }
 
-        private function setPermissions() {
+        public function setPermissions() {
             $hola = $this -> getId();
             $query = "SELECT permiso.nombre FROM usuario INNER JOIN permiso_usuario ON (usuario.idusuario = permiso_usuario.idusuario)
             INNER JOIN permiso ON (permiso_usuario.idpermiso = permiso.idpermiso)";
@@ -167,13 +167,13 @@
 
         public function isStandard() {
             if ($this->permissions) {
-                return in_array('standard',$this->permissions);
+                return (in_array('standard',$this->permissions) || $this->isAdmin());
             }
         }
 
         public function isPremium() {
             if ($this->permissions) {
-                return in_array('premium',$this->permissions);
+                return in_array('premium',$this->permissions || $this->isAdmin());
             }
         }
 

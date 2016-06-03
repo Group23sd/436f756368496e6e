@@ -1,6 +1,11 @@
 .navbar {
-    margin-bottom: 0;
     padding: 10px 5px;
+    background: rgba(0,0,0,0.8);
+}
+
+body.modal-open {
+overflow-y: scroll;
+padding-right: 0 !important;
 }
 
 #logo-navbar {
@@ -12,8 +17,18 @@
     padding: 0;
 }
 
-main {
+.splash-page {
+    background: url("https://i.ytimg.com/vi/Aqy85rE4__w/maxresdefault.jpg") no-repeat;
+    background-size: cover;
     height: 100vh;
+}
+
+.splash-page-content {
+    margin-top: 80px;
+}
+
+main {
+    background-color: white;
 }
 
 footer {
@@ -26,7 +41,7 @@ footer {
     padding: 10px;
 }
 
-a > img {
+.navbar-user-img {
     width: 50px;
     height: 50px;
 }
@@ -43,13 +58,7 @@ div > div > div > a {
     float: right;
 }
 
-img {
-    width:50px;
-    height:50px;
-}
-
-.content-wrapper {
-    background-image: url("https://i.ytimg.com/vi/Aqy85rE4__w/maxresdefault.jpg");
-    background-size: cover;
-    background-color: #96AC3C;
+#signupForm {
+    background-color: white;
+    //margin-top: 20px;
 }
