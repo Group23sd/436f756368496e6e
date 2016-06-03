@@ -31,7 +31,8 @@
                     </div>
                 </div>
                 <div class="row main-content">
-
+                    
+                </div>
             </div>
         </main>
         <!-- FOOTER -->
