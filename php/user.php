@@ -155,7 +155,6 @@
         }
 
         public function setPermissions() {
-            $hola = $this -> getId();
             $query = "SELECT permiso.nombre FROM usuario INNER JOIN permiso_usuario ON (usuario.idusuario = permiso_usuario.idusuario)
             INNER JOIN permiso ON (permiso_usuario.idpermiso = permiso.idpermiso)";
             $result = queryAllByAssoc($query);

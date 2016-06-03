@@ -4,8 +4,8 @@
 }
 
 body.modal-open {
-overflow-y: scroll;
-padding-right: 0 !important;
+    overflow-y: scroll;
+    padding-right: 0;
 }
 
 #logo-navbar {
@@ -21,10 +21,22 @@ padding-right: 0 !important;
     background: url("https://i.ytimg.com/vi/Aqy85rE4__w/maxresdefault.jpg") no-repeat;
     background-size: cover;
     height: 100vh;
+    margin-top: -80px;
 }
 
-.splash-page-content {
+.content-wrapper {
     margin-top: 80px;
+    min-height: 100vh;
+    margin-bottom: -80px;
+}
+
+.main-content {
+    margin-bottom: 80px;
+}
+
+.inner-body {
+    min-height: 100vh;
+    height: 100vh;
 }
 
 main {
