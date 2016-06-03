@@ -31,7 +31,35 @@
                     </div>
                 </div>
                 <div class="row main-content">
-                    
+                    <?php
+
+                        if ($_SESSION['user']->isLogged()) {
+                            echo "SI LOGUEADO<BR/>";
+                        } else {
+                            echo "NO LOGUEADO<BR/>";
+                        }
+                        if ($_SESSION['user']->isConfirmed()) {
+                            echo "SI CONFIRMADO<BR/>";
+                        } else {
+                            echo "NO CONFIRMADO<BR/>";
+                        }
+                        if ($_SESSION['user']->isStandard()) {
+                            echo "SI STANDARD<BR/>";
+                        } else {
+                            echo "NO STANDARD<BR/>";
+                        }
+                        if ($_SESSION['user']->isPremium()) {
+                            echo "SI PREMIUM<BR/>";
+                        } else {
+                            echo "NO PREMIUM<BR/>";
+                        }
+                        if ($_SESSION['user']->isAdmin()) {
+                            echo "SI ADMIN<BR/>";
+                        } else {
+                            echo "NO ADMIN<BR/>";
+                        }
+                        var_dump ($_SESSION['user']->getPermissions());
+                    ?>
                 </div>
             </div>
         </main>

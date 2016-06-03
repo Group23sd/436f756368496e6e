@@ -7,10 +7,6 @@
         $email = $_SESSION['user'] -> getEmail();
         $name = ($_SESSION['user'] -> getFirstName())." ".($_SESSION['user'] -> getLastName());
         sendConfirmationEmail($id, $email, $name);
-    } else {
-        //Placeholder
-        echo "<script type='text/javascript'>alert('Solo se incluye');";
-        echo "window.location='index.php'</script>";
     }
 
     function sendConfirmationEmail($id, $email, $name) {

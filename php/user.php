@@ -155,8 +155,9 @@
         }
 
         public function setPermissions() {
+            $id = $this -> getId();
             $query = "SELECT permiso.nombre FROM usuario INNER JOIN permiso_usuario ON (usuario.idusuario = permiso_usuario.idusuario)
-            INNER JOIN permiso ON (permiso_usuario.idpermiso = permiso.idpermiso)";
+            INNER JOIN permiso ON (permiso_usuario.idpermiso = permiso.idpermiso) WHERE usuario.idusuario = $id";
             $result = queryAllByAssoc($query);
             foreach ($result as $row) {
                 $this -> permissions[] = $row['nombre'];
@@ -165,20 +166,20 @@
         }
 
         public function isStandard() {
-            if ($this->permissions) {
-                return (in_array('standard',$this->permissions) || $this->isAdmin());
+            if ($this->getPermissions()) {
+                return (in_array('standard',$this->getPermissions()) || $this->isAdmin());
             }
         }
 
         public function isPremium() {
-            if ($this->permissions) {
-                return in_array('premium',$this->permissions || $this->isAdmin());
+            if ($this->getPermissions()) {
+                return (in_array('premium',$this->getPermissions()) || $this->isAdmin());
             }
         }
 
         public function isAdmin() {
-            if ($this->permissions) {
-                return in_array('admin',$this->permissions);
+            if ($this->getPermissions()) {
+                return in_array('admin',$this->getPermissions());
             }
         }
 
