@@ -1,11 +1,10 @@
 <?php
-    header("Location: index.php");
 
     function sendConfirmationEmail($id, $email, $name) {
 
         require_once '../mail/PHPMailerAutoload.php';
 
-        $mail = new PHPMailer;
+        $mail = new PHPMailer(true);
 
         $mail->SMTPDebug = 3;
         $mail->isSMTP();
@@ -26,22 +25,23 @@
         $mail->Subject = "Confirmation Email";
         $mail->Body = mailBody($id);
         $mail->AltBody = confirmationLink($id);
-        $mail->send();
-/*
-        if(!$mail->send())
-        {
-            echo "Mailer Error: " . $mail->ErrorInfo;
+
+        try {
+            $mail->send();
+            //Placeholder
+            echo "<script type='text/javascript'> alert('Email enviado');";
+            echo "window.location='index.php'</script>";
+        } catch (Exception $e) {
+            //Placeholder
+            echo "<script type='text/javascript'> alert('".$e->errorMessage()."');";
+            echo "window.location='index.php'</script>";
         }
-        else
-        {
-            echo "Message has been sent successfully";
-        }
-*/
+
     }
 
     function confirmationLink($id) {
         $hashedId = password_hash($id.'g23sd', PASSWORD_DEFAULT);
-        return ("http://localhost/php/confirmAccount.php?id=".$id."&code=".$hashedId);
+        return ("http://localhost/php/accountConfirmation.php?id=".$id."&code=".$hashedId);
     }
 
     function mailBody($id) {

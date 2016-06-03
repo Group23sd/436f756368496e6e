@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
     require_once 'userSession.php';
+    require_once 'database.php';
+    $c = connectDatabase();
  ?>
 <html>
 <head>
@@ -29,7 +31,7 @@
                     </div>
                 </div>
                 <div class="row main-content">
-
+                    
                 </div>
             </div>
         </main>
