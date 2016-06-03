@@ -19,7 +19,7 @@
     <!-- NAVBAR -->
     <?php require_once "navbar.php" ?>
     <!-- CONTENT -->
-    <div class="container-fluid">
+    <div class="container-fluid inner-body">
         <!-- MAIN -->
         <main class="row">
             <div class="col-md-12 content-wrapper">

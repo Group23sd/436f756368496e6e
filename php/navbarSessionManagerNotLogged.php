@@ -27,7 +27,7 @@
                             <div class="help-block with-errors"></div>
                         </div>
                         <button type="submit" class="btn btn-sm btn-success btn-block">Ingresar</button>
-                        <button class="btn btn-sm btn-success btn-block" type="button" data-toggle="modal" data-target="#resetPass">Olvide mi password</button>
+                        <a class="btn btn-sm btn-success btn-block" href="passwordResetHelper.php" role="button">Olvide mi password</a>
                     </form>
                 </div>
             </div>

@@ -4,7 +4,7 @@
  ?>
 <html>
 <head>
-    <title>Confirmation Reminder</title>
+    <title>Password Reset</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../js/jquery.js"></script>
@@ -35,11 +35,18 @@
                 <div class="row main-content">
                     <div class="feedback-container">
                         <div class="jumbotron">
-                          <h1>Usuario no confirmado!</h1>
-                          <p>No hemos recibido la confirmación de tu cuenta!</p><br/>
-                          <p>Dirigete al enlace que aparece en el email de verificación que enviamos a tu cuenta.</p><br/>
-                          <p>Si no encuentras el email, puedes reenviarlo haciendo click aquí abajo.</p>
-                          <p><a class="btn btn-success btn-lg" href="accountConfirmationEmail.php?rs=1" role="button">Reenviar Email</a></p>
+                          <h1>Olvide mi password!</h1>
+                          <p>CouchInn no guarda ni conoce tu password.</p><br/>
+                          <p>Te enviaremos un email para que puedas cambiarla.</p><br/>
+                          <form role="form" data-toggle="validator" action="passwordResetEmail.php" method="post" name="passwordResetForm" id="passwordResetForm">
+                              <div class="form-group has-feedback">
+                                  <label for="userEmail">Email con el que estás tratando de acceder</label>
+                                  <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="Email" data-error="Ingrese un email valido!" required>
+                                  <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                  <div class="help-block with-errors"></div>
+                              </div>
+                              <button type="submit" class="btn btn-sm btn-success">Enviar email</button>
+                          </form>
                         </div>
                     </div>
                 </div>
