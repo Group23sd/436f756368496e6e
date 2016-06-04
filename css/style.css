@@ -18,10 +18,56 @@ body.modal-open {
 }
 
 .splash-page {
-    background: url("https://i.ytimg.com/vi/Aqy85rE4__w/maxresdefault.jpg") no-repeat;
+    background: url("../images/resources/splash2.jpg") no-repeat;
     background-size: cover;
     height: 100vh;
     margin-top: -80px;
+    display: flex;
+    align-items: center;
+}
+
+.splash-page-items {
+    text-align: center;
+    font-size: 50px;
+}
+
+.splash-page-slogan {
+    padding: 20px;
+    color: white;
+}
+
+.splash-page-scroller {
+    text-decoration: none;
+    border: 5px white solid;
+    padding: 10px;
+    color: white;
+}
+
+.splash-page-scroller:link {
+    text-decoration: none;
+    border: 5px white solid;
+    padding: 10px;
+    color: white;
+}
+
+.splash-page-scroller:visited {
+    text-decoration: none;
+}
+
+.splash-page-scroller:hover {
+    text-decoration: none;
+    border: 5px #96AC3C solid;
+    color: #96AC3C;
+    background: rgba(255,255,255,0.95);
+    font-weight: bold;
+}
+
+.splash-page-scroller:active {
+    text-decoration: none;
+    border: 5px #96AC3C solid;
+    color: #96AC3C;
+    background-color: white;
+    font-weight: bold;
 }
 
 .content-wrapper {
@@ -56,6 +102,7 @@ footer {
 .navbar-user-img {
     width: 50px;
     height: 50px;
+    float: right;
 }
 
 .navbar-user {
@@ -66,11 +113,14 @@ footer {
     display: inline-block;
 }
 
-div > div > div > a {
-    float: right;
-}
-
 #signupForm {
     background-color: white;
     //margin-top: 20px;
+}
+
+.anchor{
+  display: block;
+  height: 70px;
+  margin-top: -70px;
+  visibility: hidden;
 }

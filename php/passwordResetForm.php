@@ -7,8 +7,8 @@
         $hashedId = $_GET['idcode'];
         $email = $_GET['account'];
         $hashedEmail = $_GET['accountcode'];
-        $idChecked = true;//password_verify($id."g23sd",$hashedId);
-        $emailChecked = true;//password_verify($email."g23sd",$hashedEmail);
+        $idChecked = password_verify($id."g23sd",$hashedId);
+        $emailChecked = password_verify($email."g23sd",$hashedEmail);
         if ($idChecked && $emailChecked) {
             ?>
             <!DOCTYPE html>
@@ -64,7 +64,7 @@
                                               <div class="help-block with-errors"></div>
                                           </div>
                                           <div class="form-group has-feedback">
-                                              <label for="userPassword">Confirmar</label>
+                                              <label for="userPassword">Confirmar password</label>
                                               <input type="password" class="form-control" data-match="#userPassword" name="userPasswordConfirm" id="userPasswordConfirm" placeholder="Confirmar" data-error="El password no coincide!" required></input>
                                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                               <div class="help-block with-errors"></div>

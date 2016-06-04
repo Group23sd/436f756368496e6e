@@ -167,7 +167,7 @@
 
         public function isStandard() {
             if ($this->getPermissions()) {
-                return (in_array('standard',$this->getPermissions()) || $this->isAdmin());
+                return (in_array('standard',$this->getPermissions()) || $this->isPremium() || $this->isAdmin());
             }
         }
 
