@@ -26,8 +26,9 @@
                 $statement = $database -> prepare($sql);
                 $statement -> execute($data);
                 //Placeholder
-                echo "<script type='text/javascript'>alert('Bienvenido');";
-                echo "window.location='index.php'</script>";
+            //    echo "<script type='text/javascript'>alert('Bienvenido');";
+            //    echo "window.location='index.php'</script>";
+            echo "<script type='text/javascript'>window.location='index.php'</script>";
             } else {
                 //Placeholder
                 echo "<script type='text/javascript'>alert('Usuario ya confirmado');";

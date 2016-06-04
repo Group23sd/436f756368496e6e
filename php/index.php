@@ -2,7 +2,6 @@
 <?php
     require_once 'userSession.php';
     require_once 'database.php';
-    $c = connectDatabase();
  ?>
 <html>
 <head>
@@ -14,6 +13,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/slowScroll.js"></script>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -26,12 +26,75 @@
                 <div class="row splash-page">
                     <div class="col-md-12">
                         <div class="splash-page-content">
-
+                            <div class="splash-page-items">
+                                <p class="splash-page-slogan">Tu viaje comienza aquí</p>
+                                <a class="splash-page-scroller" href="#mainContent">COUCHES</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <span class="anchor" id="mainContent"></span>
                 <div class="row main-content">
-                    
+                    <p>TEST A</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST</p><br/>
+                    <p>TEST Z</p><br/>
                 </div>
             </div>
         </main>

@@ -7,10 +7,6 @@
         $email = $_SESSION['user'] -> getEmail();
         $name = ($_SESSION['user'] -> getFirstName())." ".($_SESSION['user'] -> getLastName());
         sendConfirmationEmail($id, $email, $name);
-    } else {
-        //Placeholder
-        echo "<script type='text/javascript'>alert('Solo se incluye');";
-        echo "window.location='index.php'</script>";
     }
 
     function sendConfirmationEmail($id, $email, $name) {
@@ -42,11 +38,14 @@
         try {
             $mail->send();
             //Placeholder
-            echo "<script type='text/javascript'> alert('Email enviado');";
-            echo "window.location='index.php'</script>";
+        //    echo "<script type='text/javascript'> alert('Email enviado');";
+        //    echo "window.location='index.php'</script>";
+        echo "<script type='text/javascript'>window.location='index.php'</script>";
         } catch (Exception $e) {
             //Placeholder
-            echo "<script type='text/javascript'> alert('".$e->errorMessage()."');";
+        //    echo "<script type='text/javascript'> alert('".$e->errorMessage()."');";
+        //    echo "window.location='index.php'</script>";
+            echo "<script type='text/javascript'> alert('Ha ocurrido un error. Intente mas tarde.');";
             echo "window.location='index.php'</script>";
         }
 
@@ -58,7 +57,7 @@
     }
 
     function mailBody($id) {
-        return "<a href=".confirmationLink($id).">Confirmar</a>";
+        return "<p>Haga click </p><a href=".confirmationLink($id).">AQUI</a><p> para confirmar su cuenta.</p>";
     }
 
 ?>

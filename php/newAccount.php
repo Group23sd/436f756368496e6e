@@ -18,7 +18,7 @@
 </head>
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <!-- LOGO -->
             <div class="navbar-header">
@@ -29,64 +29,70 @@
         </div>
     </nav>
     <!-- CONTENT -->
-    <div class="container-fluid content-wrapper">
+    <div class="container-fluid inner-body">
         <!-- MAIN -->
         <main class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <form class="form-block" role="form" data-toggle="validator" action="signup.php" method="post" name="signupForm" id="signupForm">
-                    <div class="form-group has-feedback">
-                        <label for="userFirstName">Nombre</label>
-                        <input type="text" class="form-control" name="userFirstName" id="userFirstName" placeholder="Nombre" data-error="Ingrese un nombre!" required></input>
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <div class="help-block with-errors"></div>
+            <div class="col-md-12 content-wrapper">
+                <div class="row main-content">
+                    <div class="col-md-6">
+                        <h1>Perfil de usuario</h1>
+                        <form class="form-block" role="form" data-toggle="validator" action="signup.php" method="post" name="signupForm" id="signupForm">
+                            <div class="form-group has-feedback">
+                                <label for="userFirstName">Nombre</label>
+                                <input type="text" pattern="^[A-z\s]+$" class="form-control" name="userFirstName" id="userFirstName" placeholder="Nombre" data-error="Ingrese un nombre!" required></input>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="userLastName">Apellido</label>
+                                <input type="text" pattern="^[A-z\s]+$" class="form-control" name="userLastName" id="userLastName" placeholder="Apellido" data-error="Ingrese un apellido!" required></input>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="userEmail">Email</label>
+                                <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="Email" data-error="Ingrese un email valido!" required></input>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="userPassword">Pasword</label>
+                                <input type="password" class="form-control" name="userPassword" id="userPassword" placeholder="Password" data-error="Ingrese un password valido!" required></input>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="userPassword">Confirmar password</label>
+                                <input type="password" class="form-control" data-match="#userPassword" name="userPasswordConfirm" id="userPasswordConfirm" placeholder="Confirmar Password" data-error="El password no coincide!" required></input>
+                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="userCountry">Pais</label>
+                                <select class="form-control" name="userCountry" id="userCountry" data-error="Seleccione un pais!" required onchange="showCities()">
+                                    <option hidden>Pais</option>
+                                    <?php
+                                        $query = "SELECT p.idpais, p.nombre FROM pais p";
+                                        $result = queryAllByAssoc($query);
+                                        foreach ($result as $row) {
+                                            echo "<option value=".$row['idpais'].">".$row['nombre']."</option>";
+                                        }
+                                    ?>
+                                </select>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="userCity">Ciudad</label>
+                                <select class="form-control" name="userCity" id="userCity" data-error="Seleccione una ciudad!" required>
+                                    <option hidden>Ciudad</option>
+                                </select>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <button type="submit" class="btn btn-success">Aceptar</button>
+                            <a class="btn btn-success" href="index.php" role="button">Cancelar</a>
+                        </form>
                     </div>
-                    <div class="form-group has-feedback">
-                        <label for="userLastName">Apellido</label>
-                        <input type="text" class="form-control" name="userLastName" id="userLastName" placeholder="Apellido" data-error="Ingrese un apellido!" required></input>
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <label for="userEmail">Email</label>
-                        <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="Email" data-error="Ingrese un email valido!" required></input>
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <label for="userPassword">Pasword</label>
-                        <input type="password" class="form-control" name="userPassword" id="userPassword" placeholder="Password" data-error="Ingrese un password valido!" required></input>
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <label for="userPassword">Confirmar</label>
-                        <input type="password" class="form-control" data-match="#userPassword" name="userPasswordConfirm" id="userPasswordConfirm" placeholder="Confirmar" data-error="El password no coincide!" required></input>
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <label for="userCountry">Pais</label>
-                        <select class="form-control" name="userCountry" id="userCountry" data-error="Seleccione un pais!" required onchange="showCities()">
-                            <option hidden>Pais</option>
-                            <?php
-                                $query = "SELECT p.idpais, p.nombre FROM pais p";
-                                $result = queryAllByAssoc($query);
-                                foreach ($result as $row) {
-                                    echo "<option value=".$row['idpais'].">".$row['nombre']."</option>";
-                                }
-                            ?>
-                        </select>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <label for="userCity">Ciudad</label>
-                        <select class="form-control" name="userCity" id="userCity" data-error="Seleccione una ciudad!" required>
-                            <option hidden>Ciudad</option>
-                        </select>
-                        <div class="help-block with-errors"></div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Aceptar</button>
-                </form>
+                </div>
             </div>
         </main>
         <!-- FOOTER -->
