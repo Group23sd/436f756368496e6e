@@ -30,7 +30,7 @@
             }
         }
 
-        private function loadData($anArray) {
+        public function loadData($anArray) {
             $this -> id = $anArray['idusuario'];
             $this -> email = $anArray['email'];
             $this -> firstName = $anArray['nombre'];

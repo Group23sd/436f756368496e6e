@@ -16,8 +16,8 @@
             echo "window.location='index.php'</script>";
         }
         //Placeholder
-        echo "<script type='text/javascript'>alert('Solo se incluye');";
-        echo "window.location='index.php'</script>";
+    //    echo "<script type='text/javascript'>alert('Solo se incluye');";
+    //    echo "window.location='index.php'</script>";
     }
 
     function sendPasswordResetEmail($id, $email, $name) {
@@ -66,7 +66,7 @@
     }
 
     function mailBody($id, $email) {
-        return "<a href=".resetPasswordLink($id, $email).">Cambia tu password</a>";
+        return "<p>Haga click </p><a href=".resetPasswordLink($id, $email).">AQUI</a><p> para resetear su password.</p>";
     }
 
 ?>

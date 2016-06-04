@@ -124,3 +124,8 @@ footer {
   margin-top: -70px;
   visibility: hidden;
 }
+
+.img-form-preview {
+    height: 200px;
+    width: 200px;
+}

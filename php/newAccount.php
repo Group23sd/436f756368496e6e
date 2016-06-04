@@ -34,17 +34,18 @@
         <main class="row">
             <div class="col-md-12 content-wrapper">
                 <div class="row main-content">
-                    <div class="col-md-6 col-md-offset-3">
+                    <div class="col-md-6">
+                        <h1>Perfil de usuario</h1>
                         <form class="form-block" role="form" data-toggle="validator" action="signup.php" method="post" name="signupForm" id="signupForm">
                             <div class="form-group has-feedback">
                                 <label for="userFirstName">Nombre</label>
-                                <input type="text" class="form-control" name="userFirstName" id="userFirstName" placeholder="Nombre" data-error="Ingrese un nombre!" required></input>
+                                <input type="text" pattern="^[A-z\s]+$" class="form-control" name="userFirstName" id="userFirstName" placeholder="Nombre" data-error="Ingrese un nombre!" required></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="userLastName">Apellido</label>
-                                <input type="text" class="form-control" name="userLastName" id="userLastName" placeholder="Apellido" data-error="Ingrese un apellido!" required></input>
+                                <input type="text" pattern="^[A-z\s]+$" class="form-control" name="userLastName" id="userLastName" placeholder="Apellido" data-error="Ingrese un apellido!" required></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -88,6 +89,7 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                             <button type="submit" class="btn btn-success">Aceptar</button>
+                            <a class="btn btn-success" href="index.php" role="button">Cancelar</a>
                         </form>
                     </div>
                 </div>

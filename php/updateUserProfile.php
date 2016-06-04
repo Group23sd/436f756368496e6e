@@ -19,20 +19,18 @@
         try {
             $nombre = $_POST['userFirstName'];
             $apellido = $_POST['userLastName'];
-            $password = password_hash($_POST['userPassword'],PASSWORD_DEFAULT);
             $idciudad = $_POST['userCity'];
             $sexo = $_POST['userGender'];
             $telefono = $_POST['userPhone'];
             $calle = $_POST['userStreetName'];
             $numero = $_POST['userStreetNumber'];
             $nacimiento = $_POST['userBirthday'];
-            $sql = "UPDATE usuario SET nombre = :nombre, apellido = :apellido, email = :email, password = :password, idciudad = :idciudad, sexo = :sexo, telefono = :telefono, calle = :calle, numero = :numero, nacimiento = :nacimiento WHERE idusuario = $id";
+            $sql = "UPDATE usuario SET nombre = :nombre, apellido = :apellido, email = :email, idciudad = :idciudad, sexo = :sexo, telefono = :telefono, calle = :calle, numero = :numero, nacimiento = :nacimiento WHERE idusuario = $id";
             $database = connectDatabase();
             $statement = $database -> prepare($sql);
             $statement -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
             $statement -> bindParam(':apellido', $apellido, PDO::PARAM_STR);
             $statement -> bindParam(':email', $email, PDO::PARAM_STR);
-            $statement -> bindParam(':password', $password, PDO::PARAM_STR);
             $statement -> bindParam(':idciudad', $idciudad, PDO::PARAM_INT);
             $statement -> bindParam(':sexo', $sexo, PDO::PARAM_STR);
             $statement -> bindParam(':telefono', $telefono, PDO::PARAM_INT);
@@ -40,8 +38,36 @@
             $statement -> bindParam(':numero', $numero, PDO::PARAM_INT);
             $statement -> bindParam(':nacimiento', $nacimiento, PDO::PARAM_STR);
             $statement -> execute();
-            echo "<script type='text/javascript'>alert('Datos actualizados');";
-            echo "window.location='index.php'</script>";
+            if ($_POST['userPassword'] != "******") {
+                $password = password_hash($_POST['userPassword'],PASSWORD_DEFAULT);
+                $sql = "UPDATE usuario SET password = :password WHERE idusuario = $id";
+                $database = connectDatabase();
+                $statement = $database -> prepare($sql);
+                $statement -> bindParam(':password', $password, PDO::PARAM_STR);
+                $statement -> execute();
+            }
+
+            if (isset($_FILES['userPicture']) && ($_FILES['userPicture']['tmp_name'])) {
+
+                $idusuario = $_SESSION['user']->getId();
+
+                $uploaddir = '../images/users/'.$idusuario.'.jpg';
+                move_uploaded_file($_FILES['userPicture']['tmp_name'], $uploaddir);
+
+                $sql = "UPDATE usuario SET foto_path = :fotopath WHERE idusuario = $idusuario";
+                $database = connectDatabase();
+                $statement = $database -> prepare($sql);
+                $statement -> bindParam(':fotopath', $uploaddir, PDO::PARAM_STR);
+                $statement -> execute();
+
+            }
+            $id = $_SESSION['user']->getId();
+            $query = "SELECT * FROM usuario WHERE idusuario = '$id'";
+            $result = queryByAssoc($query);
+            $_SESSION['user']->loadData($result);
+        //    echo "<script type='text/javascript'>alert('Datos actualizados');";
+        //    echo "window.location='index.php'</script>";
+            echo "<script type='text/javascript'>window.location='index.php'</script>";
         } catch (Exception $e) {
             echo "<script type='text/javascript'>alert('Error en la base de datos');";
             echo "window.location='index.php'</script>";

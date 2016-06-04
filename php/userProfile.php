@@ -10,7 +10,6 @@
         $id = $_SESSION['user']->getId();
         $sql = "SELECT * FROM usuario WHERE idusuario = $id";
         $result = queryByAssoc($sql);
-        var_dump($result);
     }
 
  ?>
@@ -35,21 +34,24 @@
     <div class="container-fluid inner-body">
         <!-- MAIN -->
         <main class="row">
-            <div class="col-md-12 content-wrapper">
+            <div class="col-md-10 content-wrapper">
                 <div class="row main-content">
-                    <div class="col-md-6 col-md-offset-3">
-                        <form class="form-block" role="form" data-toggle="validator" action="updateUserProfile.php" method="post" name="updateUserProfileForm" id="updateUserProfileForm">
+                    <div class="col-md-12">
+                        <h1>Perfil de usuario</h1>
+                        <form class="form-block" enctype="multipart/form-data" role="form" data-toggle="validator" action="updateUserProfile.php" method="post" name="updateUserProfileForm" id="updateUserProfileForm">
+                        <div class="row">
 
+                            <div class="col-md-6">
                             <div class="form-group has-feedback">
                                 <label for="userFirstName">Nombre</label>
-                                <input type="text" <?php echo 'value='.$result["nombre"] ?> class="form-control" name="userFirstName" id="userFirstName" placeholder="Nombre" data-error="Ingrese un nombre!" required></input>
+                                <input type="text" <?php echo 'value='.$result["nombre"] ?> pattern="^[A-z\s]+$" class="form-control" name="userFirstName" id="userFirstName" placeholder="Nombre" data-error="Ingrese un nombre!" required></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group has-feedback">
                                 <label for="userLastName">Apellido</label>
-                                <input type="text" <?php echo 'value='.$result["apellido"] ?> class="form-control" name="userLastName" id="userLastName" placeholder="Apellido" data-error="Ingrese un apellido!" required></input>
+                                <input type="text" <?php echo 'value='.$result["apellido"] ?> pattern="^[A-z\s]+$" class="form-control" name="userLastName" id="userLastName" placeholder="Apellido" data-error="Ingrese un apellido!" required></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -63,27 +65,35 @@
 
                             <div class="form-group has-feedback">
                                 <label for="userPassword">Pasword</label>
-                                <input type="password" class="form-control" name="userPassword" id="userPassword" placeholder="Password" data-error="Ingrese un password valido!" required></input>
+                                <input type="password" value="******" class="form-control" name="userPassword" id="userPassword" placeholder="Password" data-error="Ingrese un password valido!" required></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group has-feedback">
                                 <label for="userPassword">Confirmar password</label>
-                                <input type="password" class="form-control" data-match="#userPassword" name="userPasswordConfirm" id="userPasswordConfirm" placeholder="Confirmar Password" data-error="El password no coincide!" required></input>
+                                <input type="password" value="******" class="form-control" data-match="#userPassword" name="userPasswordConfirm" id="userPasswordConfirm" placeholder="Confirmar Password" data-error="El password no coincide!" required></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
-
+                            <?php $aux = $result ?>
                             <div class="form-group has-feedback">
                                 <label for="userCountry">Pais</label>
-                                <select class="form-control" name="userCountry" id="userCountry" data-error="Seleccione un pais!" required onchange="showCities()">
+                                <select class="form-control" name="userCountry" id="userCountry" data-error="Seleccione un pais!" required onchange="showCities2()">
                                     <option hidden></option>
                                     <?php
+                                        $idciudad = $aux['idciudad'];
+                                        $sql = "SELECT idpais FROM ciudad c WHERE c.idciudad = $idciudad";
+                                        $resultpais = queryByAssoc($sql);
+                                        $idpaisr = $resultpais['idpais'];
                                         $query = "SELECT p.idpais, p.nombre FROM pais p";
                                         $result = queryAllByAssoc($query);
                                         foreach ($result as $row) {
-                                            echo "<option value=".$row['idpais'].">".$row['nombre']."</option>";
+                                            $sel = ' ';
+                                            if ($row['idpais'] == $idpaisr) {
+                                                $sel = 'selected';
+                                            }
+                                            echo "<option ".$sel." value=".$row['idpais'].">".$row['nombre']."</option>";
                                         }
                                     ?>
                                 </select>
@@ -94,7 +104,12 @@
                             <div class="form-group has-feedback">
                                 <label for="userCity">Ciudad</label>
                                 <select class="form-control" name="userCity" id="userCity" data-error="Seleccione una ciudad!" required>
-                                    <option hidden></option>
+                                <?php
+                                    $idusuario = $_SESSION['user']->getId();
+                                    $query = "SELECT c.idciudad, c.nombre, c.region FROM ciudad c WHERE c.idciudad = $idciudad";
+                                    $row = queryByAssoc($query);
+                                    echo "<option selecter value=".$row['idciudad'].">".$row['nombre'].", ".$row['region']."</option>";
+                                ?>
                                 </select>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
@@ -102,10 +117,10 @@
 
                             <div class="form-group has-feedback">
                                 <label for="userGender">Sexo</label>
-                                <select class="form-control" <?php echo 'value='.$result["sexo"] ?> name="userGender" id="userGender">
-                                    <option value="M">Masculino</option>
-                                    <option value="F">Femenino</option>
-                                    <option value="O">Otro</option>
+                                <select class="form-control" name="userGender" id="userGender">
+                                    <option value="M" <?php if ($aux["sexo"] == "M") {echo "selected";} ?>>Masculino</option>
+                                    <option value="F" <?php if ($aux["sexo"] == "F") {echo "selected";} ?>>Femenino</option>
+                                    <option value="O" <?php if ($aux["sexo"] == "O") {echo "selected";} ?>>Otro</option>
                                 </select>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
@@ -113,34 +128,47 @@
 
                             <div class="form-group has-feedback">
                                 <label for="userPhone">Telefono</label>
-                                <input type="tel" <?php echo 'value='.$result["telefono"] ?> pattern="^[0-9\s]+$" class="form-control" name="userPhone" id="userPhone" placeholder="Telefono" data-error="Ingrese un numero de telefono correcto!"></input>
+                                <input type="tel" <?php if ($aux["telefono"]) {echo 'value='.$aux["telefono"];} ?> pattern="^[0-9\s]+$" class="form-control" name="userPhone" id="userPhone" placeholder="Telefono" data-error="Ingrese un numero de telefono correcto!" ></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group has-feedback">
                                 <label for="userStreetName">Calle</label>
-                                <input type="text" class="form-control" name="userStreetName" id="userStreetName" placeholder="Calle"></input>
+                                <input type="text" <?php if ($aux["calle"]) {echo 'value='.$aux["calle"];} ?> class="form-control" name="userStreetName" id="userStreetName" placeholder="Calle"></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group has-feedback">
                                 <label for="userStreetNumber">Numero Calle</label>
-                                <input type="text" pattern="^[0-9\s]+$" class="form-control" name="userStreetNumber" id="userFirstNumber" placeholder="Numero" data-error="Ingrese un numero!"></input>
+                                <input type="text" <?php if ($aux["numero"]) {echo 'value='.$aux["numero"];} ?> pattern="^[0-9\s]+$" class="form-control" name="userStreetNumber" id="userFirstNumber" placeholder="Numero" data-error="Ingrese un numero!"></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group has-feedback">
                                 <label for="userBirthday">Nacimiento</label>
-                                <input type="date" class="form-control" name="userBirthday" id="userBirthday"></input>
+                                <input type="date" <?php if ($aux["nacimiento"]) {echo 'value='.$aux["nacimiento"];} ?> class="form-control" name="userBirthday" id="userBirthday"></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <button type="submit" class="btn btn-success">Aceptar</button>
+                            <a class="btn btn-success" href="index.php" role="button">Cancelar</a>
+                            </div>
+
+                            <div class="col-md-6 col-md-push-2">
+                                <img src=<?php echo $_SESSION['user'] -> getPicture() ?> class="img-circle img-form-preview" />
+                                <div class="form-group has-feedback">
+                                    <label for="userPicture">Foto</label>
+                                    <input type="file" value="" class="form-control filestyle" data-buttonBefore="true" data-buttonText="Cambiar imagen" data-buttonName="btn-success" data-placeholder="Sin imagen" name="userPicture" id="userPicture"></input>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
                         </form>
+                        </div>
                     </div>
                 </div>
             </div>
