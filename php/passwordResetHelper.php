@@ -53,9 +53,7 @@
             </div>
         </main>
         <!-- FOOTER -->
-        <footer class="row footer">
-            <p>Soy el footer</P>
-        </footer>
+        <?php require_once 'footer.php' ?>
     </div>
 </body>
 </html>

@@ -2,6 +2,8 @@
 
     require_once 'userSession.php';
     require_once 'database.php';
+    require_once 'feedback.php';
+
     if (isset($_POST['userId']) && isset($_POST['userEmail']) && isset($_POST['userPassword'])) {
         $id = $_POST['userId'];
         $email = $_POST['userEmail'];
@@ -11,12 +13,9 @@
         $statement = $database -> prepare($sql);
         $statement -> bindParam(':password', $newPassword, PDO::PARAM_STR, 255);
         $statement -> execute();
-        //Placeholder
-        echo "<script type='text/javascript'>alert('Su Password se ha cambiado con exito!');";
-        echo "window.location='index.php'</script>";
+        successfulPasswordReset();
     } else {
-        echo "<script type='text/javascript'>alert('Sin parametros');";
-        echo "window.location='index.php'</script>";
+        echo "<script type='text/javascript'>window.location='index.php'</script>";
     }
 
 ?>

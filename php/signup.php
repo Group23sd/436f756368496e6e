@@ -4,10 +4,14 @@
 
     if (isset($_POST['userEmail']) && (!$_SESSION['user']->islogged())) {
         require_once 'database.php';
+        $email = $_POST['userEmail'];
+        $query = "SELECT * FROM usuario WHERE email = '$email'";
+        if ($result = queryByAssoc($query)) {
+            unavailableEmail();
+        }
         try {
             $nombre = $_POST['userFirstName'];
             $apellido = $_POST['userLastName'];
-            $email = $_POST['userEmail'];
             $password = password_hash($_POST['userPassword'],PASSWORD_DEFAULT);
             $idciudad = $_POST['userCity'];
             $confirmado = false;
@@ -19,12 +23,10 @@
             $id = $database -> lastInsertId();
             sendConfirmationEmail($id, $email, $nombre." ".$apellido);
         } catch (Exception $e) {
-            echo "<script type='text/javascript'>alert('".$e->getMessage()."');";
-            echo "window.location='index.php'</script>";
+            genericError();
         }
     } else {
-        echo "<script type='text/javascript'>alert('SignUp sin usr o pass');";
-        echo "window.location='index.php'</script>";
+        echo "<script type='text/javascript'>window.location='index.php'</script>";
     }
 
 ?>

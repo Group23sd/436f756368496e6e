@@ -1,5 +1,7 @@
 <?php
 
+    require_once 'feedback.php';
+
     function connectDatabase() {
         try {
             $db = new PDO("mysql:host=localhost;dbname=couchinndb","laureano","lanatta", array(PDO::ATTR_PERSISTENT=>true));
@@ -7,9 +9,8 @@
             return $db;
         }
         catch (PDOException $e) {
-            //Placeholder
-            echo "<script type='text/javascript'>alert('".$e->getMessage()."');";
-            echo "window.location='index.php'</script>";
+            databaseError();
+            exit();
         }
     }
 

@@ -1,6 +1,7 @@
 <?php
 
     require_once 'userSession.php';
+    require_once 'feedback.php';
 
     if ( (isset($_POST['userEmail'])) && (!$_SESSION['user']->islogged()) ) {
         require_once 'database.php';
@@ -11,13 +12,10 @@
             $name = $result['nombre']." ".$result['apellido'];
             sendPasswordResetEmail($id, $email, $name);
         } else {
-            //Placeholder
-            echo "<script type='text/javascript'>alert('La cuenta no existe');";
-            echo "window.location='index.php'</script>";
+            nonexistentAccount();
         }
-        //Placeholder
-    //    echo "<script type='text/javascript'>alert('Solo se incluye');";
-    //    echo "window.location='index.php'</script>";
+    } else {
+        echo "<script type='text/javascript'>window.location='index.php'</script>";
     }
 
     function sendPasswordResetEmail($id, $email, $name) {
@@ -47,14 +45,12 @@
         $mail->AltBody = resetPasswordLink($id, $email);
 
         try {
+            ob_start();
             $mail->send();
-            //Placeholder
-            echo "<script type='text/javascript'> alert('Email enviado');";
-            echo "window.location='index.php'</script>";
+            ob_end_clean();
+            resetEmailSent();
         } catch (Exception $e) {
-            //Placeholder
-            echo "<script type='text/javascript'> alert('".$e->errorMessage()."');";
-            echo "window.location='index.php'</script>";
+            genericError();
         }
 
     }

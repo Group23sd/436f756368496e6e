@@ -77,6 +77,7 @@ body.modal-open {
 }
 
 .main-content {
+    margin-top: 15px;
     margin-bottom: 80px;
 }
 
@@ -93,6 +94,13 @@ footer {
     background-color: #6D6D6D;
     height: 150px;
     opacity: .9;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+footer > p {
+    font-weight: bold;
 }
 
 .form-block {
@@ -115,7 +123,6 @@ footer {
 
 #signupForm {
     background-color: white;
-    //margin-top: 20px;
 }
 
 .anchor{

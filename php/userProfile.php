@@ -2,10 +2,11 @@
 <?php
     require_once 'userSession.php';
     require_once 'database.php';
+    require_once 'feedback.php';
 
     if ( !$_SESSION['user']->isStandard() ) {
-        echo "<script type='text/javascript'>alert('No es usuario');";
-        echo "window.location='index.php'</script>";
+        unauthorizedAccess();
+        exit();
     } else {
         $id = $_SESSION['user']->getId();
         $sql = "SELECT * FROM usuario WHERE idusuario = $id";
@@ -25,7 +26,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/bootstrap-filestyle.min.js"></script>
-    <script src="../js/ajax.js"></script>
+    <script src="../js/imgPreview.js"></script>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -65,14 +66,14 @@
 
                             <div class="form-group has-feedback">
                                 <label for="userPassword">Pasword</label>
-                                <input type="password" value="******" class="form-control" name="userPassword" id="userPassword" placeholder="Password" data-error="Ingrese un password valido!" required></input>
+                                <input type="password" class="form-control" name="userPassword" id="userPassword" placeholder="Password" data-error="Ingrese un password valido!" required></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
 
                             <div class="form-group has-feedback">
                                 <label for="userPassword">Confirmar password</label>
-                                <input type="password" value="******" class="form-control" data-match="#userPassword" name="userPasswordConfirm" id="userPasswordConfirm" placeholder="Confirmar Password" data-error="El password no coincide!" required></input>
+                                <input type="password" class="form-control" data-match="#userPassword" name="userPasswordConfirm" id="userPasswordConfirm" placeholder="Confirmar Password" data-error="El password no coincide!" required></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -118,6 +119,7 @@
                             <div class="form-group has-feedback">
                                 <label for="userGender">Sexo</label>
                                 <select class="form-control" name="userGender" id="userGender">
+                                    <option value="0" hidden>Sexo</option>
                                     <option value="M" <?php if ($aux["sexo"] == "M") {echo "selected";} ?>>Masculino</option>
                                     <option value="F" <?php if ($aux["sexo"] == "F") {echo "selected";} ?>>Femenino</option>
                                     <option value="O" <?php if ($aux["sexo"] == "O") {echo "selected";} ?>>Otro</option>
@@ -158,11 +160,11 @@
                             <a class="btn btn-success" href="index.php" role="button">Cancelar</a>
                             </div>
 
-                            <div class="col-md-6 col-md-push-2">
-                                <img src=<?php echo $_SESSION['user'] -> getPicture() ?> class="img-circle img-form-preview" />
+                            <div class="col-md-5 col-md-push-2">
+                                <img src=<?php echo $_SESSION['user'] -> getPicture() ?> class="img-circle img-form-preview center-block" id="imagePreview"/>
                                 <div class="form-group has-feedback">
-                                    <label for="userPicture">Foto</label>
-                                    <input type="file" value="" class="form-control filestyle" data-buttonBefore="true" data-buttonText="Cambiar imagen" data-buttonName="btn-success" data-placeholder="Sin imagen" name="userPicture" id="userPicture"></input>
+                                    <label for="userPicture" class="sr-only">Foto</label>
+                                    <input type="file" value="" class="form-control filestyle" data-buttonBefore="true" data-buttonText="Imagen" data-buttonName="btn-success" data-placeholder="Sin imagen" name="userPicture" id="userPicture" onchange="imageDisplay(event)"></input>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -174,9 +176,7 @@
             </div>
         </main>
         <!-- FOOTER -->
-        <footer class="row footer">
-            <p>Soy el footer</P>
-        </footer>
+        <?php require_once 'footer.php' ?>
     </div>
 </body>
 </html>
