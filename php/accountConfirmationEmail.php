@@ -1,6 +1,7 @@
 <?php
 
     require_once 'userSession.php';
+    require_once 'feedback.php';
 
     if ( (isset($_GET['rs'])) && ($_SESSION['user']->islogged()) && (!$_SESSION['user']->isConfirmed()) ) {
         $id = $_SESSION['user'] -> getId();
@@ -36,17 +37,12 @@
         $mail->AltBody = confirmationLink($id);
 
         try {
+            ob_start();
             $mail->send();
-            //Placeholder
-        //    echo "<script type='text/javascript'> alert('Email enviado');";
-        //    echo "window.location='index.php'</script>";
-        echo "<script type='text/javascript'>window.location='index.php'</script>";
+            ob_end_clean();
+            confirmationEmailSent();
         } catch (Exception $e) {
-            //Placeholder
-        //    echo "<script type='text/javascript'> alert('".$e->errorMessage()."');";
-        //    echo "window.location='index.php'</script>";
-            echo "<script type='text/javascript'> alert('Ha ocurrido un error. Intente mas tarde.');";
-            echo "window.location='index.php'</script>";
+            genericError();
         }
 
     }

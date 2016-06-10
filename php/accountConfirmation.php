@@ -2,6 +2,7 @@
 
     require_once 'userSession.php';
     require_once 'database.php';
+    require_once 'feedback.php';
 
     //Entra por mail
     if (isset($_GET['id']) && isset($_GET['code'])) {
@@ -25,23 +26,15 @@
                 $sql = "INSERT INTO permiso_usuario (idusuario, idpermiso, fecha) VALUES (?, ?, ?)";
                 $statement = $database -> prepare($sql);
                 $statement -> execute($data);
-                //Placeholder
-            //    echo "<script type='text/javascript'>alert('Bienvenido');";
-            //    echo "window.location='index.php'</script>";
-            echo "<script type='text/javascript'>window.location='index.php'</script>";
+                accountConfirmed();
             } else {
-                //Placeholder
-                echo "<script type='text/javascript'>alert('Usuario ya confirmado');";
-                echo "window.location='index.php'</script>";
+                accountAlreadyConfirmed();
             }
         } else {
-            //Placeholder
-            echo "<script type='text/javascript'>alert('Parametros Incorrectos');";
-            echo "window.location='index.php'</script>";
+            wrongConfirmationCredentials();
         }
     } else {
-        echo "<script type='text/javascript'>alert('Sin parametros');";
-        echo "window.location='index.php'</script>";
+        echo "<script type='text/javascript'>window.location='index.php'</script>";
     }
 
 ?>

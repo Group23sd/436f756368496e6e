@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<?php
-    require_once 'userSession.php';
- ?>
 <html>
 <head>
-    <title>Confirmation Reminder</title>
+    <title><?php echo $title ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../js/jquery.js"></script>
@@ -28,27 +24,24 @@
         </div>
     </nav>
     <!-- CONTENT -->
-    <div class="container-fluid content-wrapper">
+    <div class="container-fluid inner-body">
         <!-- MAIN -->
         <main class="row">
             <div class="col-md-12 content-wrapper">
                 <div class="row main-content">
                     <div class="feedback-container">
                         <div class="jumbotron">
-                          <h1>Usuario no confirmado!</h1>
-                          <p>No hemos recibido la confirmación de tu cuenta!</p><br/>
-                          <p>Dirigete al enlace que aparece en el email de verificación que enviamos a tu cuenta.</p><br/>
-                          <p>Si no encuentras el email, puedes reenviarlo haciendo click aquí abajo.</p>
-                          <p><a class="btn btn-success btn-lg" href="accountConfirmationEmail.php?rs=1" role="button">Reenviar Email</a></p>
+                            <h1><?php echo $h1 ?></h1>
+                            <?php echo $msg ?>
+                            <?php echo $optLink ?>
+                            <a class="btn btn-success btn-lg" href="index.php" role="button">Volver al Home</a>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
         <!-- FOOTER -->
-        <footer class="row footer">
-            <p>Soy el footer</P>
-        </footer>
+        <?php require_once "footer.php" ?>
     </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 
     require_once 'userSession.php';
+    require_once 'feedback.php';
 
     if ( (isset($_GET['id'])) && (isset($_GET['idcode'])) && (isset($_GET['account'])) && (isset($_GET['accountcode'])) && (!$_SESSION['user']->islogged()) ) {
         $id = $_GET['id'];
@@ -38,7 +39,7 @@
                     </div>
                 </nav>
                 <!-- CONTENT -->
-                <div class="container-fluid content-wrapper">
+                <div class="container-fluid inner-body">
                     <!-- MAIN -->
                     <main class="row">
                         <div class="col-md-12 content-wrapper">
@@ -77,22 +78,16 @@
                         </div>
                     </main>
                     <!-- FOOTER -->
-                    <footer class="row footer">
-                        <p>Soy el footer</P>
-                    </footer>
+                    <?php require_once 'footer.php' ?>
                 </div>
             </body>
             </html>
             <?php
         } else {
-            //Placeholder
-            echo "<script type='text/javascript'>alert('Parametros Invalidos');";
-            echo "window.location='index.php'</script>";
+            wrongPasswordResetCredentials();
         }
     } else {
-        //Placeholder
-        echo "<script type='text/javascript'>alert('Invalido');";
-        echo "window.location='index.php'</script>";
+        echo "<script type='text/javascript'>window.location='index.php'</script>";
     }
 
 ?>

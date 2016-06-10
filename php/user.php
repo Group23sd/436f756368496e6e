@@ -17,6 +17,7 @@
         private $birthday;
         private $picture;
         private $permissions;
+        private $timer;
         private $logged;
 
         public function login($email, $password) {
@@ -44,6 +45,7 @@
             $this -> birthday = $anArray['nacimiento'];
             $this -> setPicture($anArray['foto_path']);
             $this -> setPermissions();
+            $this -> resetTimer();
             $this -> logged = true;
         }
 
@@ -138,7 +140,6 @@
         }
 
         public function setBirthday($aDate) {
-            //checkear los tipos contra la db
             $this -> birthday = $aDate;
         }
 
@@ -181,6 +182,14 @@
             if ($this->getPermissions()) {
                 return in_array('admin',$this->getPermissions());
             }
+        }
+
+        public function resetTimer() {
+            $this -> timer = time();
+        }
+
+        public function isTimeout($aTime) {
+            return (time() - $this -> timer) > $aTime;
         }
 
         public function isLogged() {

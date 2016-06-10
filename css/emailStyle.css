@@ -1,0 +1,54 @@
+.email-background {
+    background-color: #eee;
+    padding: 10px;
+}
+
+
+.pre-header {
+    color: #eee;
+    font-size: 1px;
+}
+
+.email-container {
+    max-width: 500px;
+    margin: 0 auto;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    color: #6D6D6D;
+}
+
+p {
+    margin: 20px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #6D6D6D;
+    font-weight: bold;
+}
+
+img {
+    max-width: 100%;
+}
+
+.email-link {
+    margin: 20px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    background: #96AC3C;
+    color: #6D6D6D;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+
+a:hover {
+    color: white;
+}
