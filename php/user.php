@@ -50,7 +50,7 @@
         }
 
         public function screenName() {
-            return explode("@", $this -> email)[0];
+            return explode("@", $this -> firstName)[0];
         }
 
         public function getId() {
@@ -194,6 +194,22 @@
 
         public function isLogged() {
             return $this -> logged;
+        }
+
+        public function setPremium() {
+              $id = $this -> getId();
+              $query = "SELECT idpermiso FROM permiso WHERE nombre='premium'";
+              $result = queryByAssoc($query);
+              $idPermiso = $result["idpermiso"];
+               date_default_timezone_set('America/Argentina/Buenos_Aires');
+              $today = getdate();
+              $fecha = date("$today[year]-$today[mon]-$today[mday] $today[hours]:$today[minutes]:$today[seconds]");
+              $data = Array($id,$idPermiso,$fecha);
+              $sql = "INSERT INTO permiso_usuario (idusuario,idpermiso,fecha) VALUES (?,?,?)";
+              $connect = connectDatabase();
+              $statement = $connect-> prepare($sql);
+              $statement -> execute($data);
+              $this -> setPermissions();
         }
 
     }
