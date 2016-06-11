@@ -2,6 +2,7 @@
 
     require_once 'userSession.php';
     require_once 'feedback.php';
+    require_once 'emailBodyTemplate.php';
 
     if ( (isset($_GET['rs'])) && ($_SESSION['user']->islogged()) && (!$_SESSION['user']->isConfirmed()) ) {
         $id = $_SESSION['user'] -> getId();
@@ -33,7 +34,7 @@
         $mail->isHTML(true);
 
         $mail->Subject = "Confirmation Email";
-        $mail->Body = mailBody($id);
+        $mail->Body = emailBody($id);
         $mail->AltBody = confirmationLink($id);
 
         try {
@@ -52,8 +53,16 @@
         return ("http://localhost/php/accountConfirmation.php?id=".$id."&code=".$hashedId);
     }
 
-    function mailBody($id) {
-        return "<p>Haga click </p><a href=".confirmationLink($id).">AQUI</a><p> para confirmar su cuenta.</p>";
+    function emailBody($id) {
+
+        $emailPreHeader = "Bienvenido a CouchInn! Necesitas confirmar tu cuenta primero.";
+        $emailTitle = "Confirmar tu cuenta";
+        $emailMsg = "Antes de comenzar a utilizar tu cuenta, debes confirmar tu solicitud en el siguiente link.";
+        $emailButtonUrl = confirmationLink($id);
+        $emailButtonName = "Confirmar";
+
+        return body($emailPreHeader, $emailTitle, $emailMsg, $emailButtonUrl, $emailButtonName);
+
     }
 
 ?>

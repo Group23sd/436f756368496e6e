@@ -19,20 +19,19 @@
         try {
             $nombre = $_POST['userFirstName'];
             $apellido = $_POST['userLastName'];
-            $password = password_hash($_POST['userPassword'],PASSWORD_DEFAULT);
+            //$password = password_hash($_POST['userPassword'],PASSWORD_DEFAULT);
             $idciudad = $_POST['userCity'];
             $sexo = $_POST['userGender'];
             $telefono = $_POST['userPhone'];
             $calle = $_POST['userStreetName'];
             $numero = $_POST['userStreetNumber'];
             $nacimiento = $_POST['userBirthday'];
-            $sql = "UPDATE usuario SET nombre = :nombre, apellido = :apellido, email = :email, password = :password, idciudad = :idciudad, sexo = :sexo, telefono = :telefono, calle = :calle, numero = :numero, nacimiento = :nacimiento WHERE idusuario = $id";
+            $sql = "UPDATE usuario SET nombre = :nombre, apellido = :apellido, email = :email, idciudad = :idciudad, sexo = :sexo, telefono = :telefono, calle = :calle, numero = :numero, nacimiento = :nacimiento WHERE idusuario = $id";
             $database = connectDatabase();
             $statement = $database -> prepare($sql);
             $statement -> bindParam(':nombre', $nombre, PDO::PARAM_STR);
             $statement -> bindParam(':apellido', $apellido, PDO::PARAM_STR);
             $statement -> bindParam(':email', $email, PDO::PARAM_STR);
-            $statement -> bindParam(':password', $password, PDO::PARAM_STR);
             $statement -> bindParam(':idciudad', $idciudad, PDO::PARAM_INT);
             $sexo ? $statement -> bindParam(':sexo', $sexo, PDO::PARAM_STR) : $statement -> bindValue(':sexo', NULL, PDO::PARAM_NULL);
             $telefono ? $statement -> bindParam(':telefono', $telefono, PDO::PARAM_INT) : $statement -> bindValue(':telefono', NULL, PDO::PARAM_NULL);
@@ -57,7 +56,8 @@
 
                 $idusuario = $_SESSION['user']->getId();
 
-                $uploaddir = '../images/users/'.$idusuario.'.jpg';
+                $extension = pathinfo($_FILES['userPicture']['name'])['extension'];
+                $uploaddir = '../images/users/'.$idusuario.'.'.$extension;
                 move_uploaded_file($_FILES['userPicture']['tmp_name'], $uploaddir);
 
                 $sql = "UPDATE usuario SET foto_path = :fotopath WHERE idusuario = $idusuario";

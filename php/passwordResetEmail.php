@@ -2,6 +2,7 @@
 
     require_once 'userSession.php';
     require_once 'feedback.php';
+    require_once 'emailBodyTemplate.php';
 
     if ( (isset($_POST['userEmail'])) && (!$_SESSION['user']->islogged()) ) {
         require_once 'database.php';
@@ -41,7 +42,7 @@
         $mail->isHTML(true);
 
         $mail->Subject = "Password Reset Email";
-        $mail->Body = mailBody($id, $email);
+        $mail->Body = emailBody($id, $email);
         $mail->AltBody = resetPasswordLink($id, $email);
 
         try {
@@ -61,8 +62,16 @@
         return ("http://localhost/php/passwordResetForm.php?id=".$id."&idcode=".$hashedId."&account=".$email."&accountcode=".$hashedAccount);
     }
 
-    function mailBody($id, $email) {
-        return "<p>Haga click </p><a href=".resetPasswordLink($id, $email).">AQUI</a><p> para resetear su password.</p>";
+    function emailBody($id, $email) {
+
+        $emailPreHeader = "Olvidaste tu password?";
+        $emailTitle = "Olvidaste tu password?";
+        $emailMsg = "Puedes resetear tu password en el siguiente link.";
+        $emailButtonUrl = resetPasswordLink($id, $email);
+        $emailButtonName = "Reset";
+
+        return body($emailPreHeader, $emailTitle, $emailMsg, $emailButtonUrl, $emailButtonName);
+
     }
 
 ?>
