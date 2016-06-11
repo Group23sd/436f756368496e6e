@@ -63,7 +63,7 @@
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
-
+                            <!--
                             <div class="form-group has-feedback">
                                 <label for="userPassword">Pasword</label>
                                 <input type="password" class="form-control" name="userPassword" id="userPassword" placeholder="Password" data-error="Ingrese un password valido!" required></input>
@@ -77,6 +77,7 @@
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
                             </div>
+                            -->
                             <?php $aux = $result ?>
                             <div class="form-group has-feedback">
                                 <label for="userCountry">Pais</label>

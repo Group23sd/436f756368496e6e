@@ -43,12 +43,8 @@ a {
     text-decoration: none;
     display: inline-block;
     background: #96AC3C;
-    color: #6D6D6D;
+    color: #eee;
     font-weight: bold;
     padding: 15px 20px;
     border-radius: 5px;
-}
-
-a:hover {
-    color: white;
 }
