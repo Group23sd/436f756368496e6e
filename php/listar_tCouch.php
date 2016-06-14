@@ -80,7 +80,7 @@ function modificar(id) {
               </tbody>
 
             </table>
-            <a href="#" role="button" class="btn btn-sm btn-success">AGREGAR NUEVO COUCH</a>
+            <a href="altaTipoCouch.php" role="button" class="btn btn-sm btn-success">AGREGAR NUEVO COUCH</a>
           </div>
 
         </div>
