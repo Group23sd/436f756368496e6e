@@ -147,5 +147,27 @@
       require_once 'feedbackTemplate.php';
     }
 
+    function wrongCurrentPassword() {
+        $title = "Wrong Current Password";
+        $h1 = "Password Actual Incorrecto";
+        $msg = "<p>La contraseña actual que ha ingresado no es correcta!</p><br/>
+                <p>Has click en el link para volver a intentarlo.</p><br/>";
+        $linkTxt = "Volver a intentar";
+        $linkHref = "userProfile.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
+    
+    function successfulPasswordUpdate() {
+        $title = "Successful Password Update";
+        $h1 = "Password Actualizado";
+        $msg = "<p>Tu contraseña ha sido actualizada!</p><br/>
+                <p>Has click en el link para volver a tu perfil.</p><br/>";
+        $linkTxt = "Volver a mi perfil";
+        $linkHref = "userProfile.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
 
 ?>
