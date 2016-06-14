@@ -168,9 +168,44 @@
                                     <input type="file" value="" class="form-control filestyle" data-buttonBefore="true" data-buttonText="Imagen" data-buttonName="btn-success" data-placeholder="Sin imagen" name="userPicture" id="userPicture" onchange="imageDisplay(event)"></input>
                                     <div class="help-block with-errors"></div>
                                 </div>
+                                <hr>
+                                <button class="btn btn-success" type="button" name="button" data-toggle="modal" data-target="#passwordResetModal">Cambiar Password</button>
                             </div>
 
                         </form>
+                            <div class="modal fade" id="passwordResetModal" aria-labelledby="passwordResetModal">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h3>Cambiar Password</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="form-block" role="form" data-toggle="validator" action="resetPassword.php" method="post" name="resetPasswordForm" id="resetPasswordForm">
+                                                <div class="form-group has-feedback">
+                                                    <label class="sr-only" for="userCurrentPassword">Password Actual</label>
+                                                    <input type="password" class="form-control" name="userCurrentPassword" id="userCurrentPassword" placeholder="Password Actual" data-error="Ingrese una contraseña!" required>
+                                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <div class="form-group has-feedback">
+                                                    <label class="sr-only" for="userNewPassword">Password Nuevo</label>
+                                                    <input type="password" class="form-control" name="userNewPassword" id="userNewPassword" placeholder="Password Nuevo" data-minlength="1" data-error="Ingrese una contraseña!" required>
+                                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <div class="form-group has-feedback">
+                                                    <label class="sr-only" for="userNewPasswordConfirm">Confirmar Password Nuevo</label>
+                                                    <input type="password" class="form-control" data-match="#userNewPassword" name="userNewPasswordConfirm" id="userNewPasswordConfirm" placeholder="Confirmar Password Nuevo" data-minlength="1" data-error="El password no coincide!" required>
+                                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
+                                                <button type="submit" class="btn btn-sm btn-success btn-block">Aceptar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
