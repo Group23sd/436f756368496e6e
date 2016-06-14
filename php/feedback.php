@@ -139,6 +139,14 @@
         require_once 'feedbackTemplate.php';
     }
 
+    function successPremium() {
+      $title = "Successful Operation";
+      $h1 = "¡Felicidades!";
+      $msg = "<p> Su solicitud se ha procesado con exito. Es usted ahora un usuario PREMIUM</p>";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
+    }
+
     function wrongCurrentPassword() {
         $title = "Wrong Current Password";
         $h1 = "Password Actual Incorrecto";
@@ -150,6 +158,7 @@
         require_once 'feedbackTemplate.php';
     }
 
+    
     function successfulPasswordUpdate() {
         $title = "Successful Password Update";
         $h1 = "Password Actualizado";
