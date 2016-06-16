@@ -4,7 +4,7 @@
     require_once 'database.php';
     require_once 'feedback.php';
 
-    if (!$_SESSION['user']->islogged()) {
+    if (!$_SESSION['user']->isStandard()) {
         unauthorizedAccess();
         exit();
     }

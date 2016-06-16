@@ -77,7 +77,8 @@ body.modal-open {
 }
 
 .main-content {
-    margin-top: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin-bottom: 80px;
 }
 
@@ -135,4 +136,31 @@ footer > p {
 .img-form-preview {
     height: 200px;
     width: 200px;
+}
+
+.table-responsive {
+    margin: 0px 20px;
+}
+
+.couchSearchForm {
+    margin: 0px 5px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+}
+
+.couchSearchFormLabel {
+    color: #96AC3C;
+}
+
+.couchSearchFormHr {
+    border: 1px #96AC3C solid;
+}
+
+.recommendedCouchesCarousel {
+    margin: 0px 5px;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0px;
 }

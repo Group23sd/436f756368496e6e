@@ -69,8 +69,8 @@
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="userCountry">Pais</label>
-                                <select class="form-control" name="userCountry" id="userCountry" data-error="Seleccione un pais!" required onchange="showCities()">
-                                    <option hidden>Pais</option>
+                                <select class="form-control" name="formCountry" id="formCountry" data-error="Seleccione un pais!" required onchange="showCities()">
+                                    <option selected hidden value>Pais</option>
                                     <?php
                                         $query = "SELECT p.idpais, p.nombre FROM pais p";
                                         $result = queryAllByAssoc($query);
@@ -83,8 +83,8 @@
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="userCity">Ciudad</label>
-                                <select class="form-control" name="userCity" id="userCity" data-error="Seleccione una ciudad!" required>
-                                    <option hidden>Ciudad</option>
+                                <select class="form-control" name="formCity" id="formCity" data-error="Seleccione una ciudad!" required>
+                                    <option selected hidden value>Ciudad</option>
                                 </select>
                                 <div class="help-block with-errors"></div>
                             </div>
