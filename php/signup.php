@@ -13,7 +13,7 @@
             $nombre = $_POST['userFirstName'];
             $apellido = $_POST['userLastName'];
             $password = password_hash($_POST['userPassword'],PASSWORD_DEFAULT);
-            $idciudad = $_POST['userCity'];
+            $idciudad = $_POST['formCity'];
             $confirmado = false;
             $data = Array($nombre, $apellido, $email, $password, $idciudad, $confirmado);
             $sql = "INSERT INTO usuario (nombre, apellido, email, password, idciudad, confirmado) VALUES (?, ?, ?, ?, ?, ?)";
