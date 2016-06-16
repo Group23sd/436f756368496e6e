@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script src="../js/ajax.js"></script>
 <?php
     require_once 'userSession.php';
     require_once 'database.php';
