@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <?php
-require_once 'userSession.php';
-if(!$_SESSION['user'] -> isLogged()) || (!$_SESSION['user'] -> isAdmin()){
-
-		echo "<script type='text/javascript'>window.location='permisoDenegado.php'</script>";
-		die();
-	}
-	else{
-		echo "<script type='text/javascript'> alert ('Bienvenido ".$_SESSION['user']->screenName()."');";
-		echo "window.location='backend.php' </script>";
-	}
-?>
+    require_once 'userSession.php';
+    require_once 'database.php';
+    $c = connectDatabase();
+ ?>
 <html>
 <head>
-    <title>CouchInn Backend</title>
+    <title>CouchInn</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../js/jquery.js"></script>
@@ -25,22 +18,19 @@ if(!$_SESSION['user'] -> isLogged()) || (!$_SESSION['user'] -> isAdmin()){
 <body>
     <!-- NAVBAR -->
     <?php
-    require_once 'navbackend.php';
-    ?>
-
+      require_once 'navbackend.php'
+     ?>
     <!-- CONTENT -->
     <div class="container-fluid inner-body">
         <!-- MAIN -->
         <main class="row">
-            <div class="col-md-12 content-wrapper">
-                <div class="row splash-page">
-                    <div class="col-md-12">
-                        <div class="splash-page-content">
+          <div class="col-md-12 content-wrapper">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+              <div class="row main-content">
+                <!-- mostrar info -->
+              </div>
+          </div>
+
         </main>
         <!-- FOOTER -->
         <footer class="row footer">
