@@ -2,7 +2,6 @@
     require_once 'userSession.php';
     require_once 'accountConfirmationEmail.php';
     require_once 'feedback.php';
-
     if ( (isset($_POST['userEmail'])) && ($_SESSION['user']->isStandard()) ) {
         require_once 'database.php';
         $email = $_POST['userEmail'];
@@ -42,30 +41,24 @@
 /*
             //Eliminar este bloque y que el 'reingreso' del pass sea obligatorio (?)
             if ($_POST['userPassword'] != "******") {
-
                 $password = password_hash($_POST['userPassword'],PASSWORD_DEFAULT);
                 $sql = "UPDATE usuario SET password = :password WHERE idusuario = $id";
                 $database = connectDatabase();
                 $statement = $database -> prepare($sql);
                 $statement -> bindParam(':password', $password, PDO::PARAM_STR);
                 $statement -> execute();
-
             }
 */
             if ($_FILES['userPicture']['tmp_name']) {
-
                 $idusuario = $_SESSION['user']->getId();
-
                 $extension = pathinfo($_FILES['userPicture']['name'])['extension'];
                 $uploaddir = '../images/users/'.$idusuario.'.'.$extension;
                 move_uploaded_file($_FILES['userPicture']['tmp_name'], $uploaddir);
-
                 $sql = "UPDATE usuario SET foto_path = :fotopath WHERE idusuario = $idusuario";
                 $database = connectDatabase();
                 $statement = $database -> prepare($sql);
                 $statement -> bindParam(':fotopath', $uploaddir, PDO::PARAM_STR);
                 $statement -> execute();
-
             }
             $id = $_SESSION['user']->getId();
             $query = "SELECT * FROM usuario WHERE idusuario = '$id'";
@@ -78,5 +71,4 @@
     } else {
         echo "<script type='text/javascript'>window.location='index.php'</script>";
     }
-
 ?>
