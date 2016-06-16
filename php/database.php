@@ -2,7 +2,7 @@
     require_once 'feedback.php';
     function connectDatabase() {
         try {
-            $db = new PDO("mysql:host=localhost;dbname=CouchInnDB","laureano","lanatta", array(PDO::ATTR_PERSISTENT=>true));
+            $db = new PDO("mysql:host=localhost;dbname=CouchInnDB","root","`nico943", array(PDO::ATTR_PERSISTENT=>true));
             $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $db;
         }
