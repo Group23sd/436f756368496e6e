@@ -77,7 +77,8 @@ body.modal-open {
 }
 
 .main-content {
-    margin-top: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin-bottom: 80px;
 }
 
@@ -136,20 +137,49 @@ footer > p {
     height: 200px;
     width: 200px;
 }
-#puntaje{
+
+#puntaje {
   display:inline-block;
   width: 80px;
   position: absolute;
-
 }
-#puntos{
+
+#puntos {
   margin-left:110px;
   display: inline-block;
   position: absolute;
 }
-#botonReservar{
+
+#botonReservar {
   float: right;
   margin-top: 50px;
   margin-right: 30px;
   position: absolute;
+}
+
+.table-responsive {
+    margin: 0px 20px;
+}
+
+.couchSearchForm {
+    margin: 0px 5px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+}
+
+.couchSearchFormLabel {
+    color: #96AC3C;
+}
+
+.couchSearchFormHr {
+    border: 1px #96AC3C solid;
+}
+
+.recommendedCouchesCarousel {
+    margin: 0px 5px;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0px;
 }
