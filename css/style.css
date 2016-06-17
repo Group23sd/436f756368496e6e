@@ -164,7 +164,7 @@ footer > p {
 .couchSearchForm {
     margin: 0px 5px;
     border-radius: 10px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.8);
 }
 
 .couchSearchFormLabel {
@@ -182,4 +182,8 @@ footer > p {
 
 h2 {
     margin-top: 0px;
+}
+
+.checkbox {
+    color: #DDDDDD;
 }
