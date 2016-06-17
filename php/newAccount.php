@@ -68,7 +68,7 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group has-feedback">
-                                <label for="userCountry">Pais</label>
+                                <label for="formCountry">Pais</label>
                                 <select class="form-control" name="formCountry" id="formCountry" data-error="Seleccione un pais!" required onchange="showCities()">
                                     <option selected hidden value>Pais</option>
                                     <?php
@@ -82,7 +82,7 @@
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group has-feedback">
-                                <label for="userCity">Ciudad</label>
+                                <label for="formCity">Ciudad</label>
                                 <select class="form-control" name="formCity" id="formCity" data-error="Seleccione una ciudad!" required>
                                     <option selected hidden value>Ciudad</option>
                                 </select>

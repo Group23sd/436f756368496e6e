@@ -48,8 +48,8 @@
                                     echo "<td>".$couch['idtipo']."</td>";
                                     echo "<td>".$couch['precio']."</td>";
                                     echo "<td>".$couch['idciudad']."</td>";
-                                    //echo $couch['habilitado'] ? "<td>SI</td>" : "<td>NO</td>";
-                                    echo "<td>".$couch['habilitado']."</td>";
+                                    //echo "<td>".$couch['habilitado']."</td>";
+                                    echo $couch['habilitado'] ? "<td><span class='glyphicon glyphicon-ok'></span></td>" : "<td><span class='glyphicon glyphicon-remove'></span></td>";
                                     echo "</tr>";
                                 }
                             ?>
