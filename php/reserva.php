@@ -62,7 +62,7 @@ require_once 'database.php';
         <div class="col-md-6">
           <h3><strong>Hacer reserva:</strong></h3>
           <h4>Selecciona cuándo quieres hospedarte</h4>
-          <form name="RESERVAS"  method="post" role="form" class="form-block" >
+          <form name="RESERVAS"  method="post" role="form" class="form-block" action="makeReserva.php" >
             <p><label for="from">Fecha de inicio:</label>
               <input type="text" id="from" name="from" class="form-control"></p>
               <p><label for="to">Fecha de fin:</label>
