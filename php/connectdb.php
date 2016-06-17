@@ -11,7 +11,7 @@ function connectDatabase() {
     }
     catch (PDOException $e) {
       try{
-        $db = new PDO("mysql:host=localhost;dbname=couchinndb","root","nico943", array(PDO::ATTR_PERSISTENT=>true));
+        $db = new PDO("mysql:host=localhost;dbname=CouchInnDB","root","nico943", array(PDO::ATTR_PERSISTENT=>true));
         return $db;
       }
       cath(PDOException $e){

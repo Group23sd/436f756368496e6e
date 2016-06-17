@@ -27,6 +27,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/bootstrap-filestyle.min.js"></script>
+    <script src="../js/ajax.js"></script>
     <script src="../js/imgPreview.js"></script>
 </head>
 <body>
@@ -81,7 +82,7 @@
                             -->
                             <?php $aux = $result ?>
                             <div class="form-group has-feedback">
-                                <label for="userCountry">Pais</label>
+                                <label for="formCountry">Pais</label>
                                 <select class="form-control" name="formCountry" id="formCountry" data-error="Seleccione un pais!" required onchange="showCities2()">
                                     <option hidden></option>
                                     <?php
@@ -105,7 +106,7 @@
                             </div>
 
                             <div class="form-group has-feedback">
-                                <label for="userCity">Ciudad</label>
+                                <label for="formCity">Ciudad</label>
                                 <select class="form-control" name="formCity" id="formCity" data-error="Seleccione una ciudad!" required>
                                 <?php
                                     $idusuario = $_SESSION['user']->getId();
