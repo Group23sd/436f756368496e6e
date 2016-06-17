@@ -1,9 +1,9 @@
 function showCities() {
-    var idciudad = document.getElementById('userCountry').value;
+    var idciudad = document.getElementById('formCountry').value;
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementById("userCity").innerHTML = xmlhttp.responseText;
+            document.getElementById("formCity").innerHTML = xmlhttp.responseText;
         }
     }
     var url = "cityOptions.php?id=" + idciudad;
@@ -12,11 +12,11 @@ function showCities() {
 }
 
 function showCities2() {
-    var idciudad = document.getElementById('userCountry').value;
+    var idciudad = document.getElementById('formCountry').value;
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementById("userCity").innerHTML = xmlhttp.responseText;
+            document.getElementById("formCity").innerHTML = xmlhttp.responseText;
         }
     }
     var url = "cityOptionsUpdate.php?id=" + idciudad;

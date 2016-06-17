@@ -80,8 +80,8 @@
                             -->
                             <?php $aux = $result ?>
                             <div class="form-group has-feedback">
-                                <label for="userCountry">Pais</label>
-                                <select class="form-control" name="userCountry" id="userCountry" data-error="Seleccione un pais!" required onchange="showCities2()">
+                                <label for="formCountry">Pais</label>
+                                <select class="form-control" name="formCountry" id="formCountry" data-error="Seleccione un pais!" required onchange="showCities2()">
                                     <option hidden></option>
                                     <?php
                                         $idciudad = $aux['idciudad'];
@@ -104,8 +104,8 @@
                             </div>
 
                             <div class="form-group has-feedback">
-                                <label for="userCity">Ciudad</label>
-                                <select class="form-control" name="userCity" id="userCity" data-error="Seleccione una ciudad!" required>
+                                <label for="formCity">Ciudad</label>
+                                <select class="form-control" name="formCity" id="formCity" data-error="Seleccione una ciudad!" required>
                                 <?php
                                     $idusuario = $_SESSION['user']->getId();
                                     $query = "SELECT c.idciudad, c.nombre, c.region FROM ciudad c WHERE c.idciudad = $idciudad";

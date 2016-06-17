@@ -20,7 +20,7 @@
             $nombre = $_POST['userFirstName'];
             $apellido = $_POST['userLastName'];
             //$password = password_hash($_POST['userPassword'],PASSWORD_DEFAULT);
-            $idciudad = $_POST['userCity'];
+            $idciudad = $_POST['formCity'];
             $sexo = $_POST['userGender'];
             $telefono = $_POST['userPhone'];
             $calle = $_POST['userStreetName'];
