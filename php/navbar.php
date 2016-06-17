@@ -13,7 +13,7 @@
                   require_once 'userSession.php';
                   if ($_SESSION['user'] -> isLogged() && ! $_SESSION['user'] -> isAdmin() )    {
                     echo '<li>'.'<a href="registrar_Couch.php">AGREGAR COUCH</a>'.'</li>';
-                    echo '<li>'.'<a href="#">MIS COUCH</a>'.'</li>';
+                    echo '<li>'.'<a href="myCouches.php">MIS COUCH</a>'.'</li>';
                     echo '<li>'.'<a href="#">MIS RESERVAS</a>'.'</li>';
                   }
                   if (! $_SESSION['user'] -> isPremium() &&  $_SESSION['user'] -> isLogged() )    {
