@@ -24,6 +24,35 @@
         exit();
     }
 
+    //Datos del couch
+    $idCouch = $reservation['idcouch'];
+    $query = "SELECT titulo, idusuario FROM couch WHERE idcouch = $idCouch";
+    $result = queryByAssoc($query);
+    $couchTitle = $result['titulo'];
+    //Datos del dueño
+    $userId = $result['idusuario'];
+    $query = "SELECT * FROM usuario WHERE idusuario = $userId";
+    $owner = queryByAssoc($query);
+
+    //Computa el pago
+    if (isset($_GET['p'])) {
+        try {
+            $status = 'Pagado';
+            $now = date("Y-m-d H:i:s");
+            $data = Array($status, $now, $reservationId);
+            $sql = "INSERT INTO estado (nombre, fecha, idreserva) VALUES (?, ?, ?)";
+            $database = connectDatabase();
+            $statement = $database -> prepare($sql);
+            $statement -> execute($data);
+            require_once 'successfulPaymentEmail.php';
+            sendSuccessfulPaymentEmail($owner['idusuario'], $owner['email'], $owner['nombre']);
+            exit();
+        } catch (Exception $e) {
+            databaseError();
+            exit();
+        }
+    }
+
 ?>
 
 <html>
@@ -51,7 +80,7 @@
                         <h1>Pagar Reserva</h1>
                     </div>
                     <div class="col-md-5">
-                        <form data-toggle="validator" name="pagar"  method="post" onsubmit="return validar()" action="setPremium.php" role="form" class="form-block" >
+                        <form data-toggle="validator" name="pagar"  method="post" onsubmit="return validar()" action="payReservation.php?<?php echo "idR=".$reservationId."&p=1" ?>" role="form" class="form-block" >
 
                             <p> <input type="radio" name="card" id="2" checked> <img src="http://i.imgur.com/VnMJQ8k.png" alt="" class="img-rounded" /> </p>
                             <div class="form-group has-feedback">
@@ -102,7 +131,24 @@
                             </form>
                         </div>
                         <div class="col-md-6 col-md-push-1">
-                            datos reserva
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>COUCH</th>
+                                        <th>INICIO</th>
+                                        <th>FIN</th>
+                                        <th>MONTO</th>
+                                    </tr>
+                                    <?php
+                                        echo "<tr>";
+                                        echo "<td>".$couchTitle."</td>";
+                                        echo "<td>".$reservation['inicio']."</td>";
+                                        echo "<td>".$reservation['fin']."</td>";
+                                        echo "<td>$".$reservation['monto']."</td>";
+                                        echo "</tr>";
+                                    ?>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

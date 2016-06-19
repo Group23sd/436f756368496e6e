@@ -158,7 +158,7 @@
         require_once 'feedbackTemplate.php';
     }
 
-    
+
     function successfulPasswordUpdate() {
         $title = "Successful Password Update";
         $h1 = "Password Actualizado";
@@ -167,6 +167,14 @@
         $linkTxt = "Volver a mi perfil";
         $linkHref = "userProfile.php";
         $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function successfulPayment() {
+        $title = "Successful Payment";
+        $h1 = "Pago exitoso";
+        $msg = "<p>Se ha realizado el pago de su reserva.</p>";
+        $optLink = '';
         require_once 'feedbackTemplate.php';
     }
 
