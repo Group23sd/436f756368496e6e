@@ -34,7 +34,7 @@
                 <div class="row main-content">
                   <div class="col-md-6">
                     <h1>Registrar un nuevo Couch</h1>
-                      <form class="form-block" role="form" data-toggle="validator" action="altaCouch.php" method="post" name="cargarNuevoCouch" id="cargarNuevoCouch">
+                      <form class="form-block" enctype="multipart/form-data" role="form" data-toggle="validator" action="altaCouch.php" method="post" name="cargarNuevoCouch" id="cargarNuevoCouch">
                         <div class="form-group has-feedback">
                             <label for="tituloDelCouch">Titulo</label>
                             <input type="text" pattern="^[A-z\s]+$" class="form-control" name="tituloDelCouch" id="tituloDelCouch" placeholder="Ingrese un titulo de sea representativo que su couch" data-error="Ingrese un titulo!" required></input>
@@ -55,7 +55,7 @@
 
                       <div class="form-group has-feedback">
                         <label for="capacidadDelCouch">Capacidad</label><br />
-                        <select name="capacidadDelCouch"class="form-control">
+                        <select name="capacidadDelCouch" class="form-control">
                           <option selected>01</option> <option>02</option> <option>03</option> <option>04</option>
                           <option>05</option> <option>06</option> <option>07</option> <option>08</option>
                           <option>09</option> <option>10</option> <option>10+</option>
@@ -64,7 +64,24 @@
 
                       <div class="form-group has-feedback">
                         <label for="descripcionDelCouch">Descripcion</label>
-                        <textarea class="form-control" rows="5" name="descripcionDelCouch"></textarea>
+                        <textarea class="form-control" rows="8" name="descripcionDelCouch"></textarea>
+                      </div>
+
+                      <?php
+                        $sql = "SELECT * FROM tipo";
+                        $result = queryAllByAssoc($sql);
+                      ?>
+
+                      <div class="form-group has-feedback">
+                        <label for="tipoDeCouch">Tipo</label>
+                        <select name="tipoDeCouch" class="form-control">
+                          <?php
+                            foreach ($result as $tipo) {
+                              $desT = $tipo['descripcion'];
+                              echo '<option>'.$desT.'</option>';
+                            }
+                          ?>
+                        </select>
                       </div>
 
                       <?php
@@ -76,9 +93,9 @@
                         <?php
                           echo '<label for="descripcionDelCouch">Caracteristicas</label>';
                           foreach ($result as $caract) {
-                            $c=$caract['descripcion'];
+                            $cD=$caract['descripcion'];
                             echo '<div id="caracteristicabox" class="checkbox">';
-                              echo '<input type=checkbox name=' .$c . '>'; echo $c;
+                              echo '<input type=checkbox name=' .$cD . 'id=' .$cd .'>'; echo $cD;
                               echo '<br />';
                             echo '</div>';
                           }
@@ -106,10 +123,42 @@
                           </select>
                           <div class="help-block with-errors"></div>
                       </div>
+
+                      <div class="form-group has-feedback">
+                        <label for="fotosDelCouch">Fotos</label>
+                        <span class="help-block">Por favor ingrese imagenes con formato .jpg para una mejor visualizacion.</span>
+
+                        <?php
+
+                        /*
+                          require_once 'userSession.php';
+                          if(($_SESSION['user'] -> isPremium()) || ($_SESSION['user'] -> isAdmin())){
+                            echo '<input type="file" accept="image/jpg" name="foto1Couch" id="foto1Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" name="foto2Couch" id="foto2Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" name="foto3Couch" id="foto3Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" name="foto4Couch" id="foto4Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" name="foto5Couch" id="foto5Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" name="foto6Couch" id="foto6Couch"> </input>';
+                          }
+                          elseif($_SESSION['user'] -> isStandard()){
+                            echo '<input type="file" accept="image/jpg" name="foto1Couch" id="foto1Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" name="foto2Couch" id="foto2Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" name="foto3Couch" id="foto3Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" name="foto4Couch" id="foto4Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" name="foto5Couch" id="foto5Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" name="foto6Couch" id="foto6Couch"> </input>';
+                            echo '<div class="alert alert-info">';
+                              echo 'Si quieres agregar mas fotos de tu Couch debes ser <a href="premium.php" class="alert-link">usuario premium.</a>';
+                              echo '</div>';
+                          }
+                          */
+                        ?>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <div class="help-block with-errors"></div>
+                      </div>
+
                       <button type="submit" class="btn btn-success">Aceptar</button>
                       <a class="btn btn-success" href="index.php" role="button">Cancelar</a>
-
-                      
 
                     </form>
                   </div>

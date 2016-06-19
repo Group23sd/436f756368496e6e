@@ -158,7 +158,7 @@
         require_once 'feedbackTemplate.php';
     }
 
-    
+
     function successfulPasswordUpdate() {
         $title = "Successful Password Update";
         $h1 = "Password Actualizado";
@@ -168,6 +168,24 @@
         $linkHref = "userProfile.php";
         $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
         require_once 'feedbackTemplate.php';
+    }
+
+    function tituloCouchExistente(){
+      $title="Titulo Couch Existente";
+      $h1 = "Error";
+      $msg = "<p>El titulo que has seleccionado ya existe!</p><br/>
+              <p>Por favor, vuelve a intentarlo con otro titulo.</p><br/>";
+      $linkTxt = "Volver a intentar";
+      $linkHref = "registrar_Couch.php";
+      $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+    }
+
+    function couchCargadoExitiosamente(){
+      $title="Couch Cargado Exitosamente";
+      $h1= "¡Felicidades!";
+      $msg = "<p>Su couch ha sido cargado de manera exitosa.</p><br />";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
     }
 
 ?>

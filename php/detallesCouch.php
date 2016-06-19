@@ -2,6 +2,7 @@
 <?php
 		require_once 'userSession.php';
 		require_once 'database.php';
+		require_once 'reserva.php';
 	//	require_once 'puntajesCouch.php';
 	//	require_once 'comentariosCouch.php'
 
@@ -58,7 +59,7 @@
 										 <div class='container'>
 												<div class="row">
 													<div class="col-md-12">
-														<button type="button" class="btn btn-success" id="botonReservar">RESERVAR COUCH!</button>
+														<a href="reserva.php?idcouch=<?php $idcouch ?>" role="button" class="btn btn-success" id="botonReservar"> RESERVAR COUCH! </a>
 
 													</div>
 													<br />

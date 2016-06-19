@@ -1,5 +1,6 @@
 <?php
-
+  require_once 'feedback.php';
+  
     if(isset($_POST['nombreDelTipo'])){
       require_once 'database.php';
       $nuevoTipo= $_POST['nombreDelTipo'];
@@ -17,8 +18,7 @@
 
       }
       catch (Exception $e) {
-          echo "<script type='text/javascript'>alert('".$e->getMessage()."');";
-          echo "window.location='index.php'</script>";
+          databaseError();
       }
 
       echo "<script type='text/javascript'>alert('El nuevo tipo de couch fue cargado exitosamente!');";
