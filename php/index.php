@@ -45,7 +45,9 @@
                             ?>
                         </div>
                         <div class="row">
+                            <?php
 
+                             ?>
                         </div>
                     </div>
                 </div>
