@@ -26,6 +26,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/bootstrap-filestyle.min.js"></script>
+    <script src="../js/ajax.js"></script>
     <script src="../js/imgPreview.js"></script>
 </head>
 <body>
