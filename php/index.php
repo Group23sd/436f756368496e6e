@@ -2,6 +2,7 @@
 <?php
     require_once 'userSession.php';
     require_once 'database.php';
+    require_once 'couchSearch.php';
  ?>
 <html>
 <head>
@@ -44,8 +45,16 @@
                                 require_once 'recommendedCouchesCarousel.php';
                             ?>
                         </div>
+                        <span class="anchor" id="searchResult"></span>
+                        <hr/>
                         <div class="row">
+<<<<<<< HEAD
 
+=======
+                            <?php
+                                require_once 'listarCouch.php';
+                            ?>
+>>>>>>> master
                         </div>
                     </div>
                 </div>
