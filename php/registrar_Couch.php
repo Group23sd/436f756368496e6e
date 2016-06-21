@@ -57,7 +57,7 @@
 
                       <div class="form-group has-feedback">
                         <label for="capacidadDelCouch">Capacidad</label><br />
-                        <select name="capacidadDelCouch" class="form-control">
+                        <select name="capacidadDelCouch" id="capacidadDelCouch" class="form-control">
                           <option selected>01</option> <option>02</option> <option>03</option> <option>04</option>
                           <option>05</option> <option>06</option> <option>07</option> <option>08</option>
                           <option>09</option> <option>10</option> <option>10+</option>
@@ -68,7 +68,7 @@
 
                       <div class="form-group has-feedback">
                         <label for="descripcionDelCouch">Descripcion</label>
-                        <textarea class="form-control" rows="8" name="descripcionDelCouch"></textarea>
+                        <textarea class="form-control" rows="8" name="descripcionDelCouch" id="descripcionDelCouch"></textarea>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
                       </div>
@@ -80,7 +80,7 @@
 
                       <div class="form-group has-feedback">
                         <label for="tipoDeCouch">Tipo</label>
-                        <select name="tipoDeCouch" class="form-control">
+                        <select name="tipoDeCouch" id= "tipoDeCouch" class="form-control">
                           <?php
                             foreach ($result as $tipo) {
                               $desT = $tipo['descripcion'];
@@ -103,7 +103,7 @@
                           foreach ($result as $caract) {
                             $cD=$caract['descripcion'];
                             echo '<div id="caracteristicabox" class="checkbox">';
-                              echo '<input type=checkbox name=' .$cD . 'id=' .$cd .'>'; echo $cD;
+                              echo '<input type=checkbox name=' .$cD . ' id='.$cd.'>'; echo $cD;
                               echo '<br />';
                             echo '</div>';
                           }
