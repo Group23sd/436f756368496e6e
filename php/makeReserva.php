@@ -18,8 +18,10 @@ $inicio = strtotime($dateInicio);
 $fin = strtotime($dateFin);
 $fecha = strtotime($fech);
 //* Calculo la diferencia de la fecha de inicio con la del dia de hoy, debe ser de al menos 5 dias *//
+if ($fecha > $inicio) {
+  wrongInitialDate();
+}
 $cantDiaswithHoy= ceil(abs($inicio - $fecha) / 86400);
-
 if ($cantDiaswithHoy < 5) {
   wrongDays();
 }
@@ -44,7 +46,7 @@ $monto = $precio * $cantDias;
   $connect = connectDatabase();
   $statement = $connect-> prepare($sql);
   $statement -> execute($data);
-  $idReserva = $database -> lastInsertid();
+  $idReserva = $connect -> lastInsertid();
   $nombre = "reservado";
   $today = getdate();
   $fecha = date("$today[year]-$today[mon]-$today[mday] $today[hours]:$today[minutes]:$today[seconds]");
@@ -58,6 +60,8 @@ $monto = $precio * $cantDias;
   failedReservation();
 
 }*/
+
+
 
 
 

@@ -223,4 +223,14 @@
         require_once 'feedbackTemplate.php';
     }
 
+    function wrongInitialDate() {
+        $title = "Wrong Initial Date";
+        $h1 = "¡Fecha de Inicio Incorrecta!";
+        $msg = "<p>¡Debe ingresar una fecha de inicio mayor a cinco dias de la fecha actual!</p>";
+        $linkTxt = "Volver pagina anterior";
+        $linkHref = "index.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
 ?>

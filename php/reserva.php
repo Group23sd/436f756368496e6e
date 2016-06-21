@@ -70,9 +70,15 @@ require_once 'database.php';
                 <input type="text" id="from" name="from" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
                 <p><label for="to">Fecha de fin:</label>
                   <input type="text" id="to" name="to" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
-                  <input type="hidden"  value="<?php echo $idCouch ?>" id="aux" name="aux" class="form-control" required>
+                  <input type="hidden"  value="2" id="aux" name="aux" class="form-control" required>
+                  <div class="form-group has-feedback">
+
+
                   <p><label for="cantH">Cantidad de huespedes:</label>
-                    <input type="text" id="cantH" name="cantH" class="form-control" required></p>
+                    <input type="text" id="cantH" name="cantH" class="form-control"  pattern="^[0-9]{1,}$" maxlength="1" data-minlength="1" data-error="Ingrese un numero o complete el campo!" required></p>
+                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                    <div class="help-block with-errors"></div>
+                  </div>
                   <button type="submit" class="btn btn-sm btn-success ">Reservar</button>
                   <a class="btn btn-sm btn-success " href="index.php" role="button">Cancelar</a>
                 </form>
