@@ -1,7 +1,7 @@
 <div class="col-md-4 couchSearchForm-container">
     <div class="row couchSearchForm">
 
-        <form class="form-block" role="form" data-toggle="validator" action="couchSearch.php" method="post" name="couchSearchForm" id="couchSearchForm">
+        <form class="form-block" role="form" data-toggle="validator" action="index.php#searchResult" method="post" name="couchSearchForm" id="couchSearchForm">
 
             <div class="form-group">
             <label for="couchCountry" class="couchSearchFormLabel">Ad&oacute;nde vas?</label>
