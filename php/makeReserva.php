@@ -40,7 +40,7 @@ $precio = $result["precio"];
 $monto = $precio * $cantDias;
 
 
-/*try {
+try {
   $data = Array($dateInicio,$dateFin,$monto,$idUsuario,$idCouch);
   $sql = "INSERT INTO reserva (inicio,fin,monto,idusuario,idcouch) VALUES (?,?,?,?,?)";
   $connect = connectDatabase();
@@ -55,11 +55,19 @@ $monto = $precio * $cantDias;
   $connect2 = connectDatabase();
   $statement2 = $connect2 -> prepare($sql2);
   $statement2 -> execute($data2);
+  //* Le mando el mail del dueño del Couch *//
+  $query = "SELECT idusuario FROM couch WHERE idcouch = $idCouch";
+  $id = queryByAssoc($query);
+  $idDueño = $id['idusuario'];
+  $query2 = "SELECT * FROM usuario where idusuario=$idDueño";
+  $dueño = queryByAssoc($query2);
+  require_once 'successfulReservationEmail.php';
+  sendSuccessfulPaymentEmail($dueño['idusuario'], $dueño['email'], $dueño['nombre']);
   successfulReservation();
 } catch (Exception $e) {
   failedReservation();
 
-}*/
+}
 
 
 

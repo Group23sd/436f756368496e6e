@@ -6,7 +6,7 @@ require_once 'database.php';
 
 <html>
 <head>
-  <title>CouchInn</title>
+  <title>CouchInn - Hacer reserva</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="../js/jquery.js"></script>
