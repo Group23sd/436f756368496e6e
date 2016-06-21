@@ -20,7 +20,10 @@
                     echo '<li>'.'<a href="premium.php">CONVERTIRSE EN PREMIUM</a>'.'</li>';
                   }
                   if ( $_SESSION['user'] -> isAdmin() &&  $_SESSION['user'] -> isLogged() )    {
-                    echo '<li>'.'<a href="listar_tCouch.php">ADMINISTRAR TIPO DE COUCH</a>'.'</li>';
+                    echo '<li>'.'<a href="listar_tCouch.php">ADMINISTRAR TIPOS DE COUCH</a>'.'</li>';
+                    echo '<li>'.'<a href="listar_tCouch.php">VER LISTADO DE GANANCIAS</a>'.'</li>';
+                    echo '<li>'.'<a href="listar_tCouch.php">CAMBIAR PORCENTAJE DE GANANCIA</a>'.'</li>';
+
                   }
                   if ( ! $_SESSION['user'] -> isAdmin() )    {
                     echo '<li>'.'<a href="#">CONTACTO</a>'.'</li>';

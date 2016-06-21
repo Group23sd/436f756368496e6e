@@ -1,7 +1,19 @@
 <!DOCTYPE HTML>
 <?php
-  require_once 'database.php';
+
   require_once 'userSession.php';
+  require_once 'feedback.php';
+
+  if(isset($_GET['idcouch'])){
+    $idcouch = $_GET['idcouch'];
+    require_once 'database.php';
+
+    $sql  = "SELECT * FROM couch WHERE idcouch = '$idcouch'";
+    $result = queryByAssoc($sql);
+  }
+  else{
+    genericError();
+  }
 ?>
 <html lang="en">
   <head>
@@ -36,10 +48,10 @@
                 <div class="row main-content">
                   <div class="col-md-6">
                     <h1>Registrar un nuevo Couch</h1>
-                      <form class="form-block" enctype="multipart/form-data" role="form" data-toggle="validator" action="altaCouch.php" method="post" name="cargarNuevoCouch" id="cargarNuevoCouch">
+                      <form class="form-block" enctype="multipart/form-data" role="form" data-toggle="validator" action="modificarDatosCouch.php" method="post" name="modificarInfoCouch" id="modificarInfoCouch">
                         <div class="form-group has-feedback">
                             <label for="tituloDelCouch">Titulo</label>
-                            <input type="text" pattern="^[A-z\s]+$" class="form-control" name="tituloDelCouch" id="tituloDelCouch" placeholder="Ingrese un titulo de sea representativo que su couch" data-error="Ingrese un titulo!" required></input>
+                            <input type="text" <?php $result['titulo'] ?>attern="^[A-z\s]+$" class="form-control" name="tituloDelCouch" id="tituloDelCouch" placeholder="Ingrese un titulo de sea representativo que su couch" data-error="Ingrese un titulo!" required></input>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -48,7 +60,7 @@
                           <label for="precioDelCouch">Precio</label>
                           <div class="input-group">
                             <div class="input-group-addon">$</div>
-                            <input type="number" class="form-control" id="precioDelCouch" name="precioDelCouch" placeholder="Ingrese el precio de alquiler" data-error="Ingrese un valor entero(sin especificar centavos)" required></input>
+                            <input type="number" <<?php $resut['precio'] ?>class="form-control" id="precioDelCouch" name="precioDelCouch" placeholder="Ingrese el precio de alquiler" data-error="Ingrese un valor entero(sin especificar centavos)" required></input>
                         <!--    <div class="input-group-addon">.00</div>  -->
                           </div>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -58,9 +70,24 @@
                       <div class="form-group has-feedback">
                         <label for="capacidadDelCouch">Capacidad</label><br />
                         <select name="capacidadDelCouch" class="form-control">
-                          <option selected>01</option> <option>02</option> <option>03</option> <option>04</option>
-                          <option>05</option> <option>06</option> <option>07</option> <option>08</option>
-                          <option>09</option> <option>10</option> <option>10+</option>
+                          <<?php
+                            $cap = $result['capacidad'];
+                            for ($i=1; $i <12 ; $i++) {
+                              if($i ==  11){
+                                $number = "10+";
+                              }else{
+                                $number = "0" . $i;
+                              }
+
+                              if($i == $cap){
+                                echo "<option selected>".$number."</option>";
+                              }
+                              else{
+                                echo "<option>".$number."</option>";
+                              }
+                            }
+
+                          ?>
                         </select>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
@@ -68,23 +95,31 @@
 
                       <div class="form-group has-feedback">
                         <label for="descripcionDelCouch">Descripcion</label>
-                        <textarea class="form-control" rows="8" name="descripcionDelCouch"></textarea>
+                        <textarea class="form-control" rows="8" name="descripcionDelCouch"><<?php $result['descripcion'] ?></textarea>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
                       </div>
 
                       <?php
                         $sql = "SELECT * FROM tipo";
-                        $result = queryAllByAssoc($sql);
+                        $tipos = queryAllByAssoc($sql);
                       ?>
 
                       <div class="form-group has-feedback">
                         <label for="tipoDeCouch">Tipo</label>
                         <select name="tipoDeCouch" class="form-control">
                           <?php
-                            foreach ($result as $tipo) {
+                            $idTipoCouch = $result['idtipo'];
+                            foreach ($tipos as $tipo) {
                               $desT = $tipo['descripcion'];
-                              echo '<option>'.$desT.'</option>';
+                              $idTipo = $tipo['id']
+                              if($idTipo == $idTipoCouch){
+                                echo '<option selected>'.$desT.'</option>';
+                              }
+                              else{
+                                echo '<option>'.$desT.'</option>';
+                              }
+
                             }
                           ?>
                         </select>
@@ -94,18 +129,31 @@
 
                       <?php
                         $sql="SELECT * FROM caracteristica";
-                        $result= queryAllByAssoc($sql);
+                        $caracteristicas= queryAllByAssoc($sql);
+
+                        $sql = "SELECT * FROM caracteristica_couch WHERE idcouch = '$idcouch'";
+                        $caracteristicasDelCouch = queryAllByAssoc($sql);
                       ?>
 
                       <div class="form-group has-feedback">
                         <?php
                           echo '<label for="descripcionDelCouch">Caracteristicas</label>';
-                          foreach ($result as $caract) {
+                          foreach ($caracteristicas as $caract) {
                             $cD=$caract['descripcion'];
-                            echo '<div id="caracteristicabox" class="checkbox">';
-                              echo '<input type=checkbox name=' .$cD . 'id=' .$cd .'>'; echo $cD;
-                              echo '<br />';
-                            echo '</div>';
+                            $cId = $caract['idcaracteristica'];
+
+                            if(in_array($cId,$caracteristicasDelCouch)){
+                              echo '<div id="caracteristicabox" class="checkbox">';
+                                echo '<input type=checkbox checked name=' .$cD . 'id=' .$cd .'>'; echo $cD;
+                                echo '<br />';
+                              echo '</div>';
+                            }
+                            else{
+                              echo '<div id="caracteristicabox" class="checkbox">';
+                                echo '<input type=checkbox name=' .$cD . 'id=' .$cd .'>'; echo $cD;
+                                echo '<br />';
+                              echo '</div>';
+                            }
                           }
                         ?>
                       </div>
@@ -113,13 +161,20 @@
                       <div class="form-group has-feedback">
                           <label for="formCountry">Pais</label>
                           <select class="form-control" name="formCountry" id="formCountry" data-error="Seleccione un pais!" required onchange="showCities()">
-                              <option hidden>Pais</option>
-                              <option selected hidden value>Pais</option>
+                              <option hidden></option>
                               <?php
+                                  $idciudad = $result['idciudad'];
+                                  $sql = "SELECT idpais FROM ciudad c WHERE c.idciudad = $idciudad";
+                                  $resultpais = queryByAssoc($sql);
+                                  $idpaisr = $resultpais['idpais'];
                                   $query = "SELECT p.idpais, p.nombre FROM pais p";
                                   $result = queryAllByAssoc($query);
                                   foreach ($result as $row) {
-                                      echo "<option value=".$row['idpais'].">".$row['nombre']."</option>";
+                                      $sel = ' ';
+                                      if ($row['idpais'] == $idpaisr) {
+                                          $sel = 'selected';
+                                      }
+                                      echo "<option ".$sel." value=".$row['idpais'].">".$row['nombre']."</option>";
                                   }
                               ?>
                           </select>
@@ -130,43 +185,16 @@
                           <label for="formCity">Ciudad</label>
                           <select class="form-control" name="formCity" id="formCity" data-error="Seleccione una ciudad!" required>
                               <option hidden>Ciudad</option>
-                              <option selected hidden value>Ciudad</option>
+                              <?php
+                                  $idusuario = $_SESSION['user']->getId();
+                                  $query = "SELECT c.idciudad, c.nombre, c.region FROM ciudad c WHERE c.idciudad = $idciudad";
+                                  $row = queryByAssoc($query);
+                                  echo "<option selecter value=".$row['idciudad'].">".$row['nombre'].", ".$row['region']."</option>";
+                              ?>
+                              </select>
                           </select>
                           <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                           <div class="help-block with-errors"></div>
-                      </div>
-
-                      <div class="form-group has-feedback">
-                        <label for="fotosDelCouch">Fotos</label>
-                        <span class="help-block">Por favor ingrese imagenes con formato .jpg para una mejor visualizacion.</span>
-
-                        <?php
-
-
-                          if(($_SESSION['user'] -> isPremium()) || ($_SESSION['user'] -> isAdmin())){
-                            echo '<input type="file" accept="image/jpg" name="foto1Couch" id="foto1Couch"> </input>';
-                            echo '<input type="file" accept="image/jpg" name="foto2Couch" id="foto2Couch"> </input>';
-                            echo '<input type="file" accept="image/jpg" name="foto3Couch" id="foto3Couch"> </input>';
-                            echo '<input type="file" accept="image/jpg" name="foto4Couch" id="foto4Couch"> </input>';
-                            echo '<input type="file" accept="image/jpg" name="foto5Couch" id="foto5Couch"> </input>';
-                            echo '<input type="file" accept="image/jpg" name="foto6Couch" id="foto6Couch"> </input>';
-                          }
-                          elseif($_SESSION['user'] -> isStandard()){
-                            echo '<input type="file" accept="image/jpg" name="foto1Couch" id="foto1Couch"> </input>';
-                            echo '<input type="file" disabled accept="image/jpg" name="foto2Couch" id="foto2Couch"> </input>';
-                            echo '<input type="file" disabled accept="image/jpg" name="foto3Couch" id="foto3Couch"> </input>';
-                            echo '<input type="file" disabled accept="image/jpg" name="foto4Couch" id="foto4Couch"> </input>';
-                            echo '<input type="file" disabled accept="image/jpg" name="foto5Couch" id="foto5Couch"> </input>';
-                            echo '<input type="file" disabled accept="image/jpg" name="foto6Couch" id="foto6Couch"> </input>';
-                            echo "<br />";
-                            echo '<div class="alert alert-info">';
-                              echo 'Si quieres agregar mas fotos de tu Couch debes ser <a href="premium.php" class="alert-link">usuario premium.</a>';
-                              echo '</div>';
-                          }
-
-                        ?>
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <div class="help-block with-errors"></div>
                       </div>
 
                       <button type="submit" class="btn btn-success">Aceptar</button>

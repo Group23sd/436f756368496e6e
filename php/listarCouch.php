@@ -96,7 +96,7 @@
 																echo '<div class="row">';
 																if($_SESSION['user'] -> isLogged()){
 																	echo '<div class="col-md-9">';
-																		echo '<a href="reserva.php?idcouch='.$value -> getId().' role="button" class="btn btn-primary btn-block">' ."RESERVAR". '</a>';
+																		echo '<a href="reserva.php?idcouch='.$value -> getId().' role="button" type="submit" class="btn btn-primary btn-block">' ."RESERVAR". '</a>';
 																	echo '</div>';
 																}
 																else{

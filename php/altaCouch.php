@@ -2,11 +2,11 @@
   require_once 'feedback.php';
 
   if(isset($_POST['tituloDelCouch'])){
-    require_once 'connectdb.php';
+    require_once 'database.php';
     require_once 'userSession.php';
 
-    $tituloC=$_POST['tituloDelCouch'];
-    $sql="SELECT * FROM couch WHERE titulo='$tituloC'";
+    $titulo=$_POST['tituloDelCouch'];
+    $sql="SELECT * FROM couch WHERE titulo='$titulo'";
     $result= queryAllByAssoc($sql);
 
     if(!$_SESSION['user'] -> islogged()){
@@ -15,19 +15,18 @@
     else{
     if(empty($result)){
       try{
-        $usuarioDuenio = $_SESSION['user'] -> getId();
+        $idusuario = $_SESSION['user'] -> getId();
         $precio = $_POST['precioDelCouch'];
-        $precio = $precio + 0.00;
         $capacidad = $_POST['capacidadDelCouch'];
         $descripcion = $_POST['descripcionDelCouch'];
-        $pais = $_POST['formCountry'];
-        $ciudad = $_POST['formCity'];
-        $habilitado = 1;
+        $idpais = $_POST['formCountry'];
+        $idciudad = $_POST['formCity'];
+        $habilitado = true;
 
         $tipo = $_POST['tipoDeCouch'];
         $sql = "SELECT * FROM tipo WHERE descripcion='$tipo'";
         $result = queryByAssoc($sql);
-        $tipo = $result['idtipo'];
+        $idtipo = $result['idtipo'];
 
 
         $sql = "SELECT * FROM caracteristica";
@@ -37,19 +36,22 @@
           $desc = $caract['descripcion'];
           $idC = $caract['idcaracteristica'];
           if($_POST['$desc']){
-            array_push($caracteristicas , $idc);
+            array_push($caracteristicas , $idC);
           }
         }
 
-        $data = Array($tituloC, $descripcion, $precio, $capacidad, $habilitado, $ciudad, $tipo, $usuarioDuenio);
-        $sql ="INSERT INTO couch (titulo , descripcion , precio, capacidad, habilitado, idciudad, idtipo, idusuario) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        $data = Array($titulo, $descripcion, $precio, $capacidad, $habilitado, $idciudad, $idtipo, $idusuario);
+        $sql ="INSERT INTO couch (titulo , descripcion , precio, capacidad, habilitado, idciudad, idtipo, idusuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $database = connectDatabase();
         $statement = $database -> prepare($sql);
-        $statement -> execute($data);
-        $idCouch = $database -> lastInsertId();
+        $statement -> execute($data); //NO SE EJECUTA BIEN
+        $idcouch = $database -> lastInsertId();
+
+        echo "string";
+
 
         //AGREGAR CARACTERISTICAS DEL COUCH
-        foreach ($caracteristicas as $idCaract) {
+    /*    foreach ($caracteristicas as $idCaract) {
           $data = Array($idCaract, $idCouch);
           $sql = "INSERT INTO caracteristica_couch(idcaracteristica, idcouch) VALUES (?, ?)";
           $database = connectDatabase();
@@ -58,17 +60,16 @@
         }
 
         //AGREGAR FOTOS DEL COUCH
-          $fotosDelCouch;
-          for ($i=1; $i < 6 ; $i++) {
+        for ($i=1; $i < 6 ; $i++) {
             $idFoto='foto' .$i.'Couch';
             if($_FILES['$idFoto']['$tmp_name']){
 
               $extensionFoto = pathinfo($_FILES['$idFoto']['name'])['extension'];
               $nombreFoto = pathinfo($_FILES['$idFoto']['name']['basename']);
               $pathFoto = $_FILES['$idFoto']['name'];
-              $portada = 0;
+              $portada = false;
               if(($i == 1) && ($_SESSION['user'] -> isPremium())){  //TOMA COMO FOTO DE PORTADA LA PRIMERA SI EL USUARIO ES premium
-                $portada=1;
+                $portada=true;
               }
               $data = Array($nombreFoto, $pathFoto, $extensionFoto, $portada, $idCouch);
               $sql = "INSERT INTO foto (nombre, path, extension, portada, idcouch) VALUES (?, ?, ?, ?, ?)";  //PATH ??? CAMBIAR NOMBRE EN LA BD?
@@ -87,24 +88,25 @@
               $statement -> bindParam(':nombre', $nombreFoto, PDO::PARAM_STR);
               $statement -> bindParam(':path', $uploaddir, PDO::PARAM_STR);
               $statement -> bindParam(':extension', $extensionFoto, PDO::PARAM_STR);
-              $statement -> bindParam(':portada', $portada, PDO::PARAM_INT); //PARAM_INT? PORTADA ESTA DEFINIDO DE TIPO BIT!
+              $statement -> bindParam(':portada', $portada, PDO::PARAM_BOOLEAN);
               $statement -> bindParam(':idcouch', $idCouch, PDO::PARAM_INT);
               $statement -> execute();
 
             }
-          }
+          } */
+
       }
       catch(Exception $e){
         databaseError();
       }
 
-
     }
     else{
       tituloCouchExistente();
     }
-
-
+  }
+  }else{
+    genericError();
   }
 
 ?>
