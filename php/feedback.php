@@ -177,5 +177,20 @@
         $optLink = '';
         require_once 'feedbackTemplate.php';
     }
+    function successfulReservation() {
+        $title = "Successful Reservation";
+        $h1 = "Reserva exitosa";
+        $msg = "<p>Su solicitud fue procesada. Aguarde la confirmacion del dueño.</p>";
+        $optLink = '';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function failedReservation() {
+        $title = "Failed Reservation";
+        $h1 = "¡Error!";
+        $msg = "<p>Hubo un problema al procesar la reserva, intente más tarde.</p>";
+        $optLink = '';
+        require_once 'feedbackTemplate.php';
+    }
 
 ?>
