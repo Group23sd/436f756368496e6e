@@ -47,7 +47,7 @@ function modificar(id) {
 
   ?>
   <!-- NAVBAR -->
-  <?php require_once "navbackend.php" ?>
+  <?php require_once "navbar.php" ?>
   <!-- CONTENT -->
   <div class="container-fluid inner-body">
     <!-- MAIN -->

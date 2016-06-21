@@ -67,10 +67,12 @@ require_once 'database.php';
             <h4>Selecciona cuándo quieres hospedarte:</h4>
             <form name="RESERVAS"  method="post" role="form" class="form-block" action="makeReserva.php" data-toggle="validator" >
               <p><label for="from">Fecha de inicio:</label>
-                <input type="text" id="from" name="from" class="form-control" readonly required></p>
+                <input type="text" id="from" name="from" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
                 <p><label for="to">Fecha de fin:</label>
-                  <input type="text" id="to" name="to" class="form-control" readonly required></p>
+                  <input type="text" id="to" name="to" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
                   <input type="hidden"  value="<?php echo $idCouch ?>" id="aux" name="aux" class="form-control" required>
+                  <p><label for="cantH">Cantidad de huespedes:</label>
+                    <input type="text" id="cantH" name="cantH" class="form-control" required></p>
                   <button type="submit" class="btn btn-sm btn-success ">Reservar</button>
                   <a class="btn btn-sm btn-success " href="index.php" role="button">Cancelar</a>
                 </form>

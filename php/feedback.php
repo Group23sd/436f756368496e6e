@@ -193,4 +193,34 @@
         require_once 'feedbackTemplate.php';
     }
 
+    function wrongDays() {
+        $title = "Wrong Days";
+        $h1 = "¡Fechas Incorrectas!";
+        $msg = "<p>Debes hacer la reserva con tiempo, mínimo cinco dias de diferencia</p>";
+        $linkTxt = "Volver pagina anterior";
+        $linkHref = "index.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function wrongDaysBetween() {
+        $title = "Wrong Days Between";
+        $h1 = "¡Fechas Incorrectas!";
+        $msg = "<p>La cantidad de dias para hospedarse debe ser al menos 4</p>";
+        $linkTxt = "Volver pagina anterior";
+        $linkHref = "index.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function wrongCapacity() {
+        $title = "Wrong Capacity";
+        $h1 = "¡Sin espacio!";
+        $msg = "<p>¡El Couch no cuenta con tantos lugares!</p>";
+        $linkTxt = "Volver pagina anterior";
+        $linkHref = "index.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
 ?>
