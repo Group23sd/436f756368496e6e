@@ -49,7 +49,9 @@ require_once 'database.php';
     });
   });
   </script>
-
+  <?php
+  $idCouch = $_GET['idcouch'];
+  ?>
   <!-- NAVBAR -->
   <?php require_once "navbar.php" ?>
   <!-- CONTENT -->
@@ -60,19 +62,19 @@ require_once 'database.php';
         <span class="anchor" id="mainContent"></span>
         <div class="row main-content">
 
-        <div class="col-md-6">
-          <h3><strong>Hacer reserva:</strong></h3>
-          <h4>Selecciona cuándo quieres hospedarte:</h4>
-          <form name="RESERVAS"  method="post" role="form" class="form-block" action="makeReserva.php" data-toggle="validator" >
-            <p><label for="from">Fecha de inicio:</label>
-              <input type="text" id="from" name="from" class="form-control" required></p>
-              <p><label for="to">Fecha de fin:</label>
-                <input type="text" id="to" name="to" class="form-control" required></p>
-                <input type="hidden"  value="1" id="aux" name="aux" class="form-control" required>
-                <button type="submit" class="btn btn-sm btn-success ">Reservar</button>
-                <a class="btn btn-sm btn-success " href="index.php" role="button">Cancelar</a>
-              </form>
-            </div>
+          <div class="col-md-6">
+            <h3><strong>Hacer reserva:</strong></h3>
+            <h4>Selecciona cuándo quieres hospedarte:</h4>
+            <form name="RESERVAS"  method="post" role="form" class="form-block" action="makeReserva.php" data-toggle="validator" >
+              <p><label for="from">Fecha de inicio:</label>
+                <input type="text" id="from" name="from" class="form-control" readonly required></p>
+                <p><label for="to">Fecha de fin:</label>
+                  <input type="text" id="to" name="to" class="form-control" readonly required></p>
+                  <input type="hidden"  value="<?php echo $idCouch ?>" id="aux" name="aux" class="form-control" required>
+                  <button type="submit" class="btn btn-sm btn-success ">Reservar</button>
+                  <a class="btn btn-sm btn-success " href="index.php" role="button">Cancelar</a>
+                </form>
+              </div>
             </div>
           </div>
         </main>

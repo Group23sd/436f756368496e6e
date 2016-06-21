@@ -10,10 +10,11 @@ $idUsuario = $_SESSION['user'] -> getId();
 $inicio = strtotime($dateInicio);
 $fin = strtotime($dateFin);
 $cantDias= ceil(abs($fin - $inicio) / 86400);
-$query = "SELECT precio FROM couch WHERE idcouch=1";
+$query = "SELECT precio FROM couch WHERE idcouch='$idCouch'";
 $result = queryByAssoc($query);
 $precio = $result["precio"];
 $monto = $precio * $cantDias;
+
 
 try {
   $data = Array($dateInicio,$dateFin,$monto,$idUsuario,$idCouch);
