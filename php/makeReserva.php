@@ -62,7 +62,7 @@ try {
   $query2 = "SELECT * FROM usuario where idusuario=$idDueño";
   $dueño = queryByAssoc($query2);
   require_once 'successfulReservationEmail.php';
-  sendSuccessfulPaymentEmail($dueño['idusuario'], $dueño['email'], $dueño['nombre']);
+  sendSuccessfulPaymentEmail($dueño['idusuario'], $dueño['email'], $dueño['nombre'],$idCouch);
   successfulReservation();
 } catch (Exception $e) {
   failedReservation();

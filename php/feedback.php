@@ -232,5 +232,12 @@
         $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
         require_once 'feedbackTemplate.php';
     }
+    function ownCouchFail() {
+        $title = "Fail Own Couch";
+        $h1 = "¡Error!";
+        $msg = "<p>No puedes reservar tu propio Couch!</p><br/>";
+        $optLink = '';
+        require_once 'feedbackTemplate.php';
+    }
 
 ?>

@@ -31,7 +31,7 @@
         $mail->isHTML(true);
 
         $mail->Subject = "Successful Payment Email";
-        $mail->Body = emailBody($id, $email);
+        $mail->Body = emailBody($id, $email,$idCouch);
         $mail->AltBody = successfulPaymentLink();
 
         try {
@@ -49,12 +49,12 @@
         return ("http://localhost/php/index.php");
     }
 
-    function emailBody($id, $email) {
+    function emailBody($id, $email,$idCouch) {
 
         $emailPreHeader = "¡Tienes una peticion de reserva!";
         $emailTitle = "Tienes una reserva pendiente!";
         $emailMsg = "Has recibido una peticion de reserva en uno de tus Couch";
-        $emailButtonUrl = successfulPaymentLink($id, $email);
+        $emailButtonUrl = successfulReservationLink($id, $email,$idCouch);
         $emailButtonName = "CouchInn";
 
         return body($emailPreHeader, $emailTitle, $emailMsg, $emailButtonUrl, $emailButtonName);

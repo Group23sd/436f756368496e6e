@@ -51,6 +51,12 @@ require_once 'database.php';
   </script>
   <?php
   $idCouch = $_GET['idcouch'];
+  $query = "SELECT idusuario FROM couch WHERE idcouch='$idCouch'";
+  $idUserCouch = queryByAssoc($query);
+  if ($_SESSION['user'] == $idUserCouch) {
+    require_once 'feedback.php';
+    ownCouchFail();
+  }
   ?>
   <!-- NAVBAR -->
   <?php require_once "navbar.php" ?>
