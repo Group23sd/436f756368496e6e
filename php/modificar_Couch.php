@@ -4,13 +4,14 @@
   require_once 'userSession.php';
   require_once 'feedback.php';
 
-  if(isset($_GET['idcouch'])){
-    $idcouch = $_GET['idcouch'];
+  //if(isset($_GET['idcouch'])){
+  //  $idcouch = $_GET['idcouch'];
     require_once 'database.php';
 
+    $idcouch = 2;
     $sql  = "SELECT * FROM couch WHERE idcouch = '$idcouch'";
     $result = queryByAssoc($sql);
-  }
+  //}
   else{
     genericError();
   }

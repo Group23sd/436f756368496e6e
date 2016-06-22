@@ -3,11 +3,12 @@
 		require_once 'userSession.php';
 		require_once 'database.php';
 		require_once 'reserva.php';
+		require_once 'feedback'
 	//	require_once 'puntajesCouch.php';
 	//	require_once 'comentariosCouch.php'
 
 	if(!$_SESSION['user'] -> isLogged()){
-		echo "<script type='text/javascript'>window.location='permisoDenegado.php'</script>";
+		unauthorizedAccess();
 		die();
 	}
 ?>
@@ -23,7 +24,7 @@
 
 		<!-- Tema opcional -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-		<link type="text/css" rel="stylesheet" href="/436f756368496e6e-master/css/style.css">
+		<link type="text/css" rel="stylesheet" href="../css/style.css">
 
 		<title> Informacion del Couch </title>
 	</head>
@@ -59,7 +60,7 @@
 										 <div class='container'>
 												<div class="row">
 													<div class="col-md-12">
-														<a href="reserva.php?idcouch=<?php $idcouch ?>" role="button" class="btn btn-success" id="botonReservar"> RESERVAR COUCH! </a>
+														<a href="reserva.php?idcouch=<?php $idcouch ?>" role="button" type="submit" class="btn btn-success" id="botonReservar"> RESERVAR COUCH! </a>
 
 													</div>
 													<br />

@@ -3,7 +3,6 @@
 	require_once 'couch.php';
 	require_once 'database.php';
 	require_once 'userSession.php';
-	require_once 'reserva.php';
 
 ?>
 <html lang="en">
@@ -17,7 +16,7 @@
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 		<!-- Tema opcional -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-		<link type="text/css" rel="stylesheet" href="/436f756368496e6e-master/css/style.css">
+		<link type="text/css" rel="stylesheet" href="../css/style.css">
 		<title>Lista de couch's</title>
 
 </head>
@@ -96,7 +95,7 @@
 																echo '<div class="row">';
 																if($_SESSION['user'] -> isLogged()){
 																	echo '<div class="col-md-9">';
-																		echo '<a href="reserva.php?idcouch='.$value -> getId().' role="button" type="submit" class="btn btn-primary btn-block">' ."RESERVAR". '</a>';
+																		echo '<a href="reserva.php?idcouch='.$value -> getId().' role="button" type="submit" class="btn btn-success btn-block">' ."RESERVAR". '</a>';
 																	echo '</div>';
 																}
 																else{
