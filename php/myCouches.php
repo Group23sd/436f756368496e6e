@@ -35,21 +35,33 @@
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <tr>
+                                <th>ID</th>
                                 <th>TITULO</th>
                                 <th>IDTIPO</th>
                                 <th>PRECIO</th>
                                 <th>IDCIUDAD</th>
                                 <th>HABILITADO</th>
+                                <th>RESERVAS</th>
+                                <th>COMENTARIOS</th>
+                                <th>HAB/DESHAB</th>
+                                <th>MODIFICAR</th>
+                                <th>ELIMINAR</th>
                             </tr>
                             <?php
                                 foreach ($result as $couch) {
                                     echo "<tr>";
                                     echo "<td>".$couch['idcouch']."</td>";
+                                    echo "<td>".$couch['titulo']."</td>";
                                     echo "<td>".$couch['idtipo']."</td>";
                                     echo "<td>".$couch['precio']."</td>";
                                     echo "<td>".$couch['idciudad']."</td>";
                                     //echo "<td>".$couch['habilitado']."</td>";
                                     echo $couch['habilitado'] ? "<td><span class='glyphicon glyphicon-ok'></span></td>" : "<td><span class='glyphicon glyphicon-remove'></span></td>";
+                                    echo "<td><a class='btn btn-xs btn-success' href='couchReservations?id=".$couch['idcouch'].".php' role='button'>Reservas</a></td>";
+                                    echo "<td><a class='btn btn-xs btn-success' href='couchComments?id=".$couch['idcouch'].".php' role='button'>Comentarios</a></td>";
+                                    echo "<td><a class='btn btn-xs btn-success' href='changeCouchAvailability?id=".$couch['idcouch'].".php' role='button'>Hab/Deshab</a></td>";
+                                    echo "<td><a class='btn btn-xs btn-success' href='modificarCouch?id=".$couch['idcouch'].".php' role='button'>Modificar</a></td>";
+                                    echo "<td><a class='btn btn-xs btn-success' href='eliminarCouch?id=".$couch['idcouch'].".php' role='button'>Eliminar</a></td>";
                                     echo "</tr>";
                                 }
                             ?>
