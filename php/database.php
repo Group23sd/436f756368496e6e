@@ -1,4 +1,5 @@
 <?php
+
     require_once 'feedback.php';
 
     function connectDatabase() {
@@ -9,7 +10,7 @@
         }
         catch (PDOException $e) {
             try {
-                $db = new PDO("mysql:host=localhost;dbname=couchinndb","root","1234", array(PDO::ATTR_PERSISTENT=>true));
+                $db = new PDO("mysql:host=127.0.0.1;dbname=CouchInnDB","root","1234", array(PDO::ATTR_PERSISTENT=>true));
                 $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 return $db;
             }
@@ -40,5 +41,7 @@
         $statement -> execute();
         return $statement -> fetchAll(PDO::FETCH_ASSOC);
     }
+
+    connectDatabase();
 
 ?>

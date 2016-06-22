@@ -58,7 +58,7 @@ function modificar(id) {
             <table class="table table-condensed" class="container">
               <thead>
                 <tr>
-                  <th>#</th>
+
                   <th>Nombre</th>
                   <th>Borrar</th>
                   <th>Modificar</th>
@@ -68,7 +68,7 @@ function modificar(id) {
                 <?php
                 foreach ($result as $value) {
                   echo '<tr>';
-                  echo '<td>'.$value["idtipo"].'</td>';
+
                   echo '<td>'.$value["descripcion"].'</td>';
                   echo '<td>'.'<a onclick="return borrar('.$value["idtipo"].')"  role="button" class="btn btn-sm btn-success">BORRAR</a>'.'</td>';
                   echo '<td>'.'<a onclick="return modificar('.$value["idtipo"].')"  role="button" class="btn btn-sm btn-success">MODIFICAR</a>'.'</td>';
