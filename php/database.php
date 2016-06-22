@@ -1,5 +1,7 @@
 <?php
+
     require_once 'feedback.php';
+
     function connectDatabase() {
         try {
             $db = new PDO("mysql:host=localhost;dbname=couchinndb","laureano","lanatta", array(PDO::ATTR_PERSISTENT=>true));
@@ -25,12 +27,14 @@
             }
         }
     }
+
     function queryByAssoc($sql) {
         $database = connectDatabase();
         $statement = $database -> prepare($sql);
         $statement -> execute();
         return $statement -> fetch(PDO::FETCH_ASSOC);
     }
+
     function queryAllByAssoc($sql) {
         $database = connectDatabase();
         $statement = $database -> prepare($sql);
@@ -38,8 +42,6 @@
         return $statement -> fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     connectDatabase();
-
 
 ?>
