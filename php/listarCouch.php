@@ -17,7 +17,7 @@
 		$resultFoto= queryByAssoc($query);
 
 		if(empty($resultFoto)){
-			$c -> setFotoPortada('/436f756368496e6e-master/images/resources/CouchInnLogoCouch.png');
+			$c -> setFotoPortada('../images/resources/CouchInnLogoCouch.png');
 
 		} else{
 			$c -> setFotoPortada ($resultFoto['path']);
@@ -26,6 +26,13 @@
 		array_push($couchs,$c);
 
 	}
+
+	if (!$result) {
+		echo "<div class='jumbotron'>";
+		echo "<h3>Cero couches encontrados</h3>";
+		echo "</div>";
+	} else {
+		//Echo Table
 
 ?>
 
@@ -53,7 +60,7 @@
 
 					echo "<td class='col-sm-2'>";
 					echo "<h3 style='text-align:center' class='text-success'>" .'Puntaje:'.  "</h3>";
-					$estrella="'/436f756368496e6e-master/images/resources/estrella.png'";
+					$estrella="'../images/resources/estrella.png'";
 
 					echo "<img id=puntaje src=" . $estrella. "alt=PUNTAJE PROMEDIO DEL COUCH />";
 					echo "<h2 style='text-align:center' id='puntos'>".$value -> puntajePromedio(). "</h2>";
@@ -99,3 +106,4 @@
 		</tbody>
 	</table>
 </div>
+<?php } ?>
