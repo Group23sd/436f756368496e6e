@@ -21,6 +21,9 @@
                   }
                   if ( $_SESSION['user'] -> isAdmin() &&  $_SESSION['user'] -> isLogged() )    {
                     echo '<li>'.'<a href="listar_tCouch.php">ADMINISTRAR TIPO DE COUCH</a>'.'</li>';
+                    /*echo '<li>'.'<a href="#">VER LISTADO DE GANANCIAS</a>'.'</li>';
+                    echo '<li>'.'<a href="#">CAMBIAR PORCENTAJE DE COMISION</a>'.'</li>';
+                    echo '<li>'.'<a href="#">VER LISTADO DE SOLICITUDES ACEPTADAS</a>'.'</li>';*/
                   }
                   if ( ! $_SESSION['user'] -> isAdmin() )    {
                     echo '<li>'.'<a href="#">CONTACTO</a>'.'</li>';

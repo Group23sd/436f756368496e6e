@@ -68,7 +68,7 @@ require_once 'database.php';
         <span class="anchor" id="mainContent"></span>
         <div class="row main-content">
 
-          <div class="col-md-6">
+          <div class="col-md-5">
             <h3><strong>Hacer reserva:</strong></h3>
             <h4>Selecciona cuándo quieres hospedarte:</h4>
             <form name="RESERVAS"  method="post" role="form" class="form-block" action="makeReserva.php" data-toggle="validator" >
@@ -81,7 +81,7 @@ require_once 'database.php';
 
 
                   <p><label for="cantH">Cantidad de huespedes:</label>
-                    <input type="text" id="cantH" name="cantH" class="form-control"  pattern="^[0-9]{1,}$" maxlength="1" data-minlength="1" data-error="Ingrese un numero o complete el campo!" required></p>
+                    <input type="text" id="cantH" name="cantH" class="form-control"  pattern="^[0-9]{1,}$" maxlength="2" data-minlength="1" data-error="Ingrese un numero o complete el campo!" required></p>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <div class="help-block with-errors"></div>
                   </div>

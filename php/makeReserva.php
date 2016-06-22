@@ -20,21 +20,25 @@ $fecha = strtotime($fech);
 //* Calculo la diferencia de la fecha de inicio con la del dia de hoy, debe ser de al menos 5 dias *//
 if ($fecha > $inicio) {
   wrongInitialDate();
+  exit();
 }
 $cantDiaswithHoy= ceil(abs($inicio - $fecha) / 86400);
 if ($cantDiaswithHoy < 5) {
   wrongDays();
+  exit();
 }
 //* Calculo que entre la fecha de inicio y fin haya al menos 4 dias *//
 $cantDias= ceil(abs($fin - $inicio) / 86400);
 if ($cantDias < 4) {
   wrongDaysBetween();
+  exit();
 }
 $query = "SELECT * FROM couch WHERE idcouch=2";
 $result = queryByAssoc($query);
 $capacidad = $result["capacidad"];
 if ($capacidad < $lugares) {
   wrongCapacity();
+  exit();
 }
 $precio = $result["precio"];
 $monto = $precio * $cantDias;
@@ -61,11 +65,12 @@ try {
   $idDueño = $id['idusuario'];
   $query2 = "SELECT * FROM usuario where idusuario=$idDueño";
   $dueño = queryByAssoc($query2);
-  require_once 'successfulReservationEmail.php';
+  require_once 'succesfulReservationEmail.php';
   sendSuccessfulPaymentEmail($dueño['idusuario'], $dueño['email'], $dueño['nombre'],$idCouch);
   successfulReservation();
 } catch (Exception $e) {
   failedReservation();
+  exit();
 
 }
 
