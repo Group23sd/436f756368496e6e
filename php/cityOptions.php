@@ -9,3 +9,4 @@
         echo "<option ".$sel." value=".$row['idciudad'].">".$row['nombre'].", ".$row['region']."</option>";
     }
 ?>
+

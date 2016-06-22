@@ -177,5 +177,67 @@
         $optLink = '';
         require_once 'feedbackTemplate.php';
     }
+    function successfulReservation() {
+        $title = "Successful Reservation";
+        $h1 = "Reserva exitosa";
+        $msg = "<p>Su solicitud fue procesada. Aguarde la confirmacion del dueño.</p>";
+        $optLink = '';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function failedReservation() {
+        $title = "Failed Reservation";
+        $h1 = "¡Error!";
+        $msg = "<p>Hubo un problema al procesar la reserva, intente más tarde.</p>";
+        $optLink = '';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function wrongDays() {
+        $title = "Wrong Days";
+        $h1 = "¡Fechas Incorrectas!";
+        $msg = "<p>Debes hacer la reserva con tiempo, mínimo cinco dias de diferencia</p>";
+        $linkTxt = "Volver pagina anterior";
+        $linkHref = "index.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function wrongDaysBetween() {
+        $title = "Wrong Days Between";
+        $h1 = "¡Fechas Incorrectas!";
+        $msg = "<p>La cantidad de dias para hospedarse debe ser al menos 4</p>";
+        $linkTxt = "Volver pagina anterior";
+        $linkHref = "index.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function wrongCapacity() {
+        $title = "Wrong Capacity";
+        $h1 = "¡Sin espacio!";
+        $msg = "<p>¡El Couch no cuenta con tantos lugares!</p>";
+        $linkTxt = "Volver pagina anterior";
+        $linkHref = "index.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function wrongInitialDate() {
+        $title = "Wrong Initial Date";
+        $h1 = "¡Fecha de Inicio Incorrecta!";
+        $msg = "<p>¡Debe ingresar una fecha de inicio mayor a cinco dias de la fecha actual!</p>";
+        $linkTxt = "Volver pagina anterior";
+        $linkHref = "index.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+    function ownCouchFail() {
+        $title = "Fail Own Couch";
+        $h1 = "¡Error!";
+        $msg = "<p>No puedes reservar tu propio Couch!</p><br/>";
+        $optLink = '';
+        require_once 'feedbackTemplate.php';
+    }
 
 ?>

@@ -48,9 +48,10 @@
                         <span class="anchor" id="searchResult"></span>
                         <hr/>
                         <div class="row">
-                            <?php
-                                require_once 'listarCouch.php';
-                            ?>
+                          <?php
+                              require_once 'listarCouch.php';
+                          ?>
+
                         </div>
                     </div>
                 </div>
