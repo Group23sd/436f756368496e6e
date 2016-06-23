@@ -6,7 +6,7 @@
  ?>
 <html>
 <head>
-    <title>CouchInn</title>
+    <title>CouchInn - Mis Reservas</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../js/jquery.js"></script>
@@ -38,7 +38,7 @@ $result = queryAllByAssoc($query);
                 <div class="row main-content">
                     <div class="col-md-12">
                         <div class="row">
-                          <table class="table table-striped" class="container">
+                          <table class="table table-bordered" class="container">
                             <thead>
                               <tr>
                                 <th>Nombre</th>
@@ -58,18 +58,24 @@ $result = queryAllByAssoc($query);
                                 $resultado2 = queryByAssoc($query3);
                                 echo '<tr>';
                                 echo '<td>'.$resultado2['titulo'].'</td>';
-                                if ($resultado['nombre'] == 'reservado') {
+                                if ($resultado['nombre'] == 'Reservado') {
                                   echo '<td>'.'<a type="button" class="btn btn-sm btn-warning">RESERVADO</a>'.'</td>';
                                 }
-                                elseif ($resultado['nombre'] == 'rechazada') {
-                                  echo '<td>'.'<a type="button" class="btn btn-sm btn-danger">RECHAZADA</a>'.'</td>';
+                                elseif ($resultado['nombre'] == 'Rechazado') {
+                                  echo '<td>'.'<a type="button" class="btn btn-sm btn-danger disabled">RECHAZADA</a>'.'</td>';
                                 }
-                                elseif ($resultado['nombre'] == 'aceptada') {
-                                  echo '<td>'.'<a type="button" class="btn btn-sm btn-success">ACEPTADA</a>'.' '.'<span class="glyphicon  glyphicon-exclamation-sign" style="color:red" aria-hidden="true"></span>'.'</td>';
+                                elseif ($resultado['nombre'] == 'Confirmado') {
+                                  echo '<td>'.'<a href="payReservation.php?idR='.$value['idreserva'].'" type="button" class="btn btn-sm btn-success">ACEPTADA</a>'.' '.'<span class="glyphicon  glyphicon-exclamation-sign" style="color:red" aria-hidden="true"></span>'.'<font color="red"> Debes proceder al pago!</font>'.'</td>';
 
                                 }
                                 echo '<td>'.$resultado['fecha'].'</td>';
-                                echo '<td>'."NA".'</td>';
+                                if ($resultado['nombre'] == 'Confirmado') {
+                                  echo '<td>'.'<a href="payReservation.php?idR='.$value['idreserva'].'" type="button" class="btn btn-sm btn-link">Pagar reserva</a>'.'</td>';
+                                }
+                                else {
+                                  echo '<td>'."NA".'</td>';
+                                }
+
                                 echo '</tr>';
                               }
 

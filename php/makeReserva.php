@@ -50,7 +50,7 @@ try {
   $statement = $connect-> prepare($sql);
   $statement -> execute($data);
   $idReserva = $connect -> lastInsertid();
-  $nombre = "reservado";
+  $nombre = "Reservado";
   $today = getdate();
   $fecha = date("$today[year]-$today[mon]-$today[mday] $today[hours]:$today[minutes]:$today[seconds]");
   $data2 = Array($nombre,$fecha,$idReserva);
