@@ -2,7 +2,7 @@
 require_once 'userSession.php';
 require_once 'database.php';
 require_once 'feedback.php';
-
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 //* Me guardo los datos de POST *//
 $dateInicio = $_POST['from'];
 $dateFin = $_POST['to'];
@@ -65,8 +65,8 @@ try {
   $idDueño = $id['idusuario'];
   $query2 = "SELECT * FROM usuario where idusuario=$idDueño";
   $dueño = queryByAssoc($query2);
-  require_once 'successfulReservationEmail.php';
-  sendSuccessfulReservationEmail($dueño['idusuario'], $dueño['email'], $dueño['nombre'],$idCouch);
+  require_once 'successfulReservation.php';
+  sendSuccessfulReservationEmail($dueño['idusuario'], $dueño['email'], $dueño['nombre']);
   successfulReservation();
 } catch (Exception $e) {
   failedReservation();

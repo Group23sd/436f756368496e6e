@@ -19,6 +19,13 @@
     <script src="../js/slowScroll.js"></script>
 </head>
 <body>
+<?php
+$idUsuario = $_SESSION['user'] -> getId();
+$query = "SELECT * from reserva WHERE idusuario='$idUsuario'";
+$result = queryAllByAssoc($query);
+
+
+ ?>
     <!-- NAVBAR -->
     <?php require_once "navbar.php" ?>
     <!-- CONTENT -->
@@ -31,7 +38,46 @@
                 <div class="row main-content">
                     <div class="col-md-12">
                         <div class="row">
+                          <table class="table table-condensed" class="container">
+                            <thead>
+                              <tr>
+                                <th>Nombre</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                              foreach ($result as $value) {
+                                $idReserva = $value['idreserva'];
+                                $query2 = "SELECT * FROM estado WHERE idreserva=$idReserva";
+                                $resultado = queryByAssoc($query2);
+                                $idCouch = $value['idcouch'];
+                                $query3 = "SELECT titulo FROM couch WHERE idcouch=$idCouch";
+                                $resultado2 = queryByAssoc($query3);
+                                echo '<tr>';
+                                echo '<td>'.$resultado2['titulo'].'</td>';
+                                if ($resultado['nombre'] == 'reservado') {
+                                  echo '<td>'.'<a type="button" class="btn btn-sm btn-warning">RESERVADO</a>'.'</td>';
+                                }
+                                elseif ($resultado['nombre'] == 'rechazada') {
+                                  echo '<td>'.'<a type="button" class="btn btn-sm btn-danger">RECHAZADA</a>'.'</td>';
+                                }
+                                elseif ($resultado['nombre'] == 'aceptada') {
+                                  echo '<td>'.'<a type="button" class="btn btn-sm btn-success">ACEPTADA</a>'.' '.'<span class="glyphicon  glyphicon-exclamation-sign" style="color:red" aria-hidden="true"></span>'.'</td>';
 
+                                }
+                                echo '<td>'.$resultado['fecha'].'</td>';
+                                echo '<td>'."NA".'</td>';
+                                echo '</tr>';
+                              }
+
+                              ?>
+
+                            </tbody>
+
+                          </table>
                         </div>
 
                     </div>

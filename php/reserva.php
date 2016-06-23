@@ -51,9 +51,9 @@ require_once 'database.php';
   </script>
   <?php
   $idCouch = $_GET['idcouch'];
-  $query = "SELECT idusuario FROM couch WHERE idcouch='$idCouch'";
+  $query = "SELECT idusuario FROM couch WHERE idcouch=$idCouch";
   $idUserCouch = queryByAssoc($query);
-  if ($_SESSION['user'] == $idUserCouch) {
+  if ($_SESSION['user'] -> getId() == $idUserCouch['idusuario']) {
     require_once 'feedback.php';
     ownCouchFail();
   }
@@ -76,7 +76,7 @@ require_once 'database.php';
                 <input type="text" id="from" name="from" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
                 <p><label for="to">Fecha de fin:</label>
                   <input type="text" id="to" name="to" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
-                  <input type="hidden"  value="2" id="aux" name="aux" class="form-control" required>
+                  <input type="hidden"  value="<?php echo $idCouch ?>" id="aux" name="aux" class="form-control" required>
                   <div class="form-group has-feedback">
 
 

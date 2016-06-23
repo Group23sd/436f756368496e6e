@@ -4,11 +4,9 @@
     require_once 'feedback.php';
     require_once 'emailBodyTemplate.php';
 
-    if (!$_SESSION['user']->isStandard() || !isset($_GET['idR']) || !isset($_GET['p'])) {
-        echo "<script type='text/javascript'>window.location='index.php'</script>";
-    }
 
-    function sendSuccessfulReservationEmail() {
+
+    function sendSuccessfulReservationEmail($id,$email,$name) {
 
         require_once '../mail/PHPMailerAutoload.php';
 
@@ -30,15 +28,14 @@
 
         $mail->isHTML(true);
 
-        $mail->Subject = "Successful Payment Email";
-        $mail->Body = emailBody($id, $email,$idCouch);
-        $mail->AltBody = successfulPaymentLink();
+        $mail->Subject = "Successful Reservation Email";
+        $mail->Body = emailBody($id, $email);
+        $mail->AltBody = successfulReservationLink();
 
         try {
             ob_start();
             $mail->send();
             ob_end_clean();
-            successfulPayment();
         } catch (Exception $e) {
             genericError();
         }
@@ -49,12 +46,12 @@
         return ("http://localhost/php/index.php");
     }
 
-    function emailBody($id, $email,$idCouch) {
+    function emailBody($id, $email) {
 
         $emailPreHeader = "¡Tienes una peticion de reserva!";
-        $emailTitle = "Tienes una reserva pendiente!";
+        $emailTitle = "¡Tienes una reserva pendiente!";
         $emailMsg = "Has recibido una peticion de reserva en uno de tus Couch";
-        $emailButtonUrl = successfulReservationLink($id, $email,$idCouch);
+        $emailButtonUrl = successfulReservationLink($id, $email);
         $emailButtonName = "CouchInn";
 
         return body($emailPreHeader, $emailTitle, $emailMsg, $emailButtonUrl, $emailButtonName);
