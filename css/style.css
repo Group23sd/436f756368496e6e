@@ -187,3 +187,14 @@ h2 {
 .checkbox {
     color: #DDDDDD;
 }
+
+.btn-xs.couchTable {
+    margin-left: 5px;
+}
+
+.table > tbody > tr.success > td.couchTable,
+.table > tbody > tr.danger > td.couchTable {
+    background-color: white;
+    border-top: 0px;
+    border-bottom: 0px;
+}
