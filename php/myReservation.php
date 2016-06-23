@@ -38,7 +38,7 @@ $result = queryAllByAssoc($query);
                 <div class="row main-content">
                     <div class="col-md-12">
                         <div class="row">
-                          <table class="table table-condensed" class="container">
+                          <table class="table table-striped" class="container">
                             <thead>
                               <tr>
                                 <th>Nombre</th>

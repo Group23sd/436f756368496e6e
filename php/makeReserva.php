@@ -33,7 +33,7 @@ if ($cantDias < 4) {
   wrongDaysBetween();
   exit();
 }
-$query = "SELECT * FROM couch WHERE idcouch=2";
+$query = "SELECT * FROM couch WHERE idcouch=$idCouch";
 $result = queryByAssoc($query);
 $capacidad = $result["capacidad"];
 if ($capacidad < $lugares) {
@@ -42,7 +42,6 @@ if ($capacidad < $lugares) {
 }
 $precio = $result["precio"];
 $monto = $precio * $cantDias;
-
 
 try {
   $data = Array($dateInicio,$dateFin,$monto,$idUsuario,$idCouch);
@@ -73,6 +72,9 @@ try {
   exit();
 
 }
+
+
+
 
 
 

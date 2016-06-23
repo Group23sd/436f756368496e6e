@@ -58,6 +58,10 @@ require_once 'database.php';
     ownCouchFail();
   }
   ?>
+  <?php
+    $query = "SELECT titulo FROM couch WHERE idcouch=$idCouch";
+    $resultado = queryByAssoc($query);
+   ?>
   <!-- NAVBAR -->
   <?php require_once "navbar.php" ?>
   <!-- CONTENT -->
@@ -69,7 +73,7 @@ require_once 'database.php';
         <div class="row main-content">
 
           <div class="col-md-5">
-            <h3><strong>Hacer reserva:</strong></h3>
+            <h3>Hacer reserva para: <strong><?php echo $resultado['titulo'] ?></strong></h3>
             <h4>Selecciona cuándo quieres hospedarte:</h4>
             <form name="RESERVAS"  method="post" role="form" class="form-block" action="makeReserva.php" data-toggle="validator" >
               <p><label for="from">Fecha de inicio:</label>
