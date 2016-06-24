@@ -33,35 +33,38 @@
             <div class="col-md-12 content-wrapper">
                 <div class="row main-content">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-hover couchTable">
                             <tr>
                                 <th>ID</th>
                                 <th>TITULO</th>
                                 <th>IDTIPO</th>
                                 <th>PRECIO</th>
                                 <th>IDCIUDAD</th>
-                                <th>HABILITADO</th>
-                                <th>RESERVAS</th>
-                                <th>COMENTARIOS</th>
-                                <th>HAB/DESHAB</th>
-                                <th>MODIFICAR</th>
-                                <th>ELIMINAR</th>
                             </tr>
                             <?php
                                 foreach ($result as $couch) {
-                                    echo "<tr>";
+                                    if ($couch['habilitado']) {
+                                        $okBanIcon = "<span class='glyphicon glyphicon-ban-circle' alt='Deshabilitar' title='Deshabilitar'></span>";
+                                        echo "<tr class='success'>";
+                                    } else {
+                                        $okBanIcon = "<span class='glyphicon glyphicon-ok' alt='Habilitar' title='Habilitar'></span>";
+                                        echo "<tr class='danger'>";
+                                    }
+                                //    echo "<tr>";
                                     echo "<td>".$couch['idcouch']."</td>";
                                     echo "<td>".$couch['titulo']."</td>";
                                     echo "<td>".$couch['idtipo']."</td>";
                                     echo "<td>".$couch['precio']."</td>";
                                     echo "<td>".$couch['idciudad']."</td>";
-                                    //echo "<td>".$couch['habilitado']."</td>";
-                                    echo $couch['habilitado'] ? "<td><span class='glyphicon glyphicon-ok'></span></td>" : "<td><span class='glyphicon glyphicon-remove'></span></td>";
-                                    echo "<td><a class='btn btn-xs btn-success' href='couchReservations?id=".$couch['idcouch'].".php' role='button'>Reservas</a></td>";
-                                    echo "<td><a class='btn btn-xs btn-success' href='couchComments?id=".$couch['idcouch'].".php' role='button'>Comentarios</a></td>";
-                                    echo "<td><a class='btn btn-xs btn-success' href='changeCouchAvailability?id=".$couch['idcouch'].".php' role='button'>Hab/Deshab</a></td>";
-                                    echo "<td><a class='btn btn-xs btn-success' href='modificarCouch?id=".$couch['idcouch'].".php' role='button'>Modificar</a></td>";
-                                    echo "<td><a class='btn btn-xs btn-success' href='eliminarCouch?id=".$couch['idcouch'].".php' role='button'>Eliminar</a></td>";
+                                //    echo $couch['habilitado'] ? "<td><span class='glyphicon glyphicon-ok'></span></td>" : "<td><span class='glyphicon glyphicon-remove'></span></td>";
+                                //    $okBanIcon = $couch['habilitado'] ? "<span class='glyphicon glyphicon-ban-circle' alt='Deshabilitar' title='Deshabilitar'></span>" : "<span class='glyphicon glyphicon-ok' alt='Habilitar' title='Habilitar'></span>";
+                                    echo "<td class='couchTable'><a class='btn btn-xs btn-success couchTable' href='fullCouchDetails.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-plus' alt='Detalles' title='Detalles'></a>";
+                                    echo "<a class='btn btn-xs btn-success couchTable' href='couchReservations.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-bookmark' alt='Reservas' title='Reservas'></a>";
+                                    echo "<a class='btn btn-xs btn-success couchTable' href='couchComments.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-envelope' alt='Comentarios' title='Comentarios'></a>";
+                                    echo "<a class='btn btn-xs btn-success couchTable' href='couchScores.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-star' alt='Puntajes' title='Puntajes'></a>";
+                                    echo "<a class='btn btn-xs btn-success couchTable' href='changeCouchAvailability.php?id=".$couch['idcouch']."' role='button'>".$okBanIcon."</a>";
+                                    echo "<a class='btn btn-xs btn-success couchTable' href='modificarCouch.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-cog' alt='Modificar' title='Modificar'></a>";
+                                    echo "<a class='btn btn-xs btn-success couchTable' href='eliminarCouch.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-trash' alt='Eliminar' title='Eliminar'></a></td>";
                                     echo "</tr>";
                                 }
                             ?>

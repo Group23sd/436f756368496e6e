@@ -7,7 +7,7 @@ require_once 'feedback.php';
   $idReserva = $_POST['idreserva']; */
 
 try {
-    $sql = "UPDATE estado SET nombre='Rechazado' WHERE idreserva=40";
+    $sql = "UPDATE estado SET nombre='Rechazado' WHERE idreserva=$idReserva";
     $connect = connectDatabase();
     $statement = $connect -> prepare($sql);
     $statement -> execute ();
