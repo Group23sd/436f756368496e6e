@@ -24,10 +24,11 @@ require_once 'database.php';
 </head>
 <body>
 <?php
-  $query = "SELECT * FROM reserva WHERE idreserva=40";
+  $idReserva = 4;
+  $query = "SELECT * FROM reserva WHERE idreserva=";
   $result = queryByAssoc($query);
   $idCouch = $result['idcouch'];
-  $query2 = "SELECT precio FROM couch WHERE idcouch=$idCouch";
+  $query2 = "SELECT * FROM couch WHERE idcouch=$idCouch";
   $result2 = queryByAssoc($query2);
 
 
@@ -43,14 +44,14 @@ require_once 'database.php';
         <div class="row main-content">
 
           <div class="col-md-5">
-            <h2><strong>Reserva para:</strong></h2>
+            <h2>Reserva para: <strong><?php echo $result2['titulo'] ?></strong></h2>
 
               <p><h3><strong>Fecha de inicio:</strong></h3>
               <input type="text" id="from" name="from" class="form-control" value="<?php echo $result['inicio'] ?>" readonly></p>
               <h3><strong>Fecha de fin:</strong></h3>
               <input type="text" id="to" name="to" class="form-control" value="<?php echo $result['fin'] ?>" readonly></p>
               <a class="btn btn-sm btn-success " href="#" role="button">Aceptar</a>
-              <a class="btn btn-sm btn-danger" href="#" role="button">Rechazar</a>
+              <a class="btn btn-sm btn-danger" href="rejectReservation.php?idreserva=<?php echo $idReserva ?>" role="button">Rechazar</a>
 
           </div>
         </div>

@@ -53,7 +53,7 @@
                 $idusuario = $_SESSION['user']->getId();
                 $extension = pathinfo($_FILES['userPicture']['name'])['extension'];
                 $uploaddir = '../images/users/'.$idusuario.'.'.$extension;
-                echo exec('sudo'); move_uploaded_file($_FILES['userPicture']['tmp_name'], $uploaddir);
+                move_uploaded_file($_FILES['userPicture']['tmp_name'], $uploaddir);
                 $sql = "UPDATE usuario SET foto_path = :fotopath WHERE idusuario = $idusuario";
                 $database = connectDatabase();
                 $statement = $database -> prepare($sql);

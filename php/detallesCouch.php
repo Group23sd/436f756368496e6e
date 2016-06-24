@@ -22,7 +22,7 @@
 
 		<!-- Tema opcional -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-		<link type="text/css" rel="stylesheet" href="/436f756368496e6e-master/css/style.css">
+		<link type="text/css" rel="stylesheet" href="../css/style.css">
 
 		<title> Informacion del Couch </title>
 	</head>
