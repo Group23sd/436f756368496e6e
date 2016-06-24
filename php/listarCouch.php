@@ -219,7 +219,8 @@
 					echo '<div class="row">';
 					if($_SESSION['user'] -> isLogged()){
 						echo '<div class="col-md-9">';
-						echo '<a href="#" role="button" class="btn btn-primary btn-block">' ."RESERVAR". '</a>';
+						$id = $value -> getId();
+						echo '<a href="reserva.php?idcouch='.$id.'" role="button" class="btn btn-primary btn-block">' ."RESERVAR". '</a>';
 						echo '</div>';
 					} else{
 						echo '<div class="col-md-9">';
@@ -237,7 +238,7 @@
 					echo '<div class="row">';
 					if($_SESSION['user'] -> isLogged()){
 						echo '<div class="col-md-9">';
-						echo '<a href="detallesCouch.php?idcouch='.$value -> getId().' role="button" type="submit" class="btn btn-info btn-block">' ."VER DETALLES". '</a>';
+						echo '<a href="detallesCouch.php?idcouch='.$id.'" role="button" type="submit" class="btn btn-info btn-block">' ."VER DETALLES". '</a>';
 						echo '</div>';
 					} else{
 						echo '<div class="col-md-9">';

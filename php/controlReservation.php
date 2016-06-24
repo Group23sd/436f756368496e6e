@@ -23,6 +23,15 @@ require_once 'database.php';
   <script src="../js/slowScroll.js"></script>
 </head>
 <body>
+<?php
+  $query = "SELECT * FROM reserva WHERE idreserva=40";
+  $result = queryByAssoc($query);
+  $idCouch = $result['idcouch'];
+  $query2 = "SELECT precio FROM couch WHERE idcouch=$idCouch";
+  $result2 = queryByAssoc($query2);
+
+
+ ?>
   <!-- NAVBAR -->
   <?php require_once "navbar.php" ?>
   <!-- CONTENT -->
@@ -33,14 +42,15 @@ require_once 'database.php';
         <span class="anchor" id="mainContent"></span>
         <div class="row main-content">
 
-          <div class="col-md-6">
+          <div class="col-md-5">
             <h2><strong>Reserva para:</strong></h2>
 
-              <h3><strong>Fecha de inicio:</strong></h3>
+              <p><h3><strong>Fecha de inicio:</strong></h3>
+              <input type="text" id="from" name="from" class="form-control" value="<?php echo $result['inicio'] ?>" readonly></p>
               <h3><strong>Fecha de fin:</strong></h3>
-              <h3><strong>Cantidad de huspedes:</strong></h3>
-              <a class="btn btn-sm btn-success " href="index.php" role="button">Aceptar</a>
-              <a class="btn btn-sm btn-danger" href="index.php" role="button">Rechazar</a>
+              <input type="text" id="to" name="to" class="form-control" value="<?php echo $result['fin'] ?>" readonly></p>
+              <a class="btn btn-sm btn-success " href="#" role="button">Aceptar</a>
+              <a class="btn btn-sm btn-danger" href="#" role="button">Rechazar</a>
 
           </div>
         </div>
