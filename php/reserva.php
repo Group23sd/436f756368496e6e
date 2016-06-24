@@ -48,6 +48,8 @@ require_once 'database.php';
       }
     });
   });
+
+
   </script>
   <?php
   $idCouch = $_GET['idcouch'];
@@ -84,14 +86,24 @@ require_once 'database.php';
                   <div class="form-group has-feedback">
 
 
-                  <p><label for="cantH">Cantidad de huespedes:</label>
-                    <input type="text" id="cantH" name="cantH" class="form-control"  pattern="^[0-9]{1,}$" maxlength="2" data-minlength="1" data-error="Ingrese un numero o complete el campo!" required></p>
+                  <label for="cantH">Cantidad de huespedes:</label>
+                    <input type="text" id="cantH" name="cantH" class="form-control"  pattern="^[0-9]{1,}$" maxlength="2" data-minlength="1" data-error="Ingrese un numero o complete el campo!" required>
                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     <div class="help-block with-errors"></div>
                   </div>
                   <button type="submit" class="btn btn-sm btn-success ">Reservar</button>
                   <a class="btn btn-sm btn-success " href="index.php" role="button">Cancelar</a>
                 </form>
+                <script type="text/javascript">
+
+                $(document).ready(function () {
+                    $(".btn btn-sm btn-success ").click(function () {
+                        $(".btn btn-sm btn-success ").attr("disabled", true);
+                        return true;
+                    });
+                });
+
+                </script>
               </div>
             </div>
           </div>
