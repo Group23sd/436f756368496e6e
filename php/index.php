@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/ajax.js"></script>
     <script src="../js/slowScroll.js"></script>
+    <script src="../js/bootbox.js"></script>
+    <script src="../js/confirmation.js"></script>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -51,7 +53,6 @@
                           <?php
                               require_once 'listarCouch.php';
                           ?>
-
                         </div>
                     </div>
                 </div>
