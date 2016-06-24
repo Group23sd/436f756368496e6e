@@ -2,7 +2,7 @@
 require_once 'userSession.php';
 require_once 'database.php';
 require_once 'feedback.php';
-
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 //* Me guardo los datos de POST *//
 $dateInicio = $_POST['from'];
 $dateFin = $_POST['to'];
@@ -20,25 +20,28 @@ $fecha = strtotime($fech);
 //* Calculo la diferencia de la fecha de inicio con la del dia de hoy, debe ser de al menos 5 dias *//
 if ($fecha > $inicio) {
   wrongInitialDate();
+  exit();
 }
 $cantDiaswithHoy= ceil(abs($inicio - $fecha) / 86400);
 if ($cantDiaswithHoy < 5) {
   wrongDays();
+  exit();
 }
 //* Calculo que entre la fecha de inicio y fin haya al menos 4 dias *//
 $cantDias= ceil(abs($fin - $inicio) / 86400);
 if ($cantDias < 4) {
   wrongDaysBetween();
+  exit();
 }
-$query = "SELECT * FROM couch WHERE idcouch=2";
+$query = "SELECT * FROM couch WHERE idcouch=$idCouch";
 $result = queryByAssoc($query);
 $capacidad = $result["capacidad"];
 if ($capacidad < $lugares) {
   wrongCapacity();
+  exit();
 }
 $precio = $result["precio"];
 $monto = $precio * $cantDias;
-
 
 try {
   $data = Array($dateInicio,$dateFin,$monto,$idUsuario,$idCouch);
@@ -47,7 +50,7 @@ try {
   $statement = $connect-> prepare($sql);
   $statement -> execute($data);
   $idReserva = $connect -> lastInsertid();
-  $nombre = "reservado";
+  $nombre = "Reservado";
   $today = getdate();
   $fecha = date("$today[year]-$today[mon]-$today[mday] $today[hours]:$today[minutes]:$today[seconds]");
   $data2 = Array($nombre,$fecha,$idReserva);
@@ -61,13 +64,17 @@ try {
   $idDueño = $id['idusuario'];
   $query2 = "SELECT * FROM usuario where idusuario=$idDueño";
   $dueño = queryByAssoc($query2);
-  require_once 'successfulReservationEmail.php';
-  sendSuccessfulPaymentEmail($dueño['idusuario'], $dueño['email'], $dueño['nombre'],$idCouch);
+  require_once 'successfulReservation.php';
+  sendSuccessfulReservationEmail($dueño['idusuario'], $dueño['email'], $dueño['nombre']);
   successfulReservation();
 } catch (Exception $e) {
   failedReservation();
+  exit();
 
 }
+
+
+
 
 
 
