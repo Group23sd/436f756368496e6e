@@ -232,7 +232,6 @@
         $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
         require_once 'feedbackTemplate.php';
     }
-
     function ownCouchFail() {
         $title = "Fail Own Couch";
         $h1 = "¡Error!";
@@ -241,13 +240,22 @@
         require_once 'feedbackTemplate.php';
     }
 
-    function existentReservations() {
-        $title = "Existent Reservations";
-        $h1 = "Error en la operacion!";
-        $msg = "<p>Existen reservas para este couch que no han sido liberadas.</p><br/>
-                <p>Resuelva el conflicto antes de continuar.</p><br/>";
-        $linkTxt = "Volver";
-        $linkHref = $_SERVER['HTTP_REFERER'];
+    function successRejection() {
+        $title = "Successful Rejection";
+        $h1 = "¡Se ha rechazado la reserva!";
+        $msg = "<p>Se ha informado al usuario de dicha acción. ¡Gracias!</p>";
+        $linkTxt = "Volver a controlar reservas";
+        $linkHref = "index.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function wrongRejection() {
+        $title = "Wrong Rejection";
+        $h1 = "¡Ha ocurrido un error!";
+        $msg = "<p>Algo ha fallado al rechazar la reserva, intente de nuevo o espere unos minutos.</p>";
+        $linkTxt = "Volver a controlar reservas";
+        $linkHref = "index.php";
         $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
         require_once 'feedbackTemplate.php';
     }
