@@ -7,13 +7,21 @@ require_once 'feedback.php';
   $idReserva = $_POST['idreserva']; */
 
 try {
-    $sql = "UPDATE estado SET nombre='Rechazado' WHERE idreserva=$idReserva";
-    $connect = connectDatabase();
-    $statement = $connect -> prepare($sql);
-    $statement -> execute ();
-    successRejection();
+  $idReserva = 50;
+  $estado = "Rechazado";
+
+  date_default_timezone_set('America/Argentina/Buenos_Aires');
+ $today = getdate();
+ $fecha = date("$today[year]-$today[mon]-$today[mday] $today[hours]:$today[minutes]:$today[seconds]");
+  $data = Array($estado,$fecha,$idReserva);
+  $sql = "INSERT INTO estado (nombre,fecha,idreserva) VALUES (?,?,?)";
+  $connect = connectDatabase();
+  $statement = $connect-> prepare($sql);
+  $statement -> execute($data);
+  successRejection();
 } catch (Exception $e) {
   wrongRejection();
+  exit();
 }
 
 
