@@ -70,7 +70,11 @@
                             <div class="form-group has-feedback">
                                 <label for="formCountry">Pais</label>
                                 <select class="form-control" name="formCountry" id="formCountry" data-error="Seleccione un pais!" required onchange="showCities()">
+
+                                    <option hidden>Pais</option>
+
                                     <option selected hidden value>Pais</option>
+
                                     <?php
                                         $query = "SELECT p.idpais, p.nombre FROM pais p";
                                         $result = queryAllByAssoc($query);
@@ -84,7 +88,10 @@
                             <div class="form-group has-feedback">
                                 <label for="formCity">Ciudad</label>
                                 <select class="form-control" name="formCity" id="formCity" data-error="Seleccione una ciudad!" required>
+
+                                    <option hidden>Ciudad</option>
                                     <option selected hidden value>Ciudad</option>
+
                                 </select>
                                 <div class="help-block with-errors"></div>
                             </div>

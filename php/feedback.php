@@ -170,12 +170,23 @@
         require_once 'feedbackTemplate.php';
     }
 
-    function successfulPayment() {
-        $title = "Successful Payment";
-        $h1 = "Pago exitoso";
-        $msg = "<p>Se ha realizado el pago de su reserva.</p>";
-        $optLink = '';
-        require_once 'feedbackTemplate.php';
+    function tituloCouchExistente(){
+      $title="Titulo Couch Existente";
+      $h1 = "Error";
+      $msg = "<p>El titulo que has seleccionado ya existe!</p><br/>
+              <p>Por favor, vuelve a intentarlo con otro titulo.</p><br/>";
+      $linkTxt = "Volver a intentar";
+      $linkHref = "registrar_Couch.php";
+      $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+      require_once 'feedbackTemplate.php';
+    }
+
+    function couchCargadoExitiosamente(){
+      $title="Couch Cargado Exitosamente";
+      $h1= "¡Felicidades!";
+      $msg = "<p>Su couch ha sido cargado de manera exitosa.</p><br />";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
     }
     function successfulReservation() {
         $title = "Successful Reservation";
@@ -240,6 +251,22 @@
         require_once 'feedbackTemplate.php';
     }
 
+<<<<<<< HEAD
+    function datosCouchActualizados(){
+      $title = "Datos Couch Actualizados";
+      $h1 = "Informacion actualizada!";
+      $msg = "<p>Los datos de su Couch han sido modificados correctamente.</p>";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
+    }
+
+    function couchEliminadoCorrectamente(){
+      $title = "Couch Eliminado Correctamente";
+      $h1 = "Couch eliminado!";
+      $msg = "<p>Desde el equipo de CouchInn sentimos mucho que haya borrado su Couch :( . </p>";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
+=======
     function successRejection() {
         $title = "Successful Rejection";
         $h1 = "¡Se ha rechazado la reserva!";
@@ -258,6 +285,7 @@
         $linkHref = "index.php";
         $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
         require_once 'feedbackTemplate.php';
+>>>>>>> master
     }
 
 ?>

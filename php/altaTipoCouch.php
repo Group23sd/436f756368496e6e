@@ -38,7 +38,7 @@
 										 	<h1> Agregar tipo de couch</h1>
  												<form class="form-block" role="form" data-toggle="validator" action="cargarTipo.php" method="post" name="altaTipoCouch" id="altaTipoCouch">
 													<div class="form-group has-feedback">
-                                <label for="userFirstName">Nombre del nuevo tipo de Couch</label>
+                                <label for="nombreDelTipo">Nombre del nuevo tipo de Couch</label>
                                 <input type="text" pattern="^[A-z\s]+$" class="form-control" name="nombreDelTipo" id="nombreDelTipo" placeholder="Nombre" data-error="Ingrese un nombre!" required></input>
                                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 <div class="help-block with-errors"></div>
