@@ -2,8 +2,7 @@
 <?php
 		require_once 'userSession.php';
 		require_once 'database.php';
-		require_once 'reserva.php';
-		require_once 'feedback'
+		require_once 'feedback.php';
 	//	require_once 'puntajesCouch.php';
 	//	require_once 'comentariosCouch.php'
 

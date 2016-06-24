@@ -39,7 +39,7 @@
                       <form class="form-block" enctype="multipart/form-data" role="form" data-toggle="validator" action="altaCouch.php" method="post" name="cargarNuevoCouch" id="cargarNuevoCouch">
                         <div class="form-group has-feedback">
                             <label for="tituloDelCouch">Titulo</label>
-                            <input type="text" pattern="^[A-z\s]+$" class="form-control" name="tituloDelCouch" id="tituloDelCouch" placeholder="Ingrese un titulo de sea representativo que su couch" data-error="Ingrese un titulo!" required></input>
+                            <input type="text" pattern="^[A-z\s]+$" class="form-control" name="tituloDelCouch" id="tituloDelCouch" placeholder="Ingrese un titulo de sea representativo que su couch" data-error="Ingrese un titulo valido!" required></input>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -48,7 +48,7 @@
                           <label for="precioDelCouch">Precio</label>
                           <div class="input-group">
                             <div class="input-group-addon">$</div>
-                            <input type="number" class="form-control" id="precioDelCouch" name="precioDelCouch" placeholder="Ingrese el precio de alquiler" data-error="Ingrese un valor entero(sin especificar centavos)" required></input>
+                            <input type="number" step="any" class="form-control" id="precioDelCouch" name="precioDelCouch" placeholder="Ingrese el precio de alquiler" data-error="Ingrese un valor valido!" required></input>
                         <!--    <div class="input-group-addon">.00</div>  -->
                           </div>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
@@ -102,8 +102,9 @@
                           echo '<label for="descripcionDelCouch">Caracteristicas</label>';
                           foreach ($result as $caract) {
                             $cD=$caract['descripcion'];
+                            $idC = $caract['idcaracteristica'];
                             echo '<div id="caracteristicabox" class="checkbox">';
-                              echo '<input type=checkbox name=' .$cD . ' id='.$cd.'>'; echo $cD;
+                              echo '<input type=checkbox value='.$cD.' name='.$idC.'>'.$cD.'</input>';
                               echo '<br />';
                             echo '</div>';
                           }

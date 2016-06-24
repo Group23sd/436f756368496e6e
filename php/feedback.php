@@ -178,6 +178,7 @@
       $linkTxt = "Volver a intentar";
       $linkHref = "registrar_Couch.php";
       $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+      require_once 'feedbackTemplate.php';
     }
 
     function couchCargadoExitiosamente(){
@@ -248,6 +249,22 @@
         $msg = "<p>No puedes reservar tu propio Couch!</p><br/>";
         $optLink = '';
         require_once 'feedbackTemplate.php';
+    }
+
+    function datosCouchActualizados(){
+      $title = "Datos Couch Actualizados";
+      $h1 = "Informacion actualizada!";
+      $msg = "<p>Los datos de su Couch han sido modificados correctamente.</p>";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
+    }
+
+    function couchEliminadoCorrectamente(){
+      $title = "Couch Eliminado Correctamente";
+      $h1 = "Couch eliminado!";
+      $msg = "<p>Desde el equipo de CouchInn sentimos mucho que haya borrado su Couch :( . </p>";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
     }
 
 ?>
