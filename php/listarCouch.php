@@ -29,7 +29,7 @@
 
 	if (!$result) {
 		echo "<div class='jumbotron'>";
-		echo "<h3>Cero couches encontrados</h3>";
+		echo "<h3>Cero couches encontrados :(</h3>";
 		echo "</div>";
 	} else {
 		//Echo Table

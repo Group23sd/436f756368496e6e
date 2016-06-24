@@ -232,11 +232,23 @@
         $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
         require_once 'feedbackTemplate.php';
     }
+
     function ownCouchFail() {
         $title = "Fail Own Couch";
         $h1 = "¡Error!";
         $msg = "<p>No puedes reservar tu propio Couch!</p><br/>";
         $optLink = '';
+        require_once 'feedbackTemplate.php';
+    }
+
+    function existentReservations() {
+        $title = "Existent Reservations";
+        $h1 = "Error en la operacion!";
+        $msg = "<p>Existen reservas para este couch que no han sido liberadas.</p><br/>
+                <p>Resuelva el conflicto antes de continuar.</p><br/>";
+        $linkTxt = "Volver";
+        $linkHref = $_SERVER['HTTP_REFERER'];
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
         require_once 'feedbackTemplate.php';
     }
 

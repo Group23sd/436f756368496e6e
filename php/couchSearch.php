@@ -1,7 +1,11 @@
 <?php
 
+    function basicSearch() {
+        return ("SELECT * FROM couch WHERE habilitado = true");
+    }
+
     function geoSearch($cityId) {
-        return (" WHERE idciudad = $cityId");
+        return (" AND idciudad = $cityId");
     }
 
     function typeSearch($typeId) {
@@ -20,7 +24,7 @@
         return ($aString != "") ? (" AND descripcion = '$aString'") : "";
     }
 
-    $couchQuery = "SELECT * FROM couch";
+    $couchQuery = basicSearch();
 
     $couchQuery .= isset($_POST['formCity']) ? geoSearch($_POST['formCity']) : "";
     $couchQuery .= isset($_POST['couchType']) ? typeSearch($_POST['couchType']) : "";
