@@ -20,6 +20,7 @@
     $currentCouchStatus = $couchResult['habilitado'];
 
     //Estado actual == "Habilitado"
+    /*
     if ($currentCouchStatus) {
         $query = "SELECT r.*, e.nombre FROM estado e INNER JOIN reserva r ON (e.idreserva=r.idreserva) WHERE e.fecha = (SELECT max(fecha) FROM estado WHERE (e.idreserva=estado.idreserva)) AND r.idcouch = :idcouch AND e.nombre IN ('Reservado', 'Confirmado', 'Pagado')";
         $statement = $database -> prepare($query);
@@ -50,6 +51,7 @@
             }
         }
     }
+    */
 
     //Cambiar Estado
     $newCouchStatus = !$currentCouchStatus;
