@@ -22,6 +22,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/bootbox.js"></script>
+    <script src="../js/confirmation.js"></script>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -62,9 +64,9 @@
                                     echo "<a class='btn btn-xs btn-success couchTable' href='couchReservations.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-bookmark' alt='Reservas' title='Reservas'></a>";
                                     echo "<a class='btn btn-xs btn-success couchTable' href='couchComments.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-envelope' alt='Comentarios' title='Comentarios'></a>";
                                     echo "<a class='btn btn-xs btn-success couchTable' href='couchScores.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-star' alt='Puntajes' title='Puntajes'></a>";
-                                    echo "<a class='btn btn-xs btn-success couchTable' href='changeCouchAvailability.php?id=".$couch['idcouch']."' role='button'>".$okBanIcon."</a>";
+                                    echo "<a class='btn btn-xs btn-success couchTable' id='changeCouchState' data-href='changeCouchAvailability.php?id=".$couch['idcouch']."' role='button'>".$okBanIcon."</a>";
                                     echo "<a class='btn btn-xs btn-success couchTable' href='modificarCouch.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-cog' alt='Modificar' title='Modificar'></a>";
-                                    echo "<a class='btn btn-xs btn-success couchTable' href='eliminarCouch.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-trash' alt='Eliminar' title='Eliminar'></a></td>";
+                                    echo "<a class='btn btn-xs btn-success couchTable' id='deleteCouch' data-href='eliminarCouch.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-trash' alt='Eliminar' title='Eliminar'></a></td>";
                                     echo "</tr>";
                                 }
                             ?>
