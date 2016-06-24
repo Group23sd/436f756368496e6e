@@ -177,6 +177,7 @@
         $optLink = '';
         require_once 'feedbackTemplate.php';
     }
+    
     function successfulReservation() {
         $title = "Successful Reservation";
         $h1 = "Reserva exitosa";
