@@ -2,11 +2,7 @@
 <?php
     require_once 'userSession.php';
     require_once 'database.php';
-
-    connectDatabase();
-
     require_once 'couchSearch.php';
-
  ?>
 <html>
 <head>

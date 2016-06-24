@@ -9,11 +9,11 @@
         <!-- ITEMS -->
         <div class="navbar-items">
             <ul class="nav navbar-nav" id="backendStyle">
-                <li><a href="verTiposBackend.php">VER TIPOS DE COUCH</a></li>
+                <li><a href="#">VER TIPOS DE COUCH</a></li>
                 <li><a href="#">VER LISTADO DE GANANCIAS</a></li>
                 <li><a href="#">CAMBIAR PORCENTAJE DE COMISION</a></li>
                 <li><a href="#">VER LISTADO DE SOLICITUDES ACEPTADAS</a></li>
-
+                
             </ul>
         </div>
         <!-- USER -->

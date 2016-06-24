@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <?php
-  require_once 'userSession.php';
-  require_once 'database.php';
-  connectDatabase();
-
-	if(!$_SESSION['user'] -> isLogged()) || (!$_SESSION['user'] -> isAdmin()){
+require_once 'userSession.php';
+if(!$_SESSION['user'] -> isLogged()) || (!$_SESSION['user'] -> isAdmin()){
 
 		echo "<script type='text/javascript'>window.location='permisoDenegado.php'</script>";
 		die();
@@ -46,7 +43,9 @@
             </div>
         </main>
         <!-- FOOTER -->
-        <?php require_once 'footer.php' ?>
+        <footer class="row footer">
+            <p>Soy el footer</P>
+        </footer>
     </div>
 </body>
 </html>

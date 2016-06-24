@@ -2,7 +2,7 @@
 <?php
     require_once 'userSession.php';
     require_once 'database.php';
-    connectDatabase();
+    $c = connectDatabase();
  ?>
 <html>
 <head>
@@ -28,14 +28,14 @@
 
               <div class="row main-content">
                 <!-- mostrar info -->
-                <?php require_once 'listar_tCouch.php';
-                ?>
               </div>
           </div>
 
         </main>
         <!-- FOOTER -->
-        <?php require_once 'footer.php' ?>
+        <footer class="row footer">
+            <p>Soy el footer</P>
+        </footer>
     </div>
 </body>
 </html>
