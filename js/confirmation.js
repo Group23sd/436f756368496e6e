@@ -15,3 +15,9 @@ $(document).on("click", "#changeCouchState", function(e) {
       if (result) {window.location = $(document).find('#changeCouchState').attr('data-href');}
     });
 });
+
+$(document).on("click", "#rejectReserva", function(e) {
+    bootbox.confirm("Esta seguro que desea rechazar esta reserva?", function(result) {
+      if (result) {window.location = $(document).find('#rejectReserva').attr('data-href');}
+    });
+});

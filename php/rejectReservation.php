@@ -3,13 +3,12 @@
 require_once 'database.php';
 require_once 'feedback.php';
 /* Habilitar una de las dos opciones para recibir el parametro
-  $idReserva = $_GET['idreserva'];
+
   $idReserva = $_POST['idreserva']; */
 
 try {
-  $idReserva = 50;
   $estado = "Rechazado";
-
+  $idReserva = $_GET['idreserva'];
   date_default_timezone_set('America/Argentina/Buenos_Aires');
  $today = getdate();
  $fecha = date("$today[year]-$today[mon]-$today[mday] $today[hours]:$today[minutes]:$today[seconds]");

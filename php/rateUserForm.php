@@ -6,7 +6,7 @@ require_once 'database.php';
 
 <html>
 <head>
-  <title>CouchInn - Hacer reserva</title>
+  <title>CouchInn</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="../js/jquery.js"></script>
@@ -21,20 +21,10 @@ require_once 'database.php';
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/ajax.js"></script>
   <script src="../js/slowScroll.js"></script>
-  <script src="../js/bootbox.js"></script>
-  <script src="../js/confirmation.js"></script>
 </head>
 <body>
-<?php
-  $idReserva = 50;
-  $query = "SELECT * FROM reserva WHERE idreserva=$idReserva";
-  $result = queryByAssoc($query);
-  $idCouch = $result['idcouch'];
-  $query2 = "SELECT * FROM couch WHERE idcouch=$idCouch";
-  $result2 = queryByAssoc($query2);
 
 
- ?>
   <!-- NAVBAR -->
   <?php require_once "navbar.php" ?>
   <!-- CONTENT -->
@@ -45,15 +35,23 @@ require_once 'database.php';
         <span class="anchor" id="mainContent"></span>
         <div class="row main-content">
 
-          <div class="col-md-5">
-            <h2>Reserva para: <strong><?php echo $result2['titulo'] ?></strong></h2>
+          <div class="col-md-6">
+            <h3>Puntuar a: <strong>NA</strong></h3>
+            <h4>Selecciona un puntaje y deja un comentario si quieres:</h4>
+            <form name="puntajeUser"  method="post" role="form" class="form-block" action="rateUser.php">
+              <div class="from-group has-feedback">
+              <p><label for="puntaje">Selecciona un puntaje: </label>
+              <select name="puntaje" id="puntaje" class="btn btn-sm btn-success ">
+                <option selected>1</option> <option>2</option> <option>3</option> <option>4</option><option>5</option>
+              </select></p>
+              </div>
+              <div class="form-group has-feedback">
+              <label for="comentario">Deja un comentario:</label>
+              <textarea class="form-control" rows="3" name="comentario" id="comentario"></textarea>
+            </div>
+              <button type="submit" class="btn btn-xm btn-success ">Puntuar</button>
 
-              <p><h3><strong>Fecha de inicio:</strong></h3>
-              <input type="text" id="from" name="from" class="form-control" value="<?php echo $result['inicio'] ?>" readonly></p>
-              <h3><strong>Fecha de fin:</strong></h3>
-              <input type="text" id="to" name="to" class="form-control" value="<?php echo $result['fin'] ?>" readonly></p>
-              <a class="btn btn-sm btn-success " href="#" role="button">Aceptar</a>
-              <a class='btn btn-sm btn-danger' id='rejectReserva' data-href='rejectReservation.php?idreserva=<?php echo $idReserva ?>' role='button'>Cancelar</a>
+            </form>
 
           </div>
         </div>
