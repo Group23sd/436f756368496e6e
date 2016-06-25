@@ -198,3 +198,18 @@ h2 {
     border-top: 0px;
     border-bottom: 0px;
 }
+
+.stdLink:link {
+    text-decoration: none;
+    color: #6D6D6D;
+}
+
+.stdLink:visited {
+    text-decoration: none;
+    color: #6D6D6D;
+}
+
+.stdLink:hover {
+    text-decoration: none;
+    color: #000000;
+}

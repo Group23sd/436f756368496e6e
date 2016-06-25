@@ -62,7 +62,7 @@
                                     //var_dump($couch);
                                 //    echo "<tr>";
                                 //    echo "<td>".$couch['idcouch']."</td>";
-                                    echo "<td><a href='detallesCouch.php?idcouch=".$couch['idcouch']."'><strong>".$couch['titulo']."</strong></a></td>";
+                                    echo "<td><a class='stdLink'href='detallesCouch.php?idcouch=".$couch['idcouch']."'><strong>".$couch['titulo']."</strong></a></td>";
                                     echo "<td>".$couch['nombreTipo']."</td>";
                                 //    echo "<td>".$couch['precio']."</td>";
                                     echo "<td>".$couch['ciudad'].", ".$couch['region'].", ".$couch['pais']."</td>";
