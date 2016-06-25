@@ -1,3 +1,30 @@
+<?php
+
+    require_once 'database.php';
+
+    $recommendationQuery = "SELECT c.*, t.descripcion as nombreTipo, cd.nombre as ciudad, cd.region as region, p.nombre as pais FROM couch c INNER JOIN tipo t ON (c.idtipo=t.idtipo) INNER JOIN ciudad cd ON (c.idciudad=cd.idciudad) INNER JOIN pais p ON (cd.idpais=p.idpais)";
+    $recommendationResult = queryAllByAssoc($recommendationQuery);
+    $fullCouches = array();
+
+    foreach ($recommendationResult as $couch) {
+        $idCouch = $couch['idcouch'];
+        $query = "SELECT avg(puntaje_couch) as puntaje FROM reserva WHERE idcouch=$idCouch";
+        $resultPuntaje = queryByAssoc($query);
+        $puntajePromedio = $resultPuntaje['puntaje'];
+        $couch['puntajePromedio'] = $puntajePromedio;
+        array_push($fullCouches, $couch);
+    }
+
+    function cmp($a, $b) {
+        if ($a['puntajePromedio'] == $b['puntajePromedio']) {
+            return 0;
+        }
+        return ($a['puntajePromedio'] > $b['puntajePromedio']) ? -1 : 1;
+    }
+
+    uasort($fullCouches, 'cmp');
+
+?>
 <div class="col-md-8 recommendedCouchesCarousel-container">
     <div class="row recommendedCouchesCarousel">
         <h2>Recomendados por la comunidad</h2>
@@ -6,53 +33,28 @@
             <ol class="carousel-indicators">
                 <li data-target="#recommended-couches-carousel" data-slide-to="0" class="active"></li>
                 <li data-target="#recommended-couches-carousel" data-slide-to="1"></li>
+                <!--
                 <li data-target="#recommended-couches-carousel" data-slide-to="2"></li>
                 <li data-target="#recommended-couches-carousel" data-slide-to="3"></li>
                 <li data-target="#recommended-couches-carousel" data-slide-to="4"></li>
+                -->
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
 
-                <div class="item active">
-                    <img src="../images/resources/splash1.jpg" alt="splash1">
-                    <div class="carousel-caption">
-                        <h1>Titulo 1</h1>
-                        <p>Descripcion uno</p>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="../images/resources/splash2.jpg" alt="splash2">
-                    <div class="carousel-caption">
-                        <h1>Titulo 2</h1>
-                        <p>Descripcion dos</p>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="../images/resources/splash3.jpg" alt="splash3">
-                    <div class="carousel-caption">
-                        <h1>Titulo 3</h1>
-                        <p>Descripcion tres</p>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="../images/resources/splash1.jpg" alt="splash1">
-                    <div class="carousel-caption">
-                        <h1>Titulo 4</h1>
-                        <p>Descripcion cuatro</p>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="../images/resources/splash2.jpg" alt="splash2">
-                    <div class="carousel-caption">
-                        <h1>Titulo 5</h1>
-                        <p>Descripcion cinco</p>
-                    </div>
-                </div>
+                <?php
+                    for ($i=0; $i < 2; $i++) {
+                        $couch = $fullCouches[$i];
+                        echo $i ? "<div class='item active'>" : "<div class='item'>";
+                        echo "<img src='../images/resources/splash1.jpg'>";
+                        echo "<div class='carousel-caption'>";
+                        echo "<h1>"."<a class='stdLink' href='detallesCouch.php?idcouch=".$couch['idcouch']."'>".$couch['titulo']."</a>"."</h1>";
+                        echo "<p>".$couch['descripcion']."</p>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                ?>
 
             </div>
 
