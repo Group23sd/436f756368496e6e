@@ -43,9 +43,9 @@ require_once 'database.php';
         <div class="row main-content">
 
           <div class="col-md-6">
-            <h3>Puntuar a:<?php echo $result2['nombre'] ?> <strong></strong></h3>
+            <h3>Puntuar a:<strong></strong></h3>
             <h4>Selecciona un puntaje y deja un comentario si quieres:</h4>
-            <form name="puntajeUser"  method="post" role="form" class="form-block" action="rateUser.php?idReserva=<?php echo $idReserva ?>">
+            <form name="puntajeUser"  method="post" role="form" class="form-block" action="rateCouch.php?idReserva=<?php echo $idReserva ?>">
               <div class="from-group has-feedback">
               <p><label for="puntaje">Selecciona un puntaje: </label>
               <select name="puntaje" id="puntaje" class="btn btn-sm btn-success ">

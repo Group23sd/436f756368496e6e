@@ -70,7 +70,7 @@ require_once 'database.php';
                     echo '<td>'.$resultado2['titulo'].'</td>';
                     echo '<td>'.$value['inicio'].'</td>';
                     echo '<td>'.$value['fin'].'</td>';
-                    if (strtotime($fecha) > strtotime($value['fin'])) {
+                    if ($resultado['nombre'] == 'Liberado') {
                       echo '<td>'.'<a type="button" class="btn btn-sm btn-success disabled">LIBERADO</a>'.'</td>';
 
                     }
@@ -100,9 +100,8 @@ require_once 'database.php';
                       #exit();
                     }
                     echo '<td>'.$resultado['fecha'].'</td>';
-                    if (strtotime($fecha) > strtotime($value['fin'])) {
-                      echo '<td>'.'<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>'.'<a href="#" type="button" class="btn btn-link">Puntuar hospedaje</a>'.'</td>';
-
+                    if ($resultado['nombre'] == 'Liberado') {
+                      echo '<td><a  type="button" class="btn btn-link" href="rateCouchForm.php?id='.$value['idreserva'].'">Puntuar</a></td>';
                     }
                     elseif ($resultado['nombre'] == 'Confirmado') {
                       echo '<td>'.'<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>'.'<a href="payReservation.php?idR='.$value['idreserva'].'" type="button" class="btn btn-link">Pagar reserva</a>'.'</td>';

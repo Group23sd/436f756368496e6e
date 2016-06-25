@@ -7,7 +7,7 @@ require_once 'feedback.php';
 $idReserva = $_GET['idreserva'];
 $idReserva = $_POST['idreserva']; */
 #$idReserva = 57;
-$idReserva = $_GET['idreserva'];
+$idReserva = $_GET['id'];
 $query = "SELECT * FROM reserva WHERE idreserva=$idReserva";
 $result = queryByAssoc($query);
 $inicio = $result['inicio'];

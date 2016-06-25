@@ -213,3 +213,12 @@ h2 {
     text-decoration: none;
     color: #000000;
 }
+
+#caracteristicabox{
+  margin-left: 22px;
+  color: black;
+}
+
+#estrellaPuntos{
+  display: inline;
+}
