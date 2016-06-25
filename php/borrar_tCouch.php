@@ -1,4 +1,6 @@
 <?php
+require_once "feedback.php";
+
 function conectar(){
   $link = mysqli_connect('127.0.0.1' , 'root' , '1234' , 'CouchInnDB') or die("Error ".mysqli_error($link));
   return $link;
@@ -22,7 +24,8 @@ function conectar(){
 
 
   } else {
-    echo "<script>alert('Ya Couches cargados para ese tipo!'); window.location.href='listar_tCouch.php';</script>";
+    existingCouch($id);
+    exit();
 
 
 

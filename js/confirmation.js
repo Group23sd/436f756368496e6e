@@ -15,3 +15,15 @@ $(document).on("click", "#changeCouchState", function(e) {
       if (result) {alert ( $(document).find('#changeCouchState').attr('data-href') );}
     });
 });
+
+$(document).on("click", "#rejectReserva", function(e) {
+    bootbox.confirm("Esta seguro que desea rechazar esta reserva?", function(result) {
+      if (result) {window.location = $(document).find('#rejectReserva').attr('data-href');}
+    });
+});
+
+$(document).on("click", "#deletCouch", function(e) {
+    bootbox.confirm("¿Esta seguro que desea borrar este Couch?", function(result) {
+      if (result) {window.location = $(document).find('#deletCouch').attr('data-href');}
+    });
+});
