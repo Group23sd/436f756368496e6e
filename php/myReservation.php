@@ -50,11 +50,13 @@ require_once 'database.php';
                 <tbody>
                   <?php
                   foreach ($result as $value) {
+                    echo $value['idreserva'];
+
                     date_default_timezone_set('America/Argentina/Buenos_Aires');
                     $today = getdate();
                     $fecha = date("$today[year]-$today[mon]-$today[mday]");
                     $idReserva = $value['idreserva'];
-                    $query2 = "SELECT nombre, fecha, idreserva FROM estado WHERE fecha=(SELECT MAX(fecha) FROM estado WHERE idreserva=$idReserva)";
+                    $query2 = "SELECT idestado, nombre, fecha, idreserva FROM estado WHERE fecha=(SELECT MAX(fecha) FROM estado ) AND idreserva=$idReserva";
                     $resultado = queryByAssoc($query2);
                     $idCouch = $value['idcouch'];
                     $query3 = "SELECT titulo FROM couch WHERE idcouch=$idCouch";

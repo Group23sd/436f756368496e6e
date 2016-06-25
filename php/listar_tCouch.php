@@ -51,10 +51,10 @@ function modificar(id) {
       <div class="col-md-12 content-wrapper">
         <div class="row main-content">
           <div class="col-md-12">
-            <table class="table table-condensed" class="container">
+            <table class="table table-bordered" class="container">
               <thead>
                 <tr>
-                  <th>#</th>
+
                   <th>Nombre</th>
                   <th>Borrar</th>
                   <th>Modificar</th>
@@ -64,9 +64,8 @@ function modificar(id) {
                 <?php
                 foreach ($result as $value) {
                   echo '<tr>';
-                  echo '<td>'."NA".'</td>';
                   echo '<td>'.$value["descripcion"].'</td>';
-                  echo "<td><a class='btn btn-sm btn-danger ' id='deleteCouch' data-href='borrar_tCouch.php?e=".$value["idtipo"]."' role='button'>BORRAR</a></td>";
+                  echo "<td><a class='btn btn-sm btn-danger ' onclick='return confirm(\"¿Esta seguro que desea borrar este Couch?\")' href='borrar_tCouch.php?e=".$value["idtipo"]."' role='button'>BORRAR</a></td>";
                   echo '<td>'.'<a onclick="return modificar('.$value["idtipo"].')"  role="button" class="btn btn-sm btn-success">MODIFICAR</a>'.'</td>';
                   echo '</tr>';
                 }
