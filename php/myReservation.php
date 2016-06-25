@@ -50,16 +50,25 @@ require_once 'database.php';
                 <tbody>
                   <?php
                   foreach ($result as $value) {
+                    echo $value['idreserva'];
+
+                    date_default_timezone_set('America/Argentina/Buenos_Aires');
+                    $today = getdate();
+                    $fecha = date("$today[year]-$today[mon]-$today[mday]");
                     $idReserva = $value['idreserva'];
-                    $query2 = "SELECT * FROM estado WHERE idreserva=$idReserva";
+                    $query2 = "SELECT idestado, nombre, fecha, idreserva FROM estado WHERE fecha=(SELECT MAX(fecha) FROM estado ) AND idreserva=$idReserva";
                     $resultado = queryByAssoc($query2);
                     $idCouch = $value['idcouch'];
                     $query3 = "SELECT titulo FROM couch WHERE idcouch=$idCouch";
                     $resultado2 = queryByAssoc($query3);
                     echo '<tr>';
                     echo '<td>'.$resultado2['titulo'].'</td>';
-                    if ($resultado['nombre'] == 'Reservado') {
-                      echo '<td>'.'<a type="button" class="btn btn-sm btn-warning">RESERVADO</a>'.'</td>';
+                    if (strtotime($fecha) > strtotime($value['fin'])) {
+                      echo '<td>'.'<a type="button" class="btn btn-sm btn-success disabled">LIBERADO</a>'.'</td>';
+
+                    }
+                    elseif ($resultado['nombre'] == 'Reservado') {
+                      echo '<td>'.'<a type="button" class="btn btn-sm btn-warning">EN ESPERA</a>'.'</td>';
                     }
                     elseif ($resultado['nombre'] == 'Rechazado') {
                       echo '<td>'.'<a type="button" class="btn btn-sm btn-danger disabled">RECHAZADA</a>'.'</td>';
@@ -68,12 +77,17 @@ require_once 'database.php';
                       echo '<td>'.'<a href="payReservation.php?idR='.$value['idreserva'].'" type="button" class="btn btn-sm btn-success">ACEPTADA</a>'.' '.'<span class="glyphicon  glyphicon-exclamation-sign" style="color:red" aria-hidden="true"></span>'.'<font color="red"> Debes proceder al pago!</font>'.'</td>';
 
                     }
+
                     else {
                       require_once "feedback.php";
                       genericError();
                     }
                     echo '<td>'.$resultado['fecha'].'</td>';
-                    if ($resultado['nombre'] == 'Confirmado') {
+                    if (strtotime($fecha) > strtotime($value['fin'])) {
+                      echo '<td>'.'<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>'.'<a href="#" type="button" class="btn btn-link">Puntuar hospedaje</a>'.'</td>';
+
+                    }
+                    elseif ($resultado['nombre'] == 'Confirmado') {
                       echo '<td>'.'<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>'.'<a href="payReservation.php?idR='.$value['idreserva'].'" type="button" class="btn btn-link">Pagar reserva</a>'.'</td>';
                     }
                     else {
