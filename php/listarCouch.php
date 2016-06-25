@@ -2,7 +2,7 @@
 
 	require_once 'couch.php';
 
-	$result = queryAllByAssoc($couchQuery);
+	$result = $statement -> fetchAll(PDO::FETCH_ASSOC);
 	$couchs = array();
 
 	foreach ($result as $value) {

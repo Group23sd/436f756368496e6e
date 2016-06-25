@@ -68,26 +68,18 @@
             </div>
 
             <div class="checkbox collapse" id="caracteristicas">
-                <label>
-                    <input type="checkbox" value="1">
-                    Caracteristica 1
-                </label><br/>
-                <label>
-                    <input type="checkbox" value="2">
-                    Caracteristica 2
-                </label><br/>
-                <label>
-                    <input type="checkbox" value="3">
-                    Caracteristica 3
-                </label><br/>
-                <label>
-                    <input type="checkbox" value="4">
-                    Caracteristica 4
-                </label><br/>
-                <label>
-                    <input type="checkbox" value="5">
-                    Caracteristica 5
-                </label><br/>
+                <?php
+                    $query = "SELECT * FROM caracteristica";
+                    $result = queryAllByAssoc($query);
+                    foreach ($result as $caracteristica) {
+                        $idCaracteristica = $caracteristica['idcaracteristica'];
+                        $nombreCaracteristica = $caracteristica['descripcion'];
+                        echo "<label>";
+                        echo "<input name='caracteristicas[]' type='checkbox' value=".$idCaracteristica.">";
+                        echo "$nombreCaracteristica";
+                        echo "</label><br/>";
+                    }
+                ?>
             </div>
 
             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>

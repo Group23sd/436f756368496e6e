@@ -1,35 +1,69 @@
 <?php
 
+    require_once 'database.php';
+
     function basicSearch() {
-        return ("SELECT * FROM couch WHERE habilitado = true");
+        return ("SELECT * FROM couch c WHERE habilitado = true");
     }
 
-    function geoSearch($cityId) {
-        return (" AND idciudad = $cityId");
+    function geoSearch($idciudad) {
+        return (" AND c.idciudad = $idciudad");
     }
 
-    function typeSearch($typeId) {
-        return ($typeId != "") ? (" AND idtipo = $typeId") : "";
+    function typeSearch($idtipo) {
+        return ($idtipo != "") ? (" AND c.idtipo = $idtipo") : "";
     }
 
-    function capacitySearch($aNumber) {
-        return ($aNumber != "") ? (" AND capacidad = $aNumber") : "";
+    function capacitySearch($capacidad) {
+        return ($capacidad != "") ? (" AND c.capacidad = $capacidad") : "";
     }
 
     function titleSearch($aString) {
-        return ($aString != "") ? (" AND titulo = '$aString'") : "";
+        return ($aString != "") ? (" AND c.titulo = :titulo") : "";
     }
 
     function descriptionSearch($aString) {
-        return ($aString != "") ? (" AND descripcion = '$aString'") : "";
+        return ($aString != "") ? (" AND c.descripcion = :descripcion") : "";
+    }
+
+    function characteristicSearch($caracteristicas) {
+        $subQuery = "";
+        foreach ($caracteristicas as $value) {
+            $subQuery .= " AND $value IN (SELECT cc.idcaracteristica FROM caracteristica_couch cc WHERE cc.idcouch=c.idcouch)";
+        }
+        return $subQuery;
     }
 
     $couchQuery = basicSearch();
-
     $couchQuery .= isset($_POST['formCity']) ? geoSearch($_POST['formCity']) : "";
     $couchQuery .= isset($_POST['couchType']) ? typeSearch($_POST['couchType']) : "";
     $couchQuery .= isset($_POST['couchCapacity']) ? capacitySearch($_POST['couchCapacity']) : "";
-    $couchQuery .= isset($_POST['couchTitle']) ? titleSearch($_POST['couchTitle']) : "";
-    $couchQuery .= isset($_POST['couchDescription']) ? descriptionSearch($_POST['couchDescription']) : "";
+//    $couchQuery .= isset($_POST['couchTitle']) ? titleSearch($_POST['couchTitle']) : "";
+//    $couchQuery .= isset($_POST['couchDescription']) ? descriptionSearch($_POST['couchDescription']) : "";
+    $couchQuery .= isset($_POST['caracteristicas']) ? characteristicSearch($_POST['caracteristicas']) : "";
+
+    $database = connectDatabase();
+
+    if (isset($_POST['couchTitle']) && $_POST['couchTitle']) {
+        $couchQuery .= " AND c.titulo LIKE concat('%', :titulo, '%')";
+    }
+
+    if (isset($_POST['couchDescription']) && $_POST['couchDescription']) {
+        $couchQuery .= " AND c.descripcion LIKE concat('%', :descripcion, '%')";
+    }
+
+    $statement = $database -> prepare($couchQuery);
+
+    if (isset($_POST['couchTitle']) && $_POST['couchTitle']) {
+        $titulo = $_POST['couchTitle'];
+        $statement -> bindParam(':titulo', $titulo, PDO::PARAM_STR);
+    }
+
+    if (isset($_POST['couchDescription']) && $_POST['couchDescription']) {
+        $descripcion = $_POST['couchDescription'];
+        $statement -> bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+    }
+
+    $statement -> execute();
 
 ?>

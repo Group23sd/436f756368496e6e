@@ -4,20 +4,25 @@
     require_once 'database.php';
     require_once 'feedback.php';
     require_once 'canceledReservationEmail.php';
-/*
+
     if (!$_SESSION['user']->isStandard() || !isset($_GET['id'])) {
         unauthorizedAccess();
         exit();
     }
-*/
+
     //Estado actual
     $database = connectDatabase();
-    $query = "SELECT c.titulo, c.habilitado FROM couch c WHERE idcouch = :idcouch";
+    $query = "SELECT c.titulo, c.habilitado, c.idusuario FROM couch c WHERE idcouch = :idcouch";
     $statement = $database -> prepare($query);
     $statement -> bindParam(':idcouch', $_GET['id'], PDO::PARAM_INT);
     $statement -> execute();
     $couchResult = $statement -> fetch(PDO::FETCH_ASSOC);
     $currentCouchStatus = $couchResult['habilitado'];
+
+    if ($couchResult['idusuario'] != $_SESSION['user']->getId()) {
+        unauthorizedAccess();
+        exit();
+    }
 
     //Estado actual == "Habilitado"
     /*
