@@ -19,25 +19,25 @@ $fin = strtotime($dateFin);
 $fecha = strtotime($fech);
 //* Calculo la diferencia de la fecha de inicio con la del dia de hoy, debe ser de al menos 5 dias *//
 if ($fecha > $inicio) {
-  wrongInitialDate();
+  wrongInitialDate($idCouch);
   exit();
 }
 $cantDiaswithHoy= ceil(abs($inicio - $fecha) / 86400);
 if ($cantDiaswithHoy < 5) {
-  wrongDays();
+  wrongDays($idCouch);
   exit();
 }
 //* Calculo que entre la fecha de inicio y fin haya al menos 4 dias *//
 $cantDias= ceil(abs($fin - $inicio) / 86400);
 if ($cantDias < 4) {
-  wrongDaysBetween();
+  wrongDaysBetween($idCouch);
   exit();
 }
 $query = "SELECT * FROM couch WHERE idcouch=$idCouch";
 $result = queryByAssoc($query);
 $capacidad = $result["capacidad"];
 if ($capacidad < $lugares) {
-  wrongCapacity();
+  wrongCapacity($idCouch);
   exit();
 }
 $precio = $result["precio"];

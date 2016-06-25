@@ -53,7 +53,7 @@ require_once 'database.php';
               <h3><strong>Fecha de fin:</strong></h3>
               <input type="text" id="to" name="to" class="form-control" value="<?php echo $result['fin'] ?>" readonly></p>
               <a class="btn btn-sm btn-success " href="#" role="button">Aceptar</a>
-              <a class='btn btn-sm btn-danger' id='rejectReserva' data-href='rejectReservation.php?idreserva=<?php echo $idReserva ?>' role='button'>Cancelar</a>
+              <a class='btn btn-sm btn-danger' id='rejectReserva' data-href='rejectReservation.php?idreserva=<?php echo $idReserva ?>' role='button'>Rechazar </a>
 
           </div>
         </div>
