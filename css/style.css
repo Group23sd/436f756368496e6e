@@ -167,6 +167,14 @@ footer > p {
     background: rgba(0,0,0,0.8);
 }
 
+#caracteristicabox{
+  margin-left: 22px;
+  color: black;
+}
+
+#estrellaPuntos{
+  display: inline;
+}
 .couchSearchFormLabel {
     color: #96AC3C;
 }
