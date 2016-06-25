@@ -250,6 +250,16 @@ function successRejection() {
   $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
   require_once 'feedbackTemplate.php';
 }
+function successAccept() {
+  $title = "Successful Accept";
+  $h1 = "¡Se ha aceptado la reserva!";
+  $msg = "<p>Se ha informado al usuario de dicha acción. ¡Gracias!</p>";
+  $linkTxt = "Volver a controlar reservas";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
 
 function wrongRejection() {
   $title = "Wrong Rejection";
@@ -260,6 +270,16 @@ function wrongRejection() {
   $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
   require_once 'feedbackTemplate.php';
 }
+function wrongAccept() {
+  $title = "Wrong Rejection";
+  $h1 = "¡Ha ocurrido un error!";
+  $msg = "<p>Algo ha fallado al aceptar la reserva, intente de nuevo o espere unos minutos.</p>";
+  $linkTxt = "Volver a controlar reservas";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
 
 function tituloCouchExistente(){
   $title="Titulo Couch Existente";

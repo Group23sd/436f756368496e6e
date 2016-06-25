@@ -26,7 +26,7 @@ require_once 'database.php';
 </head>
 <body>
 <?php
-  $idReserva = 50;
+  #$idReserva = 50;
   $query = "SELECT * FROM reserva WHERE idreserva=$idReserva";
   $result = queryByAssoc($query);
   $idCouch = $result['idcouch'];

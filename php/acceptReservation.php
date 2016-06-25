@@ -6,7 +6,7 @@ require_once 'feedback.php';
 /* Habilitar una de las dos opciones para recibir el parametro
 $idReserva = $_GET['idreserva'];
 $idReserva = $_POST['idreserva']; */
-$idReserva = 55;
+#$idReserva = 55;
 $query = "SELECT * FROM reserva WHERE idreserva=$idReserva";
 $result = queryByAssoc($query);
 $inicio = $result['inicio'];
@@ -25,7 +25,7 @@ try {
   $connect = connectDatabase();
   $statement = $connect-> prepare($sql);
   $statement -> execute($data);
-  $query2 = "SELECT * FROM reserva WHERE idreserva!=55 AND '$inicio' < fin AND '$fin' > inicio AND idcouch=$idcouch";
+  $query2 = "SELECT * FROM reserva WHERE idreserva!=$idReserva AND '$inicio' < fin AND '$fin' > inicio AND idcouch=$idcouch";
   $result2 = queryAllByAssoc($query2);
   foreach ($result2 as $value) {
     $idReserva = $value['idreserva'];
@@ -38,10 +38,10 @@ try {
     $connect = connectDatabase();
     $statement = $connect-> prepare($sql);
     $statement -> execute($data);
-
+    successAccept();
   }
 } catch (Exception $e) {
-  #wrongRejection();
+  wrongAccept();
 }
 
 
