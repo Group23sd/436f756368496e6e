@@ -68,7 +68,7 @@
 
                       <div class="form-group has-feedback">
                         <label for="descripcionDelCouch">Descripcion</label>
-                        <textarea class="form-control" rows="8" name="descripcionDelCouch" id="descripcionDelCouch"></textarea>
+                        <textarea class="form-control" pattern="^[A-z\s]+$" rows="8" name="descripcionDelCouch" id="descripcionDelCouch"></textarea>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                         <div class="help-block with-errors"></div>
                       </div>
