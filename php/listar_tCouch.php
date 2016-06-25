@@ -8,15 +8,9 @@ if ( ! $_SESSION['user'] -> isAdmin() ) {
 
 }
 ?>
-<script type="text/javascript">
-function borrar(id){
-  var ok = confirm("¿Esta seguro que desea borrar este tipo de Couch?");
-  if (ok) {
-    window.location = 'borrar_tCouch.php?e='.concat(id);
 
-  }
+<script>
 
-}
 function modificar(id) {
   window.location = 'modificar_tCouch.php?e='.concat(id);
 
@@ -39,6 +33,8 @@ function modificar(id) {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/bootbox.js"></script>
+  <script src="../js/confirmation.js"></script>
 </head>
 <body>
   <?php
@@ -70,7 +66,7 @@ function modificar(id) {
                   echo '<tr>';
                   echo '<td>'."NA".'</td>';
                   echo '<td>'.$value["descripcion"].'</td>';
-                  echo '<td>'.'<a onclick="return borrar('.$value["idtipo"].')"  role="button" class="btn btn-sm btn-success">BORRAR</a>'.'</td>';
+                  echo "<td><a class='btn btn-sm btn-danger ' id='deleteCouch' data-href='borrar_tCouch.php?e=".$value["idtipo"]."' role='button'>BORRAR</a></td>";
                   echo '<td>'.'<a onclick="return modificar('.$value["idtipo"].')"  role="button" class="btn btn-sm btn-success">MODIFICAR</a>'.'</td>';
                   echo '</tr>';
                 }

@@ -21,3 +21,9 @@ $(document).on("click", "#rejectReserva", function(e) {
       if (result) {window.location = $(document).find('#rejectReserva').attr('data-href');}
     });
 });
+
+$(document).on("click", "#deletCouch", function(e) {
+    bootbox.confirm("¿Esta seguro que desea borrar este Couch?", function(result) {
+      if (result) {window.location = $(document).find('#deletCouch').attr('data-href');}
+    });
+});

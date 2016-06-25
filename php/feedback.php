@@ -296,4 +296,14 @@ function couchEliminadoCorrectamente(){
   require_once 'feedbackTemplate.php';
 }
 
+function existingCouch($id) {
+  $title = "Existing Couch";
+  $h1 = "¡Error!";
+  $msg = "<p>¡Ya hay Couches cargado para ese tipo!</p>";
+  $linkTxt = "Volver a administrar Couches";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="listar_tCouch.php" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
 ?>
