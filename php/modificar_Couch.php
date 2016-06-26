@@ -42,7 +42,7 @@
             <div class="col-md-10 content-wrapper">
                 <div class="row main-content">
                   <div class="col-md-6">
-                    <h1>Registrar un nuevo Couch</h1>
+                    <h1>Modificar Couch</h1>
                       <form class="form-block" enctype="multipart/form-data" role="form" data-toggle="validator" action="modificarDatosCouch.php" method="post" name="modificarInfoCouch" id="modificarInfoCouch">
 
                         <input type="hidden" name="idcouch" id="idcouch" <?php echo 'value='.$idcouch ?> class="form-control" required> </input>

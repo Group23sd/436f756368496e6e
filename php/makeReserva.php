@@ -27,6 +27,7 @@ if ($cantDiaswithHoy < 5) {
   wrongDays($idCouch);
   exit();
 }
+$cantDias= ceil(abs($fin - $inicio) / 86400);
 $query = "SELECT * FROM couch WHERE idcouch=$idCouch";
 $result = queryByAssoc($query);
 $capacidad = $result["capacidad"];

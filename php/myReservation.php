@@ -42,8 +42,8 @@ require_once 'database.php';
                 <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>Fecha de inicio</th>
-                    <th>Fecha de fin</th>
+                    <th>Desde</th>
+                    <th>Hasta</th>
                     <th>Estado</th>
                     <th>Fecha</th>
                     <th>Accion</th>
@@ -100,14 +100,17 @@ require_once 'database.php';
                       #exit();
                     }
                     echo '<td>'.$resultado['fecha'].'</td>';
-                    if ($resultado['nombre'] == 'Liberado') {
-                      echo '<td><a  type="button" class="btn btn-sm btn-warning" href="rateCouchForm.php?id='.$value['idreserva'].'">PUNTUAR</a></td>';
+                    if ($resultado['nombre'] == 'Liberado' && ! isset($value['puntaje_couch']) && ! isset($value['puntaje_couch_comentario']) && ! isset($value['puntaje_couch_fecha'])) {
+                      echo '<td><a  type="button" class="btn btn-xs btn-warning" href="rateCouchForm.php?id='.$value['idreserva'].'">PUNTUAR</a></td>';
+                    }
+                    elseif ($resultado['nombre'] == 'Liberado' && isset($value['puntaje_couch']) &&  isset($value['puntaje_couch_comentario']) && isset($value['puntaje_couch_fecha'])) {
+                      echo '<td>'.'<a type="button" class="btn btn-sm btn-success disabled">PUNTUADO</a>'.'</td>';
                     }
                     elseif ($resultado['nombre'] == 'Confirmado') {
-                      echo '<td>'.'<a href="payReservation.php?idR='.$value['idreserva'].'" type="button" class="btn btn-sm btn-success">PAGAR</a>'.'</td>';
+                      echo '<td>'.'<a href="payReservation.php?idR='.$value['idreserva'].'" type="button" class="btn btn-xs btn-success">PAGAR</a>'.'</td>';
                     }
-                    elseif ($resultado['nombre'] == 'Pagado') {
-                      echo "<td><a class='btn btn-sm btn-danger couchTable' onclick='return confirm(\"Esta seguro que desea cancelar esta reserva?\")' href='cancelReservation.php?id=".$value['idreserva']."' role='button'>Cancelar</a></td>";
+                    elseif ($resultado['nombre'] == 'Pagado' or $resultado['nombre'] == 'Reservado' ) {
+                      echo "<td><a class='btn btn-xs btn-danger couchTable' onclick='return confirm(\"¿Esta seguro que desea cancelar esta reserva?\")' href='cancelReservation.php?id=".$value['idreserva']."' role='button'>CANCELAR</a></td>";
                     }
                     else {
                       echo '<td>'.' '.'</td>';
