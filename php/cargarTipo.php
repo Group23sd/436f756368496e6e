@@ -22,13 +22,13 @@
       }
 
       echo "<script type='text/javascript'>alert('El nuevo tipo de couch fue cargado exitosamente!');";
-      echo "window.location='index.php'</script>";
+      echo "window.location='listar_tCouch.php'</script>";
 
       }
 
     else{
       echo "<script type='text/javascript'>alert('IMPOSIBLE AGREGAR.Este tipo de couch ya existe!');";
-      echo "window.location='index.php'</script>";
+      echo "window.location='listar_tCouch.php'</script>";
     }
   }
 
