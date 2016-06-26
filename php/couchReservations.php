@@ -86,11 +86,17 @@
                                     echo "<td>";
                                     switch ($resultEstado['nombre']) {
                                         case 'Reservado':
-                                            echo "<a class='btn btn-xs btn-success couchTable' onclick='return confirm(\"Esta seguro que desea confirmar esta reserva?\")' href='confirmReservation.php?id=".$reservationId."' role='button'>Confirmar</a>";
+                                            echo "<a class='btn btn-xs btn-success couchTable' onclick='return confirm(\"Esta seguro que desea confirmar esta reserva?\")' href='acceptReservation.php?id=".$reservationId."' role='button'>Confirmar</a>";
                                             echo "<a class='btn btn-xs btn-warning couchTable' onclick='return confirm(\"Esta seguro que desea rechazar esta reserva?\")' href='rejectReservation.php?id=".$reservationId."' role='button'>Rechazar</a>";
                                         break;
                                         case 'Pagado':
                                             echo "<a class='btn btn-xs btn-danger couchTable' onclick='return confirm(\"Esta seguro que desea cancelar esta reserva?\")' href='cancelReservation.php?id=".$reservationId."' role='button'>Cancelar</a>";
+                                        break;
+                                        case 'Confirmado':
+                                            echo "<a class='btn btn-xs btn-danger couchTable' onclick='return confirm(\"Esta seguro que desea cancelar esta reserva?\")' href='cancelReservation.php?id=".$reservationId."' role='button'>Cancelar</a>";
+                                        break;
+                                        case 'Liberado':
+                                            echo "<a class='btn btn-xs btn-warning couchTable' href='rateUserForm.php?id=".$reservationId."' role='button'>Puntuar</a>";
                                         break;
                                     }
                                     echo "</td>";

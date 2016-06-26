@@ -7,7 +7,7 @@ require_once 'feedback.php';
   $idReserva = $_POST['idreserva']; */
 
 try {
-  $estado = "Rechazado";
+  $estado = "Cancelado";
   $idReserva = $_GET['id'];
   date_default_timezone_set('America/Argentina/Buenos_Aires');
  $today = getdate();
