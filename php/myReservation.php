@@ -46,7 +46,7 @@ require_once 'database.php';
                     <th>Fecha de fin</th>
                     <th>Estado</th>
                     <th>Fecha</th>
-                    <th>Action</th>
+                    <th>Accion</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -62,23 +62,23 @@ require_once 'database.php';
                     $resultado = queryByAssoc($query2);
 
                     $idCouch = $value['idcouch'];
-                    $query3 = "SELECT titulo FROM couch WHERE idcouch=$idCouch";
+                    $query3 = "SELECT * FROM couch WHERE idcouch=$idCouch";
 
                     $resultado2 = queryByAssoc($query3);
 
                     echo '<tr>';
-                    echo '<td>'.$resultado2['titulo'].'</td>';
+                    echo "<td><a class='stdLink'href='detallesCouch.php?idcouch=".$resultado2['idcouch']."'><strong>".$resultado2['titulo']."</strong></a></td>";
                     echo '<td>'.$value['inicio'].'</td>';
                     echo '<td>'.$value['fin'].'</td>';
                     if ($resultado['nombre'] == 'Liberado') {
-                      echo '<td>'.'<a type="button" class="btn btn-sm btn-success disabled">LIBERADO</a>'.'</td>';
+                      echo '<td>'.'<a type="button" class="btn btn-sm btn-warning disabled">LIBERADO</a>'.'</td>';
 
                     }
                     elseif ($resultado['nombre'] == 'Reservado') {
-                      echo '<td>'.'<a type="button" class="btn btn-sm btn-warning">EN ESPERA</a>'.'</td>';
+                      echo '<td>'.'<a type="button" class="btn btn-sm btn-warning disabled">EN ESPERA</a>'.'</td>';
                     }
                     elseif ($resultado['nombre'] == 'Rechazado') {
-                      echo '<td>'.'<a type="button" class="btn btn-sm btn-danger disabled">RECHAZADA</a>'.'</td>';
+                      echo '<td>'.'<a type="button" class="btn btn-sm btn-danger disabled">RECHAZADO</a>'.'</td>';
                     }
                     elseif ($resultado['nombre'] == 'Confirmado') {
                       echo '<td>'.'<a href="payReservation.php?idR='.$value['idreserva'].'" type="button" class="btn btn-sm btn-success">ACEPTADA</a>'.' '.'<span class="glyphicon  glyphicon-exclamation-sign" style="color:red" aria-hidden="true"></span>'.'<font color="red"> Debes proceder al pago!</font>'.'</td>';
@@ -101,13 +101,16 @@ require_once 'database.php';
                     }
                     echo '<td>'.$resultado['fecha'].'</td>';
                     if ($resultado['nombre'] == 'Liberado') {
-                      echo '<td><a  type="button" class="btn btn-link" href="rateCouchForm.php?id='.$value['idreserva'].'">Puntuar</a></td>';
+                      echo '<td><a  type="button" class="btn btn-sm btn-warning" href="rateCouchForm.php?id='.$value['idreserva'].'">PUNTUAR</a></td>';
                     }
                     elseif ($resultado['nombre'] == 'Confirmado') {
-                      echo '<td>'.'<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>'.'<a href="payReservation.php?idR='.$value['idreserva'].'" type="button" class="btn btn-link">Pagar reserva</a>'.'</td>';
+                      echo '<td>'.'<a href="payReservation.php?idR='.$value['idreserva'].'" type="button" class="btn btn-sm btn-success">PAGAR</a>'.'</td>';
+                    }
+                    elseif ($resultado['nombre'] == 'Pagado') {
+                      echo "<td><a class='btn btn-sm btn-danger couchTable' onclick='return confirm(\"Esta seguro que desea cancelar esta reserva?\")' href='cancelReservation.php?id=".$value['idreserva']."' role='button'>Cancelar</a></td>";
                     }
                     else {
-                      echo '<td>'.'<span class="glyphicon  glyphicon-remove"  aria-hidden="true"></span>'.'</td>';
+                      echo '<td>'.' '.'</td>';
                     }
 
                     echo '</tr>';
