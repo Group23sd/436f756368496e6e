@@ -39,8 +39,10 @@ try {
     $connect = connectDatabase();
     $statement = $connect-> prepare($sql);
     $statement -> execute($data);
-    successAccept();
+
   }
+  successAccept();
+  exit();
 } catch (Exception $e) {
   wrongAccept();
 }

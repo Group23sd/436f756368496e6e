@@ -27,12 +27,7 @@ if ($cantDiaswithHoy < 5) {
   wrongDays($idCouch);
   exit();
 }
-//* Calculo que entre la fecha de inicio y fin haya al menos 4 dias *//
 $cantDias= ceil(abs($fin - $inicio) / 86400);
-if ($cantDias < 4) {
-  wrongDaysBetween($idCouch);
-  exit();
-}
 $query = "SELECT * FROM couch WHERE idcouch=$idCouch";
 $result = queryByAssoc($query);
 $capacidad = $result["capacidad"];

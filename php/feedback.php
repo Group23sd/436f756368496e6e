@@ -346,4 +346,14 @@ function successRateUser($idreserva) {
   require_once 'feedbackTemplate.php';
 }
 
+function successRateCouch() {
+  $title = "Sucess Rate Couch";
+  $h1 = "¡Se ha puntuado al Couch!";
+  $msg = "<p>Se puntuó correctamente al Couch ¡Gracias!.</p>";
+  $linkTxt = "Volver a controlar Mis Reservas";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="myReservation.php" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
 ?>
