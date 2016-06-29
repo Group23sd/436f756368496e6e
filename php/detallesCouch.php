@@ -33,16 +33,9 @@
 	?>
 
 	<!-- NAVBAR -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-					<!-- LOGO -->
-					<div class="navbar-header">
-							<a class="navbar-brand" href="index.php">
-									<img id="logo-navbar" src="../images/resources/CouchInnLogoFull.png" />
-							</a>
-					</div>
-			</div>
-	</nav>
+	<?php
+		require_once "navbar.php";
+	 ?>
     <!-- CONTENT -->
 		<div class="container-fluid inner-body">
 			 <!-- MAIN -->
@@ -53,7 +46,7 @@
 										 <div class='container'>
 										<!--		<div class="row">
 													<div class="col-md-12">
-														<a href="reserva.php?idcouch='<?php// echo $idcouch?>'" role="button" type="submit" class="btn btn-success" id="botonReservar"> RESERVAR COUCH! </a>
+														<a href="reserva.php?idcouch role="button" type="submit" class="btn btn-success" id="botonReservar"> RESERVAR COUCH! </a>
 
 													</div>
 													<br />

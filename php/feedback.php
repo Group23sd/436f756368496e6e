@@ -302,5 +302,68 @@
       $optLink = '';
       require_once 'feedbackTemplate.php';
 
-    }
+function couchCargadoExitiosamente(){
+  $title="Couch Cargado Exitosaamente";
+  $h1= "¡Felicidades!";
+  $msg = "<p>Su couch ha sido cargado de manera exitosa.</p><br />";
+  $optLink = '';
+  require_once 'feedbackTemplate.php';
+}
+
+function datosCouchActualizados(){
+  $title = "Datos Couch Actualizados";
+  $h1 = "Informacion actualizada!";
+  $msg = "<p>Los datos de su Couch han sido modificados correctamente.</p>";
+  $optLink = '';
+  require_once 'feedbackTemplate.php';
+}
+
+function couchEliminadoCorrectamente(){
+  $title = "Couch Eliminado Correctamente";
+  $h1 = "Couch eliminado!";
+  $msg = "<p>Desde el equipo de CouchInn sentimos mucho que haya borrado su Couch :( . </p>";
+  $optLink = '';
+  require_once 'feedbackTemplate.php';
+}
+
+function existingCouch() {
+  $title = "Existing Couch";
+  $h1 = "¡Cuidado!";
+  $msg = "<p>¡Ya hay Couches cargado para ese tipo!</p>";
+  $linkTxt = "Volver a administrar Couches";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="listar_tCouch.php" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
+function existingNameCouch($idreserva) {
+  $title = "Existing Name Couch";
+  $h1 = "¡Cuidado!";
+  $msg = "<p>¡Ya hay Couches con ese nombre!</p>";
+  $linkTxt = "Volver a administrar Couches";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="couchReservations.php?id='.$idreserva.'" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
+function successRateUser($idreserva) {
+  $title = "Sucess Rate User";
+  $h1 = "¡Se ha puntuado al usuario!";
+  $msg = "<p>Se puntuó correctamente al usuario ¡Gracias!.</p>";
+  $linkTxt = "Volver a controlar reservas";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="couchReservations.php?id='.$idreserva.'" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
+function successRateCouch() {
+  $title = "Sucess Rate Couch";
+  $h1 = "¡Se ha puntuado al Couch!";
+  $msg = "<p>Se puntuó correctamente al Couch ¡Gracias!.</p>";
+  $linkTxt = "Volver a controlar Mis Reservas";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="myReservation.php" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
 ?>

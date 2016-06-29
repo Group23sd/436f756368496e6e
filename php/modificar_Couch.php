@@ -14,6 +14,7 @@
   else{
     genericError();
   }
+  $tituloCouch = $result['titulo'];
 ?>
 <html lang="en">
   <head>
@@ -31,16 +32,9 @@
   <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- LOGO -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">
-                    <img id="logo-navbar" src="../images/resources/CouchInnLogoFull.png" />
-                </a>
-            </div>
-        </div>
-    </nav>
+    <?php
+      require_once "navbar.php";
+     ?>
     <!-- CONTENT -->
     <div class="container-fluid inner-body">
         <!-- MAIN -->
@@ -48,14 +42,14 @@
             <div class="col-md-10 content-wrapper">
                 <div class="row main-content">
                   <div class="col-md-6">
-                    <h1>Registrar un nuevo Couch</h1>
+                    <h1>Modificar Couch</h1>
                       <form class="form-block" enctype="multipart/form-data" role="form" data-toggle="validator" action="modificarDatosCouch.php" method="post" name="modificarInfoCouch" id="modificarInfoCouch">
 
                         <input type="hidden" name="idcouch" id="idcouch" <?php echo 'value='.$idcouch ?> class="form-control" required> </input>
 
                         <div class="form-group has-feedback">
                             <label for="tituloDelCouch">Titulo</label>
-                            <input type="text" <?php echo 'value='.$result['titulo'] ?> pattern="^[A-z\s]+$" class="form-control" name="tituloDelCouch" id="tituloDelCouch" placeholder="Ingrese un titulo de sea representativo que su couch" data-error="Ingrese un titulo! valido" required></input>
+                            <input type="text" value="<?php echo $tituloCouch ?>" pattern="^[A-z\s]+$" class="form-control" name="tituloDelCouch" id="tituloDelCouch" placeholder="Ingrese un titulo de sea representativo que su couch" data-error="Ingrese un titulo! valido" required></input>
                             <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                             <div class="help-block with-errors"></div>
                         </div>

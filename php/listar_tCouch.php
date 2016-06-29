@@ -75,7 +75,7 @@ function modificar(id) {
               </tbody>
 
             </table>
-            <p><i>#</i> es el numero de Couch cargados para ese tipo</p>
+            
             <a href="altaTipoCouch.php" role="button" class="btn btn-sm btn-success">AGREGAR NUEVO COUCH</a>
           </div>
 
