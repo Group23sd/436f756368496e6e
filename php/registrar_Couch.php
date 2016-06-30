@@ -155,7 +155,7 @@
                             echo '<input type="file" accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto6Couch" id="foto6Couch"> </input>';
                           }
                           elseif($_SESSION['user'] -> isStandard()){
-                            echo '<input type="file" disabled accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto1Couch" id="foto1Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto1Couch" id="foto1Couch"> </input>';
                             echo '<input type="file" disabled accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto2Couch" id="foto2Couch"> </input>';
                             echo '<input type="file" disabled accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto3Couch" id="foto3Couch"> </input>';
                             echo '<input type="file" disabled accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto4Couch" id="foto4Couch"> </input>';
@@ -168,7 +168,7 @@
                           }
 
                         ?>
-                        
+
                       </div>
 
                       <button type="submit" class="btn btn-success">Aceptar</button>

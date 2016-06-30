@@ -7,7 +7,7 @@
     require_once 'database.php';
     $idcouch = $_GET['id'];
 
-  //  try{
+   try{
 
         $sql = "SELECT * FROM reserva WHERE idcouch = $idcouch";
         $result = queryAllByAssoc($sql);
@@ -87,10 +87,10 @@
 
       }
 
-/*  }
+  }
     catch(Exception $e){
       databaseError();
-    }*/
+    }
   }
   else{
     genericError();
