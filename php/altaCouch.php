@@ -67,7 +67,7 @@
 
         require_once 'agregarFotoNuevaCouch.php';
 
-        couchCargadoExitiosamente();
+        couchCargadoExitosamente();
 
       }
       catch(Exception $e){

@@ -181,13 +181,7 @@
       require_once 'feedbackTemplate.php';
     }
 
-    function couchCargadoExitiosamente(){
-      $title="Couch Cargado Exitosamente";
-      $h1= "¡Felicidades!";
-      $msg = "<p>Su couch ha sido cargado de manera exitosa.</p><br />";
-      $optLink = '';
-      require_once 'feedbackTemplate.php';
-    }
+
     function successfulReservation() {
         $title = "Successful Reservation";
         $h1 = "Reserva exitosa";
@@ -301,27 +295,12 @@
       $msg = "<p>Su puntaje ha sido valorado correctamente.</p>";
       $optLink = '';
       require_once 'feedbackTemplate.php';
+    }
 
-function couchCargadoExitiosamente(){
+function couchCargadoExitosamente(){
   $title="Couch Cargado Exitosaamente";
   $h1= "¡Felicidades!";
   $msg = "<p>Su couch ha sido cargado de manera exitosa.</p><br />";
-  $optLink = '';
-  require_once 'feedbackTemplate.php';
-}
-
-function datosCouchActualizados(){
-  $title = "Datos Couch Actualizados";
-  $h1 = "Informacion actualizada!";
-  $msg = "<p>Los datos de su Couch han sido modificados correctamente.</p>";
-  $optLink = '';
-  require_once 'feedbackTemplate.php';
-}
-
-function couchEliminadoCorrectamente(){
-  $title = "Couch Eliminado Correctamente";
-  $h1 = "Couch eliminado!";
-  $msg = "<p>Desde el equipo de CouchInn sentimos mucho que haya borrado su Couch :( . </p>";
   $optLink = '';
   require_once 'feedbackTemplate.php';
 }
@@ -365,5 +344,15 @@ function successRateCouch() {
   $optLink = '<a class="btn btn-success btn-lg" href="myReservation.php" role="button">'.$linkTxt.'</a>';
   require_once 'feedbackTemplate.php';
 }
+function successAccept() {
+  $title = "Successful Accept";
+  $h1 = "¡Se ha aceptado la reserva!";
+  $msg = "<p>Se ha informado al usuario de dicha acción. ¡Gracias!</p>";
+  $linkTxt = "Volver a controlar reservas";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
 
 ?>

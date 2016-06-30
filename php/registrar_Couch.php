@@ -146,20 +146,21 @@
 
 
                           if(($_SESSION['user'] -> isPremium()) || ($_SESSION['user'] -> isAdmin())){
-                            echo '<input type="file" accept="image/jpg" name="foto1Couch" id="foto1Couch"> </input>';
-                            echo '<input type="file" accept="image/jpg" name="foto2Couch" id="foto2Couch"> </input>';
-                            echo '<input type="file" accept="image/jpg" name="foto3Couch" id="foto3Couch"> </input>';
-                            echo '<input type="file" accept="image/jpg" name="foto4Couch" id="foto4Couch"> </input>';
-                            echo '<input type="file" accept="image/jpg" name="foto5Couch" id="foto5Couch"> </input>';
-                            echo '<input type="file" accept="image/jpg" name="foto6Couch" id="foto6Couch"> </input>';
+                            echo '<span class="help-block">IMPORTANTE: Se tomara la primera foto que ingrese como portada de este Couch.</span>';
+                            echo '<input type="file" accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto1Couch" id="foto1Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto2Couch" id="foto2Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto3Couch" id="foto3Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto4Couch" id="foto4Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto5Couch" id="foto5Couch"> </input>';
+                            echo '<input type="file" accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto6Couch" id="foto6Couch"> </input>';
                           }
                           elseif($_SESSION['user'] -> isStandard()){
-                            echo '<input type="file" accept="image/jpg" name="foto1Couch" id="foto1Couch"> </input>';
-                            echo '<input type="file" disabled accept="image/jpg" name="foto2Couch" id="foto2Couch"> </input>';
-                            echo '<input type="file" disabled accept="image/jpg" name="foto3Couch" id="foto3Couch"> </input>';
-                            echo '<input type="file" disabled accept="image/jpg" name="foto4Couch" id="foto4Couch"> </input>';
-                            echo '<input type="file" disabled accept="image/jpg" name="foto5Couch" id="foto5Couch"> </input>';
-                            echo '<input type="file" disabled accept="image/jpg" name="foto6Couch" id="foto6Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto1Couch" id="foto1Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto2Couch" id="foto2Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto3Couch" id="foto3Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto4Couch" id="foto4Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto5Couch" id="foto5Couch"> </input>';
+                            echo '<input type="file" disabled accept="image/jpg" class="form-control filestyle" data-buttonBefore="true" data-placeholder="Sin imagen" data-buttonText="Agregar nueva foto" name="foto6Couch" id="foto6Couch"> </input>';
                             echo "<br />";
                             echo '<div class="alert alert-info">';
                               echo 'Si quieres agregar mas fotos de tu Couch debes ser <a href="premium.php" class="alert-link">usuario premium.</a>';
@@ -167,8 +168,7 @@
                           }
 
                         ?>
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                        <div class="help-block with-errors"></div>
+                        
                       </div>
 
                       <button type="submit" class="btn btn-success">Aceptar</button>

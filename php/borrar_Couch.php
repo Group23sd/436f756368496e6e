@@ -7,7 +7,7 @@
     require_once 'database.php';
     $idcouch = $_GET['id'];
 
-    try{
+  //  try{
 
         $sql = "SELECT * FROM reserva WHERE idcouch = $idcouch";
         $result = queryAllByAssoc($sql);
@@ -30,8 +30,17 @@
               }
             }
           }
+
       if($cantReservas == $sePuedenBorrar){
         //el couch se puede borrar
+        foreach ($result as $reserva) {
+          $idR = $reserva['idreserva'];
+          $sql = "DELETE FROM estado WHERE idreserva = $idR";
+          $database = connectDatabase();
+          $statement = $database -> prepare($sql);
+          $statement -> bindParam(': idreserva' , $idR , PDO::PARAM_INT);
+          $statement -> execute();
+        }
 
         $sql = "DELETE FROM reserva WHERE idcouch = $idcouch";
         $database = connectDatabase();
@@ -65,7 +74,7 @@
         $result = queryByAssoc($sql);
         $habilitado = $result['habilitado'];
 
-        if ($habilitado == true) {
+        if ($habilitado) {
           $nuevoEstado = false;
           $sql = "UPDATE couch SET habilitado = :habilitado WHERE idcouch = :idcouch";
           $database = connectDatabase();
@@ -78,10 +87,10 @@
 
       }
 
-  }
+/*  }
     catch(Exception $e){
       databaseError();
-    }
+    }*/
   }
   else{
     genericError();
