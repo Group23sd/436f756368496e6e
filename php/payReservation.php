@@ -2,7 +2,7 @@
 
     require_once 'userSession.php';
     require_once 'database.php';
-
+    date_default_timezone_set('America/Argentina/Buenos_Aires');
     //Solo si el usuario es 'Standard'
     if (!$_SESSION['user']->isStandard() || !isset($_GET['idR'])) {
         unauthorizedAccess();

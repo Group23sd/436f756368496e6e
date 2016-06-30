@@ -2,27 +2,25 @@
 <?php
 		require_once 'userSession.php';
 		require_once 'database.php';
+		require_once 'feedback.php';
 	//	require_once 'puntajesCouch.php';
 	//	require_once 'comentariosCouch.php'
 
 	if(!$_SESSION['user'] -> isLogged()){
-		echo "<script type='text/javascript'>window.location='permisoDenegado.php'</script>";
+		unauthorizedAccess();
 		die();
 	}
 ?>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-		<meta name="viewport" content="width=device-width, initial-scale=1"> <!--Con esto garantizamos que se vea bien en dispositivos móviles -->
-<!--<link href="/436f756368496e6e-master/css/bootstrap.min.css" rel="stylesheet" media="screen">  Llamamos al archivo CSS -->
-
-		<!-- Versión compilada y comprimida del CSS de Bootstrap -->
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-
-		<!-- Tema opcional -->
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-		<link type="text/css" rel="stylesheet" href="../css/style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="../js/jquery.js"></script>
+		<script src="../js/validator.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<link rel="stylesheet" href="../css/style.css">
+		<script src="../js/ajax.js"></script>
 
 		<title> Informacion del Couch </title>
 	</head>
@@ -30,47 +28,33 @@
   <body>
 
 	<?php
-		session_start();
 		$idcouch = $_GET['idcouch'];
 
 	?>
 
 	<!-- NAVBAR -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- LOGO -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">
-                    <img id="logo-navbar" src="../images/resources/CouchInnLogoFull.png" />
-                </a>
-            </div>
-        </div>
-    </nav>
+	<?php
+		require_once "navbar.php";
+	 ?>
     <!-- CONTENT -->
 		<div class="container-fluid inner-body">
 			 <!-- MAIN -->
 			 <main class="row">
-					 <div class="col-md-12 content-wrapper">
+					 <div class="col-md-10 content-wrapper">
 							 <div class="row main-content">
 									 <div class="col-md-6">
-
-
 										 <div class='container'>
-												<div class="row">
+										<!--		<div class="row">
 													<div class="col-md-12">
-														<button type="button" class="btn btn-success" id="botonReservar">RESERVAR COUCH!</button>
+														<a href="reserva.php?idcouch role="button" type="submit" class="btn btn-success" id="botonReservar"> RESERVAR COUCH! </a>
 
 													</div>
 													<br />
 													<br />
 													<br />
 													<br />
-													<br />
-													<br />
 
-
-
-												</div>
+												</div> -->
 
 												<div class="row">
 												  <div class="col-md-11 col-sm-offset-1">
@@ -87,9 +71,6 @@
 
 														<table class="table table-responsive table-striped table-bordered">
 														  <tbody>
-
-
-
 																<tr>
 																	<?php
 																		$query="SELECT * FROM couch WHERE idcouch = '$idcouch'";
@@ -164,7 +145,7 @@
 																	<?php
 
 
-																		$query="SELECT * FROM couch INNER JOIN foto ON (foto.idcouch=couch.idcouch) WHERE couch.idcouch = '$idcouch'";
+																		$query="SELECT * FROM foto WHERE idcouch = '$idcouch'";
 																		$result=queryAllByAssoc($query);
 																		$fotosDelCouch=array();
 																		if(!empty($result)){
@@ -204,7 +185,6 @@
 
 											</div>
 
-
 									</div>
 							</div>
 					</div>
@@ -215,13 +195,6 @@
 		<?php require_once 'footer.php' ?>
 	</div>
 
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> <!--Importante llamar antes a jQuery para que funcione bootstrap.min.js -->
-
-    		<!-- Versión compilada y comprimida del JavaScript de Bootstrap -->
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 	</body>
 
 </html>

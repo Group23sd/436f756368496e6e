@@ -40,8 +40,8 @@ if ( ! $_SESSION['user'] -> isAdmin() ) {
             <h3>Usted va a modificar el Couch: <b><?php echo $couch ?></b></h3>
           <form method="post" class="form-block" data-toggle="validator" role="form" action="m_tCouch.php?idparam=<?php echo $_GET['e'] ?>">
             <div class="form group has-feedback">
-              <label for="n_Couch" class="control-label">Ingrese nuevo Couch: </label>
-              <input type="text" class="form-control" id="n_Couch" name="n_Couch" placeholder="Nuevo Couch" data-error="Debe ingresar un couch" pattern="^[A-z\s]+$" required>
+              <label for="n_Couch" class="control-label">Modifique el tipo de Couch: </label>
+              <input type="text" class="form-control" id="m_Couch" name="m_Couch" placeholder="Modifique Couch" data-error="Debe ingresar un couch" pattern="^[A-z\s]+$" value="<?php echo $couch ?>" required>
               <span class="glyphicon form-control-feedback " aria-hidden="true"></span>
               <div class="help-block with-errors"></div>
             </div>

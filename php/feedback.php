@@ -316,13 +316,43 @@ function couchEliminadoCorrectamente(){
   require_once 'feedbackTemplate.php';
 }
 
-function existingCouch($id) {
+function existingCouch() {
   $title = "Existing Couch";
-  $h1 = "¡Error!";
+  $h1 = "¡Cuidado!";
   $msg = "<p>¡Ya hay Couches cargado para ese tipo!</p>";
   $linkTxt = "Volver a administrar Couches";
   $linkHref = "index.php";
   $optLink = '<a class="btn btn-success btn-lg" href="listar_tCouch.php" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
+function existingNameCouch($idreserva) {
+  $title = "Existing Name Couch";
+  $h1 = "¡Cuidado!";
+  $msg = "<p>¡Ya hay Couches con ese nombre!</p>";
+  $linkTxt = "Volver a administrar Couches";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="couchReservations.php?id='.$idreserva.'" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
+function successRateUser($idreserva) {
+  $title = "Sucess Rate User";
+  $h1 = "¡Se ha puntuado al usuario!";
+  $msg = "<p>Se puntuó correctamente al usuario ¡Gracias!.</p>";
+  $linkTxt = "Volver a controlar reservas";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="couchReservations.php?id='.$idreserva.'" role="button">'.$linkTxt.'</a>';
+  require_once 'feedbackTemplate.php';
+}
+
+function successRateCouch() {
+  $title = "Sucess Rate Couch";
+  $h1 = "¡Se ha puntuado al Couch!";
+  $msg = "<p>Se puntuó correctamente al Couch ¡Gracias!.</p>";
+  $linkTxt = "Volver a controlar Mis Reservas";
+  $linkHref = "index.php";
+  $optLink = '<a class="btn btn-success btn-lg" href="myReservation.php" role="button">'.$linkTxt.'</a>';
   require_once 'feedbackTemplate.php';
 }
 

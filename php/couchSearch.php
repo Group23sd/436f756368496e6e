@@ -1,6 +1,7 @@
 <?php
 
     require_once 'database.php';
+    require_once 'feedback.php';
 
     function basicSearch() {
         return ("SELECT * FROM couch c WHERE habilitado = true");
@@ -62,6 +63,11 @@
     if (isset($_POST['couchDescription']) && $_POST['couchDescription']) {
         $descripcion = $_POST['couchDescription'];
         $statement -> bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
+    }
+
+    if(!$_SESSION['user']->isStandard() && $couchQuery != basicSearch()) {
+      unauthorizedAccess();
+      exit();
     }
 
     $statement -> execute();

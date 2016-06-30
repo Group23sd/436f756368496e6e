@@ -76,8 +76,8 @@
                                     echo "<a class='btn btn-xs btn-success couchTable' href='couchComments.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-envelope' alt='Comentarios' title='Comentarios'></a>";
                                     echo "<a class='btn btn-xs btn-warning couchTable' href='couchScores.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-star' alt='Puntajes' title='Puntajes'></a>";
                                 //    echo "<a class='btn btn-xs btn-warning couchTable' onclick='return confirm(\"Esta seguro que desea cambiar el estado de este couch?\")' href='changeCouchAvailability.php?id=".$couch['idcouch']."' role='button'>".$okBanIcon."</a>";
-                                    echo "<a class='btn btn-xs btn-info couchTable' href='modificarCouch.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-pencil' alt='Modificar' title='Modificar'></a>";
-                                    echo "<a class='btn btn-xs btn-danger couchTable' onclick='return confirm(\"Esta seguro que desea eliminar este couch?\")' href='eliminarCouch.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-trash' alt='Eliminar' title='Eliminar'></a></td>";
+                                    echo "<a class='btn btn-xs btn-info couchTable' href='modificar_Couch.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-pencil' alt='Modificar' title='Modificar'></a>";
+                                    echo "<a class='btn btn-xs btn-danger couchTable' onclick='return confirm(\"Esta seguro que desea eliminar este couch?\")' href='borrar_Couch.php?id=".$couch['idcouch']."' role='button'><span class='glyphicon glyphicon-trash' alt='Eliminar' title='Eliminar'></a></td>";
                                     echo "</tr>";
                                 }
                             ?>

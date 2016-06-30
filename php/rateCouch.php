@@ -10,11 +10,11 @@ if (isset($_POST['comentario']) && isset($_POST['rating'])) {
     date_default_timezone_set('America/Argentina/Buenos_Aires');
     $today = getdate();
     $fecha = date("$today[year]-$today[mon]-$today[mday] $today[hours]:$today[minutes]:$today[seconds]");
-    $sql = "UPDATE reserva SET puntaje_usuario='$puntaje', puntaje_usuario_comentario='$comentario', puntaje_usuario_fecha='$fecha' WHERE idreserva=$idreserva";
+    $sql = "UPDATE reserva SET puntaje_couch='$puntaje', puntaje_couch_comentario='$comentario', puntaje_couch_fecha='$fecha' WHERE idreserva=$idreserva";
     $connect = connectDatabase();
     $statement = $connect-> prepare($sql);
     $statement -> execute();
-    successRateUser($idreserva);
+    successRateCouch();
   } catch (Exception $e) {
     genericError();
   }
@@ -25,11 +25,11 @@ if (isset($_POST['comentario']) && isset($_POST['rating'])) {
       date_default_timezone_set('America/Argentina/Buenos_Aires');
       $today = getdate();
       $fecha = date("$today[year]-$today[mon]-$today[mday]");
-      $sql = "UPDATE reserva SET puntaje_usuario='$puntaje', puntaje_usuario_fecha='$fecha' WHERE idreserva=$idreserva";
+      $sql = "UPDATE reserva SET puntaje_couch='$puntaje', puntaje_couch_fecha='$fecha' WHERE idreserva=$idreserva";
       $connect = connectDatabase();
       $statement = $connect-> prepare($sql);
       $statement -> execute();
-      successRateUser($idreserva);
+      successRateCouch();
     } catch (Exception $e) {
       genericError();
     }
