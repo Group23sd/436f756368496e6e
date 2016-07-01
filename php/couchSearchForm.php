@@ -82,7 +82,7 @@
             </div>
 
             <button type="submit" onclick="showSearch()" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
-            <a href="#caracteristicas" role="button" data-toggle="collapse" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="#caracteristicas" role="button" data-toggle="collapse" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
         </form>
 
     </div>
@@ -90,7 +90,7 @@
 <script>
     var height = document.getElementById("splashPage").offsetHeight;
     document.getElementById("couchSearchFormContainer").setAttribute('data-offset-top', height - 150);
-    
+
     $( "form" ).on( "submit", function( event ) {
       event.preventDefault();
       var formData = ( $( this ).serialize() );
