@@ -19,16 +19,10 @@
   <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- LOGO -->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">
-                    <img id="logo-navbar" src="../images/resources/CouchInnLogoFull.png" />
-                </a>
-            </div>
-        </div>
-    </nav>
+    <?php
+      require_once "navbar.php";
+     ?>
+
     <!-- CONTENT -->
     <div class="container-fluid inner-body">
         <!-- MAIN -->

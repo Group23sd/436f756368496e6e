@@ -3,9 +3,6 @@
 		require_once 'userSession.php';
 		require_once 'database.php';
 		require_once 'feedback.php';
-	//	require_once 'puntajesCouch.php';
-	//	require_once 'comentariosCouch.php'
-
 	if(!$_SESSION['user'] -> isLogged()){
 		unauthorizedAccess();
 		die();
@@ -44,30 +41,19 @@
 							 <div class="row main-content">
 									 <div class="col-md-6">
 										 <div class='container'>
-										<!--		<div class="row">
-													<div class="col-md-12">
-														<a href="reserva.php?idcouch role="button" type="submit" class="btn btn-success" id="botonReservar"> RESERVAR COUCH! </a>
-
-													</div>
-													<br />
-													<br />
-													<br />
-													<br />
-
-												</div> -->
 
 												<div class="row">
-												  <div class="col-md-11 col-sm-offset-1">
+												  <div class="col-md-10 col-sm-offset-1">
 												    <ul class="nav nav-tabs nav-justified">
 												      <li class="active"><a href="detallesCouch">Info</a></li>
-												      <li><a href="puntajesCouch.php">Puntajes al Couch</a></li>	<!--Como mandar parametro a puntajes -->
-												      <li><a href="comentariosCouch.php">Comentarios</a></li>			<!--Como mandar parametro a comentarios -->
+												      <li><?php echo '<a href=couchScores.php?idcouch='.$idcouch.'>Puntajes al Couch</a>'?></li>
+												      <li><a href="comentariosCouch.php">Comentarios</a></li>
 												    </ul>
 												  </div>
 												</div>
 
 												<div class="row">
-													<div class="col-md-9 col-sm-offset-2">
+													<div class="col-md-9 col-sm-offset-1">
 
 														<table class="table table-responsive table-striped table-bordered">
 														  <tbody>
@@ -85,6 +71,17 @@
 																<tr>
 																	<td> <h4>PRECIO:</h4></td>
 																	<td> <?php echo "<h5>" .'$' .$result['precio']. "</h5>" ?> </td>
+																</tr>
+
+																<tr>
+																	<td><h4>PUNTATJE PROMEDIO:</h4></td>
+																	<?php
+																		$query = "SELECT avg(puntaje_couch) as puntaje FROM reserva WHERE idcouch=$idcouch";
+																		$resultPuntaje = queryByAssoc($query);
+																		$puntajePromedio = $resultPuntaje['puntaje'] ? round($resultPuntaje['puntaje'],1)." <span class='glyphicon glyphicon-star userStar'></span>" : "-";
+
+																	?>
+																	<td> <?php echo $puntajePromedio ?></td>
 																</tr>
 
 																<tr>
