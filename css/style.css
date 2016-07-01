@@ -23,8 +23,8 @@ body.modal-open {
     //opacity: 0.5;
     height: 100vh;
     margin-top: -80px;
-    display: flex;
-    align-items: center;
+    //display: flex;
+    //align-items: center;
 }
 
 .splash-page-items {
@@ -34,48 +34,13 @@ body.modal-open {
 
 .splash-page-slogan {
     text-align: center;
-    padding: 25px 0px 0px 0px;
-//    border-bottom: 5px #96AC3C solid;
-//    margin-bottom: 20px;
+    margin-top: 80px;
+    //padding: 25px 0px 0px 0px;
     //color: white;
     font-weight: bold;
     font-size: 50px;
     color: #96AC3C;
     text-shadow: 2px 0px #6D6D6D;
-}
-
-.splash-page-scroller {
-    text-decoration: none;
-    border: 5px white solid;
-    padding: 10px;
-    color: white;
-}
-
-.splash-page-scroller:link {
-    text-decoration: none;
-    border: 5px white solid;
-    padding: 10px;
-    color: white;
-}
-
-.splash-page-scroller:visited {
-    text-decoration: none;
-}
-
-.splash-page-scroller:hover {
-    text-decoration: none;
-    border: 5px #96AC3C solid;
-    color: #96AC3C;
-    background: rgba(255,255,255,0.95);
-    font-weight: bold;
-}
-
-.splash-page-scroller:active {
-    text-decoration: none;
-    border: 5px #96AC3C solid;
-    color: #96AC3C;
-    background-color: white;
-    font-weight: bold;
 }
 
 .content-wrapper {
@@ -197,7 +162,12 @@ footer > p {
     text-align: center;
     box-shadow: 5px 5px #9D9D9D;
 }
-
+/*
+.carousel-inner{
+    width: 100%;
+    max-height: 430px;
+}
+*/
 h2 {
     margin-top: 0px;
     text-align: center;
