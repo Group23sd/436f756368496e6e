@@ -12,7 +12,7 @@
     private $duenio;
     private $caracteristicas;
     private $fotos;
-    private $fotoPortada='/436f756368496e6e-master/images/resources/CouchInnLogoCouch.png';
+    private $fotoPortada;
     private $comentarios;
     private $puntajes= array();
 
@@ -27,16 +27,7 @@
         $this -> ciudad = $unArray['idciudad'];
         $this -> tipo = $unArray ['idtipo'];
         $this -> duenio = $unArray['idusuario'];
-
-    /*    if($unArray['portada']==1){
-          $this -> setFotoPortada($unArray['path']);
-        }
-        else{
-          $this -> setFoto($unArray['path']);
-        }
-        $this -> caracteristicas
-        $this ->
-          */
+        $this -> setFotoPortada();
     }
 
 
@@ -118,16 +109,28 @@
 
       public function getFotoPortada(){
         return $this -> fotoPortada;
+
       }
 
-      public function setFotoPortada($path){
-        $this -> fotoPortada=$path;
+      public function setFotoPortada(){
+        $idc=$this -> getId();
+        $query="SELECT * FROM couch INNER JOIN foto ON (couch.idcouch=foto.idcouch) WHERE couch.idcouch='$idc' AND portada=1";
+        $resultFoto= queryByAssoc($query);
+
+        if(empty($resultFoto)){
+          $this -> fotoPortada='../images/resources/CouchInnLogoCouch.png';
+
+        } else{
+          $this -> fotoPortada = $resultFoto['path'];
+        }
       }
 
       public function puntajePromedio(){
-        $suma= array_sum($this -> puntajes);
-        $elems= count($this -> puntajes);
-        return ($suma / $elems);
+        $idCouch = $this -> getId();
+        $query = "SELECT avg(puntaje_couch) as puntaje FROM reserva WHERE idcouch=$idCouch";
+        $resultPuntaje = queryByAssoc($query);
+        $puntajePromedio = $resultPuntaje['puntaje'];
+        return round($puntajePromedio,1);
       }
       public function addPuntaje($puntos){
         array_push($this -> puntajes , $puntos);
