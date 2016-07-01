@@ -9,19 +9,7 @@
 
 		$c = new Couch();
 		$c -> loadData($value);
-		$punt = rand(1,10);
-		$c -> addPuntaje($punt);
 
-		$idc=$c -> getId();
-		$query="SELECT * FROM couch INNER JOIN foto ON (couch.idcouch=foto.idcouch) WHERE couch.idcouch='$idc' AND portada=1";
-		$resultFoto= queryByAssoc($query);
-
-		if(empty($resultFoto)){
-			$c -> setFotoPortada('../images/resources/CouchInnLogoCouch.png');
-
-		} else{
-			$c -> setFotoPortada ($resultFoto['path']);
-		}
 
 		array_push($couchs,$c);
 
