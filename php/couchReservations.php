@@ -59,6 +59,7 @@
                             <tr>
                                 <tr>
                                   <th>USUARIO</th>
+                                  <th>PUNTAJE</th>
                                   <th>DESDE</th>
                                   <th>HASTA</th>
                                   <th>MONTO</th>
@@ -77,8 +78,12 @@
                                     $userID = $reservation['idusuario'];
                                     $query = "SELECT * FROM usuario u WHERE idusuario = $userID";
                                     $userData = queryByAssoc($query);
+                                    $query = "SELECT avg(puntaje_usuario) as puntaje FROM reserva WHERE idusuario=$userID";
+                                    $resultPuntaje = queryByAssoc($query);
+                                    $puntajePromedio = $resultPuntaje['puntaje'] ? round($resultPuntaje['puntaje'],1)." <span class='glyphicon glyphicon-star userStar'></span>" : "-";
                                     echo "<tr>";
                                     echo "<td>".$userData['nombre']." ".$userData['apellido']."</td>";
+                                    echo "<td>".$puntajePromedio."</td>";
                                     echo "<td>".$reservation['inicio']."</td>";
                                     echo "<td>".$reservation['fin']."</td>";
                                     echo "<td>$".$reservation['monto']."</td>";

@@ -91,7 +91,7 @@
     var height = document.getElementById("splashPage").offsetHeight;
     document.getElementById("couchSearchFormContainer").setAttribute('data-offset-top', height - 150);
 
-    $( "form" ).on( "submit", function( event ) {
+    $( document.getElementById("couchSearchForm") ).on( "submit", function( event ) {
       event.preventDefault();
       var formData = ( $( this ).serialize() );
       searchForCouches(formData);

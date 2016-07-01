@@ -212,6 +212,13 @@
               $this -> setPermissions();
         }
 
+        public function getAvgScore() {
+            $id = $this -> getId();
+            $query = "SELECT avg(puntaje_usuario) as puntaje FROM reserva WHERE idusuario = $id";
+            $resultPuntaje = queryByAssoc($query);
+            return $resultPuntaje ? round($resultPuntaje['puntaje'],1) : null;
+        }
+
     }
 
 ?>
