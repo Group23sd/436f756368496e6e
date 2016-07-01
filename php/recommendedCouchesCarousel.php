@@ -26,8 +26,8 @@
 
 ?>
 <div class="col-md-8 recommendedCouchesCarousel-container">
-    <div class="row recommendedCouchesCarousel">
-        <h2>Recomendados por la comunidad</h2>
+    <h2>Recomendados por la comunidad</h2>
+    <div class="row recommendedCouchesCarousel">    
         <div id="recommended-couches-carousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">

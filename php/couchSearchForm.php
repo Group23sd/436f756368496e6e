@@ -1,13 +1,13 @@
-<div class="col-md-4 couchSearchForm-container">
+<div class="col-md-4 couchSearchForm-container" id="couchSearchFormContainer" data-spy="affix" data-offset-top="200" data-offset-bottom="200">
     <div class="row couchSearchForm">
 
-        <form class="form-block" role="form" data-toggle="validator" action="index.php#searchResult" method="post" name="couchSearchForm" id="couchSearchForm">
+        <form class="form-block" role="form" data-toggle="validator" action="#searchResult" method="post" name="couchSearchForm" id="couchSearchForm">
 
             <div class="form-group">
             <label for="couchCountry" class="couchSearchFormLabel">Ad&oacute;nde vas?</label>
             <div class="form-group has-feedback has-warning">
                 <label for="couchCountry" class="sr-only">Pais</label>
-                <select class="form-control" name="formCountry" id="formCountry" data-error="Seleccione un pais!" required onchange="showCities()">
+                <select class="form-control" name="formCountry" id="formCountry" data-error="Seleccione un pais!" onchange="showCities()">
                     <option selected hidden value>Pais</option>
                     <?php
                         $query = "SELECT p.idpais, p.nombre FROM pais p";
@@ -22,10 +22,9 @@
 
             <div class="form-group has-feedback has-warning">
                 <label for="couchCity" class="sr-only">Ciudad</label>
-                <select class="form-control" name="formCity" id="formCity" data-error="Seleccione una ciudad!" required>
+                <select class="form-control" name="formCity" id="formCity" data-error="Seleccione una ciudad!">
                     <option selected hidden value>Ciudad</option>
-                </select>
-                <div class="help-block with-errors"></div>
+                </select>                <div class="help-block with-errors"></div>
             </div>
             </div>
 
@@ -77,14 +76,25 @@
                         echo "<label>";
                         echo "<input name='caracteristicas[]' type='checkbox' value=".$idCaracteristica.">";
                         echo "$nombreCaracteristica";
-                        echo "</label><br/>";
+                        echo "</label> ";
                     }
                 ?>
             </div>
 
-            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
-            <a href="#caracteristicas" role="button" data-toggle="collapse" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span></a>
+            <button type="submit" onclick="showSearch()" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+            <a href="#caracteristicas" role="button" data-toggle="collapse" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
         </form>
 
     </div>
 </div>
+<script>
+    var height = document.getElementById("splashPage").offsetHeight;
+    document.getElementById("couchSearchFormContainer").setAttribute('data-offset-top', height - 150);
+
+    $( "form" ).on( "submit", function( event ) {
+      event.preventDefault();
+      var formData = ( $( this ).serialize() );
+      searchForCouches(formData);
+      window.scroll(0,findPos(document.getElementById("searchResult")));
+    });
+</script>

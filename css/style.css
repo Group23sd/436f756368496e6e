@@ -1,6 +1,6 @@
 .navbar {
     padding: 10px 5px;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.9);
 }
 
 body.modal-open {
@@ -18,8 +18,9 @@ body.modal-open {
 }
 
 .splash-page {
-    background: url("../images/resources/splash2.jpg") no-repeat;
-    background-size: cover;
+    //background: url("../images/resources/splash2.jpg") no-repeat;
+    //background-size: cover;
+    //opacity: 0.5;
     height: 100vh;
     margin-top: -80px;
     display: flex;
@@ -27,13 +28,20 @@ body.modal-open {
 }
 
 .splash-page-items {
-    text-align: center;
-    font-size: 50px;
+    //text-align: center;
+    //font-size: 50px;
 }
 
 .splash-page-slogan {
-    padding: 20px;
-    color: white;
+    text-align: center;
+    padding: 25px 0px 0px 0px;
+//    border-bottom: 5px #96AC3C solid;
+//    margin-bottom: 20px;
+    //color: white;
+    font-weight: bold;
+    font-size: 50px;
+    color: #96AC3C;
+    text-shadow: 2px 0px #6D6D6D;
 }
 
 .splash-page-scroller {
@@ -165,6 +173,7 @@ footer > p {
     margin: 0px 5px;
     border-radius: 10px;
     background: rgba(0,0,0,0.8);
+    box-shadow: 5px 5px #9D9D9D;
 }
 
 .couchSearchFormLabel {
@@ -178,10 +187,12 @@ footer > p {
 .recommendedCouchesCarousel {
     margin: 0px 5px;
     text-align: center;
+    box-shadow: 5px 5px #9D9D9D;
 }
 
 h2 {
     margin-top: 0px;
+    text-align: center;
 }
 
 .checkbox {
@@ -259,4 +270,19 @@ h2 {
 .starRating:not(old) > label:hover ~ label:before,
 .starRating:not(:hover) > :checked ~ label:before{
   opacity : 1;
+}
+
+.separator {
+    //border-bottom: 5px #6D6D6D solid;
+    //box-shadow: 2px 2px #96AC3C;
+    border-bottom: 5px #96AC3C solid;
+    box-shadow: 2px 2px #6D6D6D;
+}
+
+#couchSearchFormContainer {
+    z-index: 1;
+}
+
+#couchSearchFormContainer.affix {
+    margin-top: -80px;
 }

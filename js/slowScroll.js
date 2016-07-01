@@ -12,3 +12,10 @@ $(function() {
         }
     });
 });
+
+function showSearch() {
+    //document.getElementById("searchResult").scrollIntoView();
+    $('html, body').animate({
+        scrollTop: $("#mainContent").offset().top
+    }, 1000);
+}
