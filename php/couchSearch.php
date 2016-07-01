@@ -1,14 +1,15 @@
 <?php
 
+    require_once 'userSession.php';
     require_once 'database.php';
     require_once 'feedback.php';
-
+    
     function basicSearch() {
         return ("SELECT * FROM couch c WHERE habilitado = true");
     }
 
     function geoSearch($idciudad) {
-        return (" AND c.idciudad = $idciudad");
+        return ($idciudad != "") ? (" AND c.idciudad = $idciudad") : "";
     }
 
     function typeSearch($idtipo) {
@@ -65,11 +66,8 @@
         $statement -> bindParam(':descripcion', $descripcion, PDO::PARAM_STR);
     }
 
-    if(!$_SESSION['user']->isStandard() && $couchQuery != basicSearch()) {
-      unauthorizedAccess();
-      exit();
-    }
-
     $statement -> execute();
+
+    require_once 'listarCouch.php';
 
 ?>

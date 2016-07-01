@@ -35,22 +35,21 @@
 		//Echo Table
 
 ?>
-
+<div id="couchSearchResult">
 <div class="table-responsive">
-	<table class="table table-condensed" class='container'>
-		<tbody>
+	<table class="table table-condensed">
 			<?php
 				foreach ($couchs as $value) {
 
-					echo '<tr class="row">';
+					echo '<tr>';
 
-					echo '<td class="col-sm-2 col-sm-offset-2">';
+					echo '<td class="col-md-2">';
 					$portada=$value -> getFotoPortada();
 					$portada = "'" . $portada . "'";
 					echo '<a href=# class=thumbnail> <img src=' .$portada. 'alt=IMAGEN DEL COUCH /> </a>';
 					echo '</td>';
 
-					echo "<td style='font-size:16px' class='col-sm-2'>";
+					echo "<td style='font-size:16px' class='col-md-2'>";
 					echo "<h3>" .'Nombre: '. "</h3>";
 					echo "<p class='text-center' class='text-primary'>" .$value -> getTitulo(). "</p>";
 					echo "<br />";
@@ -58,7 +57,7 @@
 					echo "<p class='text-center' class='text-primary'>" .'$' .$value -> getPrecio(). "</p>";
 					echo "</td>";
 
-					echo "<td class='col-sm-2'>";
+					echo "<td class='col-md-2'>";
 					echo "<h3 style='text-align:center' class='text-success'>" .'Puntaje:'.  "</h3>";
 					$estrella="'../images/resources/estrella.png'";
 
@@ -66,37 +65,37 @@
 					echo "<h2 style='text-align:center' id='puntos'>".$value -> puntajePromedio(). "</h2>";
 					echo '</td>';
 
-					echo '<td class="col-sm-2">';
-					echo '<div class="row">';
+					echo '<td class="col-md-2">';
+					//echo '<div class="row">';
 					if($_SESSION['user'] -> isLogged()){
-						echo '<div class="col-md-9">';
+						echo '<div class="col-md-12">';
 						$id = $value -> getId();
 						echo '<a href="reserva.php?idcouch='.$id.'" role="button" class="btn btn-primary btn-block">' ."RESERVAR". '</a>';
 						echo '</div>';
 					} else{
-						echo '<div class="col-md-9">';
+						echo '<div class="col-md-12">';
 						echo '<a href="#" role="button" class="btn btn-primary btn-block disabled">' ."RESERVAR". '</a>';
 						echo '</div>';
 					}
-					echo '</div>';
+					//echo '</div>';
 
-					echo '<div class="row">';
-					echo '<div class="col-md-9">';
+//					echo '<div class="row">';
+					echo '<div class="col-md-12">';
 					echo "<p> </p>";
 					echo '</div>';
-					echo '</div>';
+//					echo '</div>';
 
-					echo '<div class="row">';
+//					echo '<div class="row">';
 					if($_SESSION['user'] -> isLogged()){
-						echo '<div class="col-md-9">';
+						echo '<div class="col-md-12">';
 						echo '<a href="detallesCouch.php?idcouch='.$id.'" role="button" type="submit" class="btn btn-info btn-block">' ."VER DETALLES". '</a>';
 						echo '</div>';
 					} else{
-						echo '<div class="col-md-9">';
+						echo '<div class="col-md-12">';
 						echo '<a href="#" role="button" class="btn btn-info btn-block disabled">' ."VER DETALLES". '</a>';
 						echo '</div>';
 					}
-					echo '</div>';
+//					echo '</div>';
 
 					echo "</td>";
 
@@ -104,7 +103,7 @@
 
 				}
 			?>
-		</tbody>
 	</table>
+</div>
 </div>
 <?php } ?>

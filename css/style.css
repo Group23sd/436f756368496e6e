@@ -1,6 +1,6 @@
 .navbar {
     padding: 10px 5px;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.9);
 }
 
 body.modal-open {
@@ -18,8 +18,9 @@ body.modal-open {
 }
 
 .splash-page {
-    background: url("../images/resources/splash2.jpg") no-repeat;
-    background-size: cover;
+    //background: url("../images/resources/splash2.jpg") no-repeat;
+    //background-size: cover;
+    //opacity: 0.5;
     height: 100vh;
     margin-top: -80px;
     display: flex;
@@ -27,13 +28,16 @@ body.modal-open {
 }
 
 .splash-page-items {
-    text-align: center;
-    font-size: 50px;
+    //text-align: center;
+    //font-size: 50px;
 }
 
 .splash-page-slogan {
-    padding: 20px;
-    color: white;
+    text-align: center;
+    padding: 25px 0px 0px 0px;
+//    border-bottom: 5px #96AC3C solid;
+//    margin-bottom: 20px;
+    //color: white;
 }
 
 .splash-page-scroller {
@@ -259,4 +263,16 @@ h2 {
 .starRating:not(old) > label:hover ~ label:before,
 .starRating:not(:hover) > :checked ~ label:before{
   opacity : 1;
+}
+
+.separator {
+    border-bottom: 5px #96AC3C solid;
+}
+
+#couchSearchFormContainer {
+    z-index: 1;
+}
+
+#couchSearchFormContainer.affix {
+    margin-top: -80px;
 }

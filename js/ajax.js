@@ -23,3 +23,15 @@ function showCities2() {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
+
+function searchForCouches(formData) {
+    $.ajax({
+        type: "POST",
+        url: "couchSearch.php",
+        data: formData,
+        cache: false,
+        success: function(data){
+            document.getElementById("couchSearchResult").innerHTML = data;
+        }
+    });
+}

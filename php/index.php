@@ -2,13 +2,13 @@
 <?php
     require_once 'userSession.php';
     require_once 'database.php';
-    require_once 'couchSearch.php';
+    //require_once 'couchSearch.php';
  ?>
 <html>
 <head>
     <title>CouchInn</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../js/jquery.js"></script>
     <script src="../js/validator.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -26,31 +26,30 @@
         <!-- MAIN -->
         <main class="row">
             <div class="col-md-12 content-wrapper">
-                <div class="row splash-page">
+                <div class="row splash-page" id="splashPage">
                     <div class="col-md-12">
                         <div class="splash-page-content">
                             <div class="splash-page-items">
-                                <p class="splash-page-slogan">Tu viaje comienza aquí</p>
-                                <a class="splash-page-scroller" href="#mainContent">COUCHES</a>
+                                <h1 class="splash-page-slogan">Tu viaje comienza aquí</h1>
+                                <hr class="separator">
+                                <?php
+                                    require_once 'couchSearchForm.php';
+                                    require_once 'recommendedCouchesCarousel.php';
+                                ?>
                             </div>
                         </div>
                     </div>
                 </div>
+                <hr class="separator">
                 <span class="anchor" id="mainContent"></span>
                 <div class="row main-content">
                     <div class="col-md-12">
                         <div class="row">
+                            <div class="col-md-8 col-md-offset-4">
                             <?php
-                                require_once 'couchSearchForm.php';
-                                require_once 'recommendedCouchesCarousel.php';
+                                require_once 'couchSearch.php';
                             ?>
-                        </div>
-                        <span class="anchor" id="searchResult"></span>
-                        <hr/>
-                        <div class="row">
-                          <?php
-                              require_once 'listarCouch.php';
-                          ?>
+                            </div>
                         </div>
                     </div>
                 </div>
