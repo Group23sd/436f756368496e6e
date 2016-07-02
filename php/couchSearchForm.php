@@ -83,7 +83,7 @@
 
             <button type="submit" onclick="showSearch()" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
             <a href="#caracteristicas" role="button" data-toggle="collapse" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></a>
-            <button onclick="resetCouchSearch()" role="button" class="btn btn-warning">Reset</button>
+            <button onclick="resetCouchSearch()" role="button" class="btn btn-warning resetCouchSearch">Reset</button>
         </form>
 
     </div>
