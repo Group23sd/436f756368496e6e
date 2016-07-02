@@ -2,6 +2,8 @@
 
     require_once 'database.php';
 
+    define('minCouchAmount', 3);
+
     $recommendationQuery = "SELECT c.*, t.descripcion as nombreTipo, cd.nombre as ciudad, cd.region as region, p.nombre as pais FROM couch c INNER JOIN tipo t ON (c.idtipo=t.idtipo) INNER JOIN ciudad cd ON (c.idciudad=cd.idciudad) INNER JOIN pais p ON (cd.idpais=p.idpais)";
     $recommendationResult = queryAllByAssoc($recommendationQuery);
     $fullCouches = array();
@@ -24,6 +26,8 @@
 
     uasort($fullCouches, 'cmp');
 
+    $couchAmount = (count($fullCouches) < minCouchAmount) ? count($fullCouches) : minCouchAmount;
+
 ?>
 <div class="col-md-8 recommendedCouchesCarousel-container">
     <h2>Recomendados por la comunidad</h2>
@@ -31,24 +35,26 @@
         <div id="recommended-couches-carousel" class="carousel slide" data-ride="carousel" style="width: 100%; height:400px">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#recommended-couches-carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#recommended-couches-carousel" data-slide-to="1"></li>
-                <!--
-                <li data-target="#recommended-couches-carousel" data-slide-to="2"></li>
 
-                <li data-target="#recommended-couches-carousel" data-slide-to="3"></li>
-                <li data-target="#recommended-couches-carousel" data-slide-to="4"></li>
-                -->
+                <?php
+                    for ($i=0; $i < $couchAmount; $i++) {
+                        $act = $i ? "" : "class='active'";
+                        echo "<li data-target='#recommended-couches-carousel' data-slide-to=$i $act></li>";
+                    }
+                ?>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
 
                 <?php
-                    for ($i=0; $i < 2; $i++) {
+                    for ($i=0; $i < $couchAmount; $i++) {
                         $couch = $fullCouches[$i];
-                        echo $i ? "<div class='item active'>" : "<div class='item'>";
-                        echo "<img style='width: 100%; height:400px' src='../images/resources/splash1.jpg'>";
+                        $idcouch = $couch['idcouch'];
+                        $query = "SELECT * FROM foto WHERE idcouch = $idcouch AND portada = true";
+                        $portada = queryByAssoc($query)['path'] ? queryByAssoc($query)['path'] : "../images/resources/noCouchPicture.jpg";
+                        echo $i ? "<div class='item'>" : "<div class='item active'>";
+                        echo "<img style='width: 100%; height:400px' src=$portada>";
                         echo "<div class='carousel-caption'>";
                         echo "<h1>"."<a class='stdLink' href='detallesCouch.php?idcouch=".$couch['idcouch']."'>".$couch['titulo']."</a>"."</h1>";
                         echo "<p>".$couch['descripcion']."</p>";

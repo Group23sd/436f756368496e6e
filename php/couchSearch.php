@@ -3,12 +3,16 @@
     require_once 'userSession.php';
     require_once 'database.php';
     require_once 'feedback.php';
-    
+
     function basicSearch() {
         return ("SELECT * FROM couch c WHERE habilitado = true");
     }
 
-    function geoSearch($idciudad) {
+    function countrySearch($idpais) {
+        return ($idpais != "") ? (" AND c.idciudad IN (SELECT ciudad.idciudad FROM ciudad WHERE idpais = $idpais)") : "";
+    }
+
+    function citySearch($idciudad) {
         return ($idciudad != "") ? (" AND c.idciudad = $idciudad") : "";
     }
 
@@ -37,13 +41,14 @@
     }
 
     $couchQuery = basicSearch();
-    $couchQuery .= isset($_POST['formCity']) ? geoSearch($_POST['formCity']) : "";
+    $couchQuery .= isset($_POST['formCountry']) ? countrySearch($_POST['formCountry']) : "";
+    $couchQuery .= isset($_POST['formCity']) ? citySearch($_POST['formCity']) : "";
     $couchQuery .= isset($_POST['couchType']) ? typeSearch($_POST['couchType']) : "";
     $couchQuery .= isset($_POST['couchCapacity']) ? capacitySearch($_POST['couchCapacity']) : "";
 //    $couchQuery .= isset($_POST['couchTitle']) ? titleSearch($_POST['couchTitle']) : "";
 //    $couchQuery .= isset($_POST['couchDescription']) ? descriptionSearch($_POST['couchDescription']) : "";
     $couchQuery .= isset($_POST['caracteristicas']) ? characteristicSearch($_POST['caracteristicas']) : "";
-
+    
     $database = connectDatabase();
 
     if (isset($_POST['couchTitle']) && $_POST['couchTitle']) {

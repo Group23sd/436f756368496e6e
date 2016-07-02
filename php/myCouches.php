@@ -42,7 +42,7 @@
                                 <th>COUCH</th>
                                 <th>TIPO</th>
                                 <th>CIUDAD</th>
-                                <th>PUNTAJE PROMEDIO</th>
+                                <th>PUNTAJE</th>
                                 <th>HABILITACION</th>
                                 <th>OPCIONES</th>
                             </tr>
@@ -56,9 +56,9 @@
                                         echo "<tr class='danger'>";
                                     }
                                     $idCouch = $couch['idcouch'];
-                                    $query = "SELECT avg(puntaje_couch) as puntaje FROM reserva WHERE idcouch=$idCouch";
+                                    $query = "SELECT avg(puntaje_couch) as puntaje FROM reserva WHERE idcouch = $idCouch";
                                     $resultPuntaje = queryByAssoc($query);
-                                    $puntajePromedio = $resultPuntaje['puntaje'];
+                                    $puntajePromedio = $resultPuntaje['puntaje'] ? round($resultPuntaje['puntaje'],1)." <span class='glyphicon glyphicon-star scoreStar'></span>" : "-";
                                     //var_dump($couch);
                                 //    echo "<tr>";
                                 //    echo "<td>".$couch['idcouch']."</td>";
@@ -66,7 +66,7 @@
                                     echo "<td>".$couch['nombreTipo']."</td>";
                                 //    echo "<td>".$couch['precio']."</td>";
                                     echo "<td>".$couch['ciudad'].", ".$couch['region'].", ".$couch['pais']."</td>";
-                                    echo "<td>".round($puntajePromedio,1)."</td>";
+                                    echo "<td>".$puntajePromedio."</td>";
                                     echo "<td>"."<a class='btn btn-xs btn-default couchTable' onclick='return confirm(\"Esta seguro que desea cambiar el estado de este couch?\")' href='changeCouchAvailability.php?id=".$couch['idcouch']."' role='button'>".$okBanIcon."</a>"."</td>";
                                 //    echo "<td>".$couch['pais']."</td>";
                                 //    echo $couch['habilitado'] ? "<td><span class='glyphicon glyphicon-ok'></span></td>" : "<td><span class='glyphicon glyphicon-remove'></span></td>";

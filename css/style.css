@@ -53,6 +53,7 @@ body.modal-open {
     padding-top: 20px;
     padding-bottom: 20px;
     margin-bottom: 80px;
+    min-height: 520px;
 }
 
 .inner-body {
@@ -265,7 +266,11 @@ h2 {
     margin-top: -80px;
 }
 
-.userStar {
+.scoreStar {
     color: #FFBE00;
     text-shadow: 1px 1px #926D00;
+}
+
+button.resetCouchSearch {
+    float: right;
 }
