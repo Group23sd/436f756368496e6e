@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <?php
-require_once 'userSession.php';
-require_once 'database.php';
-$c = connectDatabase();
-if ( ! $_SESSION['user'] -> isLogged() ) {
-  header("Location: index.php");
-}
+    require_once 'userSession.php';
+    require_once 'database.php';
+
+    $c = connectDatabase();
+
+    if ( ! $_SESSION['user'] -> isStandard() ) {
+      header("Location: index.php");
+    }
+
+    $sql = "SELECT vn.valor FROM valor_negocio vn WHERE vn.valor_nombre = 'precioPremium'";
+    $precioPremium = queryByAssoc($sql)['valor'];
 ?>
 <html>
 <head>
@@ -31,7 +36,7 @@ if ( ! $_SESSION['user'] -> isLogged() ) {
           <div class="page-header">
             <h1>Conviertete en usuario premium<small> accede a mas beneficios</small></h1>
           </div>
-          <p>El pago premium de CouchInn tiene un coste de $200 ARS y se realiza una sola vez. Si eres usuario premium tendrás acceso a muchas más ventajas como: <p>• Podrás agregar más de una imagen a tu Couch.</p> <p> • Tu Couch aparecera entre los principales. </p> <p> • Mayor posibilidad de que te acepten una reserva por tu condicion. <p> • Y muchas mas! </p> </p></p>
+          <p>El pago premium de CouchInn tiene un coste de <strong>$<?php echo $precioPremium ?></strong> y se realiza una sola vez. Si eres usuario premium tendrás acceso a muchas más ventajas como: <p>• Podrás agregar más de una imagen a tu Couch.</p> <p> • Tu Couch aparecera entre los principales. </p> <p> • Mayor posibilidad de que te acepten una reserva por tu condicion. <p> • Y muchas mas! </p> </p></p>
           <div class="col-md-5">
           <form data-toggle="validator" name="pagar"  method="post" onsubmit="return validar()" action="setPremium.php" role="form" class="form-block" >
 

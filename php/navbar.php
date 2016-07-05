@@ -26,9 +26,10 @@
                     echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">OPCIONES DE ADMINISTRADOR <span class="caret"></span></a>';
                     echo '<ul class="dropdown-menu inverse-dropdown">';
                     echo '<li>'.'<a href="listar_tCouch.php">TIPOS DE COUCH</a>'.'</li>';
-                    echo '<li>'.'<a href="#">LISTADO DE GANANCIAS</a>'.'</li>';
-                    echo '<li>'.'<a href="#">PORCENTAJE DE COMISION</a>'.'</li>';
                     echo '<li>'.'<a href="#">SOLICITUDES ACEPTADAS</a>'.'</li>';
+                    echo '<li>'.'<a href="#">LISTADO DE GANANCIAS</a>'.'</li>';
+                    echo '<li>'.'<a href="changeCommissionPercentage.php">PORCENTAJE DE COMISION</a>'.'</li>';
+                    echo '<li>'.'<a href="changePremiumPrice.php">PRECIO PREMIUM</a>'.'</li>';
                     echo '</ul>';
                 }
                 if (!$_SESSION['user'] -> isPremium() && $_SESSION['user'] -> isLogged()) {

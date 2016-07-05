@@ -289,3 +289,11 @@ button.resetCouchSearch {
 .inverse-dropdown > li > a:hover {
   color: #000000;
 }
+
+.centerSmallDiv {
+
+}
+
+.form-horizontal {
+    margin-top: 20px;
+}
