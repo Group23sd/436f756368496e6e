@@ -364,4 +364,14 @@
         require_once 'feedbackTemplate.php';
     }
 
+    function commissionPercentageUpdated() {
+        $title = "Commission Percentage Updated";
+        $h1 = "Porcentaje de comision Actualizado";
+        $msg = "<p>El porcentaje de comision que CouchInn cobra a sus usuarios ha sido actualizado con exito!</p>";
+        $linkTxt = "Volver";
+        $linkHref = "changeCommissionPercentage.php";
+        $optLink = '<a class="btn btn-success btn-lg" href="'.$linkHref.'" role="button">'.$linkTxt.'</a>';
+        require_once 'feedbackTemplate.php';
+    }
+
 ?>
