@@ -55,7 +55,7 @@
 
 					echo '<td class="col-md-2">';
 					//echo '<div class="row">';
-					if($_SESSION['user'] -> isLogged()){
+					if($_SESSION['user'] -> isStandard()){
 						echo '<div class="col-md-12">';
 						$id = $value -> getId();
 						echo '<a href="reserva.php?idcouch='.$id.'" role="button" class="btn btn-primary btn-block">' ."RESERVAR". '</a>';
@@ -74,7 +74,7 @@
 //					echo '</div>';
 
 //					echo '<div class="row">';
-					if($_SESSION['user'] -> isLogged()){
+					if($_SESSION['user'] -> isStandard()){
 						echo '<div class="col-md-12">';
 						echo '<a href="detallesCouch.php?idcouch='.$id.'" role="button" type="submit" class="btn btn-info btn-block">' ."VER DETALLES". '</a>';
 						echo '</div>';
