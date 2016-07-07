@@ -315,13 +315,13 @@
       require_once 'feedbackTemplate.php';
     }
 
-    function existingNameCouch($idreserva) {
+    function existingNameCouch() {
       $title = "Existing Name Couch";
       $h1 = "¡Cuidado!";
       $msg = "<p>¡Ya hay Couches con ese nombre!</p>";
       $linkTxt = "Volver a administrar Couches";
       $linkHref = "index.php";
-      $optLink = '<a class="btn btn-success btn-lg" href="couchReservations.php?id='.$idreserva.'" role="button">'.$linkTxt.'</a>';
+      $optLink = '<a class="btn btn-success btn-lg" href="listar_tCouch.php" role="button">'.$linkTxt.'</a>';
       require_once 'feedbackTemplate.php';
     }
 
