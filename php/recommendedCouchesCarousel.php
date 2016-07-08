@@ -27,8 +27,8 @@
 ?>
 <div class="col-md-8 recommendedCouchesCarousel-container">
     <h2>Recomendados por la comunidad</h2>
-    <div class="row recommendedCouchesCarousel">    
-        <div id="recommended-couches-carousel" class="carousel slide" data-ride="carousel">
+    <div class="row recommendedCouchesCarousel">
+        <div id="recommended-couches-carousel" class="carousel slide" data-ride="carousel" style="width: 100%; height:400px">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#recommended-couches-carousel" data-slide-to="0" class="active"></li>
@@ -48,7 +48,7 @@
                     for ($i=0; $i < 2; $i++) {
                         $couch = $fullCouches[$i];
                         echo $i ? "<div class='item active'>" : "<div class='item'>";
-                        echo "<img src='../images/resources/splash1.jpg'>";
+                        echo "<img style='width: 100%; height:400px' src='../images/resources/splash1.jpg'>";
                         echo "<div class='carousel-caption'>";
                         echo "<h1>"."<a class='stdLink' href='detallesCouch.php?idcouch=".$couch['idcouch']."'>".$couch['titulo']."</a>"."</h1>";
                         echo "<p>".$couch['descripcion']."</p>";
