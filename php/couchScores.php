@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<<?php require_once 'database.php'; ?>
+<?php require_once 'database.php'; ?>
 
 <html lang="en">
 	<head>
@@ -44,16 +44,47 @@
 												  </div>
 												</div>
 
-                        <?php
-                          $sql = "SELECT * FROM reserva WHERE idcouch=$idcouch";
-                          $result = queryAllByAssoc($sql);
+												<div class="row">
+													<div class="col-md-9 col-sm-offset-1">
 
-                        ?>
+														<table class="table table-responsive table-striped table-bordered">
+															<tbody>
 
+																<?php
+																	$sql = "SELECT titulo FROM couch WHERE idcouch = $idcouch";
+																	$tituloCouch = queryByAssoc($sql);
+																	$tituloCouch = $tituloCouch['titulo'];
+
+																  $sql = "SELECT * FROM reserva WHERE idcouch=$idcouch";
+																  $result = queryAllByAssoc($sql);
+
+																	foreach ($result as $reserva) {
+																		$iduser = $reserva['idusuario'];
+																		$sql = "SELECT * FROM usuario WHERE idusuario = $iduser";
+																		$inquilino = queryByAssoc($sql);
+																		$nameuser = $inquilino['nombre'] ." ".$inquilino['apellido'];
+
+																		$puntos = $reserva['puntaje_couch'];
+																		$comentario = $reserva['puntaje_couch_comentario'];
+
+																		echo "<tr>";
+																			echo "<h5 class='text-success'> El usuario $nameuser puntu&oacute a <strong>$tituloCouch </strong> con: $puntos  <span class='glyphicon glyphicon-star scoreStar'></span></h5>";
+																			echo "<h5 class='text-success'> Y dej&oacute el siguiente comentario sobre su estadia:</h5>";
+																			echo "<p class='text-left well'> $comentario </p>";
+																		echo "</tr>";
+
+																	}
+
+																?>
+
+															</tbody>
+														</table>
+													</div>
+												</div>
 
                     </div>
                   </div>
-                </div>
+                </div>/
             </div>
         </main>
     </div>
