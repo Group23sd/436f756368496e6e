@@ -25,6 +25,7 @@ body.modal-open {
     margin-top: -80px;
     //display: flex;
     //align-items: center;
+    background-color: #F0F0F0;
 }
 
 .splash-page-items {
@@ -53,6 +54,7 @@ body.modal-open {
     padding-top: 20px;
     padding-bottom: 20px;
     margin-bottom: 80px;
+    min-height: 520px;
 }
 
 .inner-body {
@@ -255,6 +257,7 @@ h2 {
     //box-shadow: 2px 2px #96AC3C;
     border-bottom: 5px #96AC3C solid;
     box-shadow: 2px 2px #6D6D6D;
+    width: 75%;
 }
 
 #couchSearchFormContainer {
@@ -265,7 +268,32 @@ h2 {
     margin-top: -80px;
 }
 
-.userStar {
+.scoreStar {
     color: #FFBE00;
     text-shadow: 1px 1px #926D00;
+}
+
+button.resetCouchSearch {
+    float: right;
+}
+
+.inverse-dropdown {
+  background-color: #222222;
+  border-color: #080808;
+}
+
+.inverse-dropdown > li > a {
+  color: #999999;
+}
+
+.inverse-dropdown > li > a:hover {
+  color: #000000;
+}
+
+.centerSmallDiv {
+
+}
+
+.form-horizontal {
+    margin-top: 20px;
 }

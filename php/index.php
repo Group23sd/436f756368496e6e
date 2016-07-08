@@ -2,12 +2,10 @@
 <?php
     require_once 'userSession.php';
     require_once 'database.php';
-    //require_once 'couchSearch.php';
  ?>
 <html>
 <head>
     <title>CouchInn</title>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="../js/jquery.js"></script>
     <script src="../js/validator.js"></script>
@@ -40,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <hr class="separator">
+                <hr class="separator" style="margin-top: 0px">
                 <span class="anchor" id="mainContent"></span>
                 <div class="row main-content">
                     <div class="col-md-12">
