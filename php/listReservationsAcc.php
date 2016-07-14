@@ -14,7 +14,7 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
 ?>
 <html>
 <head>
-  <title>Cambiar Porcentaje de Comision</title>
+  <title>Listar Solicitudes Aceptadas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="../js/jquery.js"></script>
@@ -70,12 +70,12 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
         <div class="row main-content">
           <h2>Listar Solicitudes</h2>
           <div class="col-md-6 col-md-offset-2">
-            <form class="form-horizontal" role="form" data-toggle="validator" action="#" method="post" name="listEarn" id="listEarn">
-              <label for="from">Fecha de inicio:</label>
-              <input type="text" id="from" name="from" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required>
-              <label for="to">Fecha de fin:</label>
-              <input type="text" id="to" name="to" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required>
-
+            <form class="form-horizontal" role="form" data-toggle="validator" action="listReservations.php" method="post" name="listEarn" id="listEarn">
+              <p><label for="from">Fecha de inicio:</label>
+              <input type="text" id="from" name="from" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
+              <p><label for="to">Fecha de fin:</label>
+              <input type="text" id="to" name="to" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
+              <input type="hidden" id="test" name="test" value=5 class="form-control" required>
               <div class="row">
                 <div class="col-sm-8 5">
                   <button type="submit" class="btn btn-success">Aceptar</button>
