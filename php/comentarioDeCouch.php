@@ -19,14 +19,20 @@
     }*/
 
     public function insert($coment, $couchid, $userid){
-      $today = getdate();
-      $fecha = date("$today[year]-$today[mon]-$today[mday] $today[hours]:$today[minutes]:$today[seconds]");
-      $date = array($coment, '', $fecha, $userid, $couchid );
-      $sql = "INSERT INTO comentario (pregunta, respuesta, fecha, idusuario, idcouch) VALUES(?, ?, ?, ?, ?)";
-      $connect = connectDatabase();
-      $statement = $connect-> prepare($sql);
-      $statement -> execute($data);
-
+      try{
+        require_once 'feedback.php';
+        $today = getdate();
+        $fecha = date("$today[year]-$today[mon]-$today[mday] $today[hours]:$today[minutes]:$today[seconds]");
+        $data = array($coment, '', $fecha, $userid, $couchid );
+        $sql = "INSERT INTO comentario (pregunta, respuesta, fecha, idusuario, idcouch) VALUES(?, ?, ?, ?, ?)";
+        $connect = connectDatabase();
+        $statement = $connect-> prepare($sql);
+        $statement -> execute($data);
+        comentarioPublicado();
+      }
+      catch(Exception $e){
+        databaseError();
+      }
 
     }
 

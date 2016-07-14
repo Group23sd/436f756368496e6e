@@ -374,4 +374,23 @@
         require_once 'feedbackTemplate.php';
     }
 
+    function comentarioPublicado(){
+      $title = "Comentario Publicado";
+      $h1 = "Comentario publicado correctamente";
+      $msg = "<p>Su inquietud ser&aacute respondida en cualquier momento por el due&ntildeo del Couch.</p>";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
+
+    }
+
+    function respuestaPublicada(){
+      $title = "Comentario Publicada";
+      $h1 = "Respuesta publicada correctamente";
+      $msg = "<p>Su respuesta a la inquietud del usuario ya puede ser visualizada.</p> <br />
+            <p>Esto hara que los usuarios tomen una mejor decici&oacute al momento de elegir su Couch. Muchas gracias!";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
+
+    }
+
 ?>
