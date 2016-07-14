@@ -2,11 +2,19 @@
 <?php
 require_once 'userSession.php';
 require_once 'database.php';
-?>
+require_once 'feedback.php';
 
+if (!$_SESSION['user']->isAdmin()) {
+  unauthorizedAccess();
+  exit();
+}
+
+$sql = "SELECT vn.valor FROM valor_negocio vn WHERE vn.valor_nombre = 'porcentajeComision'";
+$porcentajeActual = queryByAssoc($sql)['valor'];
+?>
 <html>
 <head>
-  <title>CouchInn - Hacer reserva</title>
+  <title>Cambiar Porcentaje de Comision</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="../js/jquery.js"></script>
@@ -21,6 +29,7 @@ require_once 'database.php';
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/ajax.js"></script>
   <script src="../js/slowScroll.js"></script>
+  <script src="../js/confirmation.js"></script>
 </head>
 <body>
   <script>
@@ -51,19 +60,6 @@ require_once 'database.php';
 
 
   </script>
-  <?php
-  $idCouch = $_GET['idcouch'];
-  $query = "SELECT idusuario FROM couch WHERE idcouch=$idCouch";
-  $idUserCouch = queryByAssoc($query);
-  if ($_SESSION['user'] -> getId() == $idUserCouch['idusuario']) {
-    require_once 'feedback.php';
-    ownCouchFail();
-  }
-  ?>
-  <?php
-    $query = "SELECT titulo FROM couch WHERE idcouch=$idCouch";
-    $resultado = queryByAssoc($query);
-   ?>
   <!-- NAVBAR -->
   <?php require_once "navbar.php" ?>
   <!-- CONTENT -->
@@ -71,45 +67,29 @@ require_once 'database.php';
     <!-- MAIN -->
     <main class="row">
       <div class="col-md-12 content-wrapper">
-        <span class="anchor" id="mainContent"></span>
         <div class="row main-content">
+          <h2>Listar Ganancias</h2>
+          <div class="col-md-6 col-md-offset-2">
+            <form class="form-horizontal" role="form" data-toggle="validator" action="#" method="post" name="listEarn" id="listEarn">
+              <label for="from">Fecha de inicio:</label>
+              <input type="text" id="from" name="from" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required>
+              <label for="to">Fecha de fin:</label>
+              <input type="text" id="to" name="to" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required>
 
-          <div class="col-md-5">
-            <h3>Hacer reserva para: <strong><?php echo $resultado['titulo'] ?></strong></h3>
-            <h4>Selecciona cuándo quieres hospedarte:</h4>
-            <form name="RESERVAS"  method="post" role="form" class="form-block" action="makeReserva.php" data-toggle="validator" >
-              <p><label for="from">Fecha de inicio:</label>
-                <input type="text" id="from" name="from" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
-                <p><label for="to">Fecha de fin:</label>
-                  <input type="text" id="to" name="to" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
-                  <input type="hidden"  value="<?php echo $idCouch ?>" id="aux" name="aux" class="form-control" required>
-                  <div class="form-group has-feedback">
-
-
-                  <label for="cantH">Cantidad de huespedes:</label>
-                    <input type="text" id="cantH" name="cantH" class="form-control"  pattern="^[0-9]{1,}$" maxlength="2" data-minlength="1" data-error="Ingrese un numero o complete el campo!" required>
-                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    <div class="help-block with-errors"></div>
-                  </div>
-                  <button type="submit" class="btn  btn-success ">Reservar</button>
-                  <a class="btn btn-sm btn-success " href="index.php" role="button">Cancelar</a>
-                </form>
-                <script type="text/javascript">
-
-                $(document).ready(function () {
-                    $(".btn btn-sm btn-success ").click(function () {
-                        $(".btn btn-sm btn-success ").attr("disabled", true);
-                        return true;
-                    });
-                });
-
-                </script>
+              <div class="row">
+                <div class="col-sm-8 5">
+                  <button type="submit" class="btn btn-success">Aceptar</button>
+                  <a class="btn btn-danger" href="index.php" role="button">Cancelar</a>
+                </div>
               </div>
-            </div>
+
+            </form>
           </div>
-        </main>
-        <!-- FOOTER -->
-        <?php require_once 'footer.php' ?>
+        </div>
       </div>
-    </body>
-    </html>
+    </main>
+    <!-- FOOTER -->
+    <?php require_once 'footer.php' ?>
+  </div>
+</body>
+</html>

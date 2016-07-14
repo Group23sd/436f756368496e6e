@@ -42,6 +42,7 @@ require_once 'database.php';
                 <thead>
                   <tr>
                     <th>Nombre</th>
+                    <th>Puntaje</th>
                     <th>Desde</th>
                     <th>Hasta</th>
                     <th>Estado</th>
@@ -66,8 +67,14 @@ require_once 'database.php';
 
                     $resultado2 = queryByAssoc($query3);
 
+                    $query = "SELECT avg(puntaje_couch) as puntaje FROM reserva WHERE idcouch = $idCouch";
+                    $resultPuntaje = queryByAssoc($query);
+                    $puntajePromedio = $resultPuntaje['puntaje'] ? round($resultPuntaje['puntaje'],1)." <span class='glyphicon glyphicon-star scoreStar'></span>" : "-";
+
+
                     echo '<tr>';
                     echo "<td><a class='stdLink'href='detallesCouch.php?idcouch=".$resultado2['idcouch']."'><strong>".$resultado2['titulo']."</strong></a></td>";
+                    echo "<td>".$puntajePromedio."</td>";
                     echo '<td>'.$value['inicio'].'</td>';
                     echo '<td>'.$value['fin'].'</td>';
                     if ($resultado['nombre'] == 'Liberado') {
