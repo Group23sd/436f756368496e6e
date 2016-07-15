@@ -36,7 +36,7 @@
                     echo '<li>'.'<a href="premium.php">SER PREMIUM</a>'.'</li>';
                 }
                 if (!$_SESSION['user'] -> isAdmin()) {
-                    echo '<li>'.'<a href="#">CONTACTO</a>'.'</li>';
+                    echo '<li>'.'<a href="contacto.php">QUIENES SOMOS</a>'.'</li>';
                 }
                 ?>
             </ul>

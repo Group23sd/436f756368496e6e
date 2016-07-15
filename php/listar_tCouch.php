@@ -75,8 +75,8 @@ function modificar(id) {
               </tbody>
 
             </table>
-            
-            <a href="altaTipoCouch.php" role="button" class="btn btn-sm btn-success">AGREGAR NUEVO COUCH</a>
+
+            <a href="altaTipoCouch.php" role="button" class="btn btn-sm btn-success">NUEVO TIPO DE COUCH</a>
           </div>
 
         </div>

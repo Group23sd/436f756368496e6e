@@ -13,13 +13,13 @@
 		<link rel="stylesheet" href="../css/style.css">
 		<script src="../js/ajax.js"></script>
 
-		<title> Informacion del Couch </title>
+		<title> Mis Puntajes </title>
 	</head>
 
   <body>
 
 	<?php
-		$idcouch = $_GET['idcouch'];
+		$idusuario = $_GET['iduser'];
 
 	?>
 
@@ -34,46 +34,39 @@
 							 <div class="row main-content">
 									 <div class="col-md-6">
 										 <div class='container'>
-
-												<div class="row">
-												  <div class="col-md-10 col-sm-offset-1">
-												    <ul class="nav nav-tabs nav-justified">
-												      <li><?php echo '<a href="detallesCouch.php?idcouch='.$idcouch.'">Info del Couch</a>'?></li>
-												      <li class="active"><a href="couchScores.php">Puntajes del Couch</a></li>
-												      <li><?php echo '<a href="couchComments.php?idcouch='.$idcouch.'">Preguntas de los usuarios</a>'?></li>
-												    </ul>
-												  </div>
-												</div>
-
 												<div class="row">
 													<div class="col-md-9 col-sm-offset-1">
-
+                                                        <h1>Mis Puntajes</h1>
 														<table class="table table-responsive table-striped table-bordered">
 															<tbody>
 
 																<?php
-																	$sql = "SELECT titulo FROM couch WHERE idcouch = $idcouch";
-																	$tituloCouch = queryByAssoc($sql);
-																	$tituloCouch = $tituloCouch['titulo'];
+																	$sql = "SELECT nombre, apellido FROM usuario WHERE idusuario = $idusuario";
+																	$nombreUser = queryByAssoc($sql);
+																	$nombreUser = $nombreUser['nombre']." ".$nombreUser['apellido'];
 
-																  $sql = "SELECT * FROM reserva WHERE idcouch=$idcouch";
+																  $sql = "SELECT * FROM reserva WHERE idusuario=$idusuario";
 																  $result = queryAllByAssoc($sql);
 
-																	foreach ($result as $reserva) {
-																		$iduser = $reserva['idusuario'];
-																		$sql = "SELECT * FROM usuario WHERE idusuario = $iduser";
-																		$inquilino = queryByAssoc($sql);
-																		$nameuser = $inquilino['nombre'] ." ".$inquilino['apellido'];
+                                                                  if (!$result) {
+                                                                      echo "<h3>No has recibido ningun puntaje</h3>";
+                                                                  }
 
-																		$puntos = $reserva['puntaje_couch'];
-																		$comentario = $reserva['puntaje_couch_comentario'];
+																	foreach ($result as $reserva) {
+																		$idcouch = $reserva['idcouch'];
+																		$sql = "SELECT * FROM couch WHERE idcouch = $idcouch";
+																		$couch = queryByAssoc($sql);
+																		$namecouch = $couch['titulo'];
+
+																		$puntos = $reserva['puntaje_usuario'];
+																		$comentario = $reserva['puntaje_usuario_comentario'];
 																		$aux = false;
 																		echo "<tr>";
 																			if(!empty($puntos)){
-																				echo "<h5 class='text-success'> El usuario <strong>$nameuser</strong> puntu&oacute a <strong>$tituloCouch </strong> con: $puntos  <span class='glyphicon glyphicon-star scoreStar'></span></h5>";
+																				echo "<h5 class='text-success'> El couch <strong>$namecouch</strong> puntu&oacute a <strong>$nombreUser </strong> con: $puntos  <span class='glyphicon glyphicon-star scoreStar'></span></h5>";
 																		}else{
 																			if(!empty($comentario)){
-																				echo "<h5 class='text-success'>  El usuario <strong>$nameuser</strong> dej&oacute el siguiente comentario sobre su estadia:</h5>";
+																				echo "<h5 class='text-success'>  El couch <strong>$namecouch</strong> dej&oacute el siguiente comentario sobre su estadia:</h5>";
 																				echo "<p class='text-left well'> $comentario </p>";
 																				$aux = true;
 																			}
@@ -84,11 +77,6 @@
 																			}
 																		echo "</tr>";
 
-																	}
-
-																	if(empty($result)){
-																		echo '<br />';
-																		echo '<h1 class="text-center text-success"> Este Couch todavia no fue puntuado</h1>';
 																	}
 
 																?>

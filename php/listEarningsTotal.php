@@ -36,7 +36,11 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
   $acumulator = 0;
   $inicio=$_POST['from'];
   $fin=$_POST['to'];
+<<<<<<< HEAD
   $query = "SELECT * FROM estado WHERE fecha > '$inicio' AND fecha < '$fin' AND nombre='Liberado'";
+=======
+  $query = "SELECT * FROM estado WHERE '$inicio' <= date(fecha) AND date(fecha) <= '$fin' AND nombre='Liberado'";
+>>>>>>> master
   $result = queryAllByAssoc($query);
   $tiny_query = "SELECT * FROM valor_negocio WHERE valor_nombre='porcentajeComision'";
   $result_tiny_query = queryByAssoc($tiny_query);
@@ -66,7 +70,7 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
       <div class="col-md-12 content-wrapper">
         <div class="row main-content">
           <h2>Listar Ganancias</h2>
-          <div class="col-md-5 col-md-offset-3">
+          <div class="col-md-6 col-md-offset-3">
             <table class="table table-bordered " class="container">
               <thead>
                 <tr>
@@ -134,7 +138,7 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
                 <div class="row">
                   <div class="col-sm-8 5">
 
-                    <a class="btn btn-danger" href="index.php" role="button">Cancelar</a>
+                    <a class="btn btn-danger" href="listEarnings.php" role="button">Atras</a>
                   </div>
                 </div>
 

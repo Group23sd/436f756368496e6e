@@ -25,10 +25,6 @@
       else{
         tipoDeCouchExistente();
       }
-
-    else{
-      genericError();
-    }
   }
 
 ?>

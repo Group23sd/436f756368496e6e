@@ -69,7 +69,7 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
       <div class="col-md-12 content-wrapper">
         <div class="row main-content">
           <h2>Listar Ganancias</h2>
-          <div class="col-md-6 col-md-offset-2">
+          <div class="col-md-6 col-md-offset-3">
             <form class="form-horizontal" role="form" data-toggle="validator" action="listEarningsTotal.php" method="post" name="listEarn" id="listEarn">
               <p><label for="from">Fecha de inicio:</label>
               <input type="text" id="from" name="from" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>

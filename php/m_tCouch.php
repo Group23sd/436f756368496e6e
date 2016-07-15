@@ -4,7 +4,10 @@ require_once 'database.php';
   $id = $_GET['idparam'];
   $couch = $_POST['m_Couch'];
   $query = "SELECT * FROM tipo WHERE descripcion='$couch'";
-  $result = queryAllByAssoc($query);
+  $result = queryByAssoc($query);
+
+  $query = "SELECT * FROM tipo WHERE idtipo=$id";
+  $auxResult = queryByAssoc($query);
 
 if (empty($result)) {
   try {
@@ -20,7 +23,11 @@ if (empty($result)) {
 
 }
 else {
+  if ($result['descripcion'] != $auxResult['descripcion']) {
   existingNameCouch();
+  } else {
+      header("Location: listar_tCouch.php");
+  }
 }
 
 
