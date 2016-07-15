@@ -404,7 +404,7 @@
 
     function tipoDeCouchExistente(){
       $title = "Tipo De Couch Existente";
-      $h1 = "¡Error!";
+      $h1 = "¡Cuidado!";
       $msg = "<p> El tipo de Couch que intenta cargar ya existe en el sistema.</p>";
       $optLink = '';
       require_once 'feedbackTemplate.php';
