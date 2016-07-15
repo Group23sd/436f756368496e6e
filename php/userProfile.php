@@ -172,6 +172,7 @@
                                 </div>
                                 <hr>
                                 <button class="btn btn-success" type="button" name="button" data-toggle="modal" data-target="#passwordResetModal">Cambiar Password</button>
+                                <a role="button" href="userScores.php?iduser=<?php echo $_SESSION['user'] -> getId() ?>" class="btn btn-warning">Puntajes</a>
                             </div>
 
                         </form>
