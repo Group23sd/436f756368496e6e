@@ -297,3 +297,12 @@ button.resetCouchSearch {
 .form-horizontal {
     margin-top: 20px;
 }
+
+#questionCouch{
+  position: relative;
+  margin-left: 30px;
+}
+#answerCouchOwner{
+  position: relative;
+  margin-left: 30px;
+}
