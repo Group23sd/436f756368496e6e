@@ -86,11 +86,12 @@
 																						<?php
 																						echo '<div class="form-group has-feedback">';
 																							echo '<label for="message-text" class="control-label">Escribe aqu&iacute tu pregunta sobre este Couch:</label>';
-            																	echo '<textarea class="form-control" id="answer-text" name="question-text" data-error="No puede dejar el campo vacio!" required></textarea>';
+            																	echo '<textarea class="form-control" id="question-text" name="question-text" data-error="No puede dejar el campo vacio!" required></textarea>';
 																							echo '<span class="glyphicon form-control-feedback" aria-hidden="true"></span>';
 																							echo '<div class="help-block with-errors"></div>';
 																						echo '</div>';
         																		echo '<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>';
+																						echo "  ";
         																		echo '<button type="submit" class="btn btn-primary">Enviar</button>';
 																					echo '</form>';
       																	echo '</div>';

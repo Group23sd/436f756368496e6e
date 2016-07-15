@@ -67,11 +67,21 @@
 
 																		$puntos = $reserva['puntaje_couch'];
 																		$comentario = $reserva['puntaje_couch_comentario'];
-
+																		$aux = false;
 																		echo "<tr>";
-																			echo "<h5 class='text-success'> El usuario <strong>$nameuser</strong> puntu&oacute a <strong>$tituloCouch </strong> con: $puntos  <span class='glyphicon glyphicon-star scoreStar'></span></h5>";
-																			echo "<h5 class='text-success'> Y dej&oacute el siguiente comentario sobre su estadia:</h5>";
-																			echo "<p class='text-left well'> $comentario </p>";
+																			if(!empty($puntos)){
+																				echo "<h5 class='text-success'> El usuario <strong>$nameuser</strong> puntu&oacute a <strong>$tituloCouch </strong> con: $puntos  <span class='glyphicon glyphicon-star scoreStar'></span></h5>";
+																		}else{
+																			if(!empty($comentario)){
+																				echo "<h5 class='text-success'>  El usuario <strong>$nameuser</strong> dej&oacute el siguiente comentario sobre su estadia:</h5>";
+																				echo "<p class='text-left well'> $comentario </p>";
+																				$aux = true;
+																			}
+																		}
+																			if(!empty($comentario) && !$aux){
+																				echo "<h5 class='text-success'> Y dej&oacute el siguiente comentario sobre su estadia:</h5>";
+																				echo "<p class='text-left well'> $comentario </p>";
+																			}
 																		echo "</tr>";
 
 																	}
@@ -88,6 +98,9 @@
                 </div>/
             </div>
         </main>
+
+					<!-- FOOTER -->
+						<?php require_once 'footer.php' ?>
     </div>
 
   </body>

@@ -10,7 +10,13 @@
     $iduser = $_SESSION['user'] -> getId();
 
     $newComment = new Comentario();
-    $newComment -> insert($newAnswer, $idcouch, $iduser);
+    if(!empty($newAnswer)){
+      $newComment -> insert($newAnswer, $idcouch, $iduser);
+    }
+    else{
+      preguntaEnBlanco();
+    }
+
   }
   catch(Exception $e ){
     databaseError();
