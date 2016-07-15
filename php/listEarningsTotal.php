@@ -36,7 +36,7 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
   $acumulator = 0;
   $inicio=$_POST['from'];
   $fin=$_POST['to'];
-  $query = "SELECT * FROM estado WHERE '$inicio' < fecha AND nombre='Liberado'";
+  $query = "SELECT * FROM estado WHERE '$inicio' <= date(fecha) AND date(fecha) <= '$fin' AND nombre='Liberado'";
   $result = queryAllByAssoc($query);
   $tiny_query = "SELECT * FROM valor_negocio WHERE valor_nombre='porcentajeComision'";
   $result_tiny_query = queryByAssoc($tiny_query);
