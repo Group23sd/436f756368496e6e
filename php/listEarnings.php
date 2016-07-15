@@ -75,7 +75,6 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
               <input type="text" id="from" name="from" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
               <p><label for="to">Fecha de fin:</label>
               <input type="text" id="to" name="to" class="form-control" placeholder="Haga click para seleccionar la fecha" readonly required></p>
-
               <div class="row">
                 <div class="col-sm-8 5">
                   <button type="submit" class="btn btn-success">Aceptar</button>

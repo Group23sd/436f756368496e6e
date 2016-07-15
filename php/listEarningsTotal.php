@@ -84,7 +84,7 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
                     $idreserva= $value['idreserva'];
                     $mini_query = "SELECT * FROM reserva WHERE idreserva=$idreserva";
                     $result_mini_query = queryByAssoc($mini_query);
-                    $acumulator = $acumulator + ($result_mini_query['monto'] * $valor_comision);
+
                     $aux = ($result_mini_query['monto'] * $valor_comision);
                     $idcouch= $result_mini_query['idcouch'];
                     $aux_query = "SELECT * from couch WHERE idcouch=$idcouch";
@@ -133,7 +133,7 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
                 </div>
                 <div class="row">
                   <div class="col-sm-8 5">
-                    
+
                     <a class="btn btn-danger" href="index.php" role="button">Cancelar</a>
                   </div>
                 </div>
