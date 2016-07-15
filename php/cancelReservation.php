@@ -17,7 +17,7 @@ try {
   $connect = connectDatabase();
   $statement = $connect-> prepare($sql);
   $statement -> execute($data);
-  successRejection();
+  successCancelation();
 } catch (Exception $e) {
   wrongRejection();
   exit();

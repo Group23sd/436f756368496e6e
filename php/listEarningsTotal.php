@@ -104,7 +104,7 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
               <table class="table table-bordered " class="container">
                 <thead>
                   <tr>
-                    <th>Usuarios registrados como premium</th>
+                    <th>Usuarios registrados como premium durante el periodo</th>
                     <th>Monto recaudado</th>
 
 

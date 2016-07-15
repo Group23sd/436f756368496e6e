@@ -36,6 +36,7 @@ require_once 'database.php';
 
         <span class="anchor" id="mainContent"></span>
         <div class="row main-content">
+          <h2>Mis Reservas</h2>
           <div class="col-md-12">
             <div class="row">
               <table class="table table-bordered table-condensed" class="container">
