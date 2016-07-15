@@ -107,10 +107,10 @@ require_once 'database.php';
                       #exit();
                     }
                     echo '<td>'.$resultado['fecha'].'</td>';
-                    if ($resultado['nombre'] == 'Liberado' && ! isset($value['puntaje_couch']) && ! isset($value['puntaje_couch_comentario']) && ! isset($value['puntaje_couch_fecha'])) {
+                    if ($resultado['nombre'] == 'Liberado' && ! isset($value['puntaje_couch'])  && ! isset($value['puntaje_couch_fecha'])) {
                       echo '<td><a  type="button" class="btn btn-xs btn-warning" href="rateCouchForm.php?id='.$value['idreserva'].'">PUNTUAR</a></td>';
                     }
-                    elseif ($resultado['nombre'] == 'Liberado' && isset($value['puntaje_couch']) &&  isset($value['puntaje_couch_comentario']) && isset($value['puntaje_couch_fecha'])) {
+                    elseif ($resultado['nombre'] == 'Liberado' && isset($value['puntaje_couch']) && isset($value['puntaje_couch_fecha'])) {
                       echo '<td>'.'<a type="button" class="btn btn-sm btn-success disabled">PUNTUADO</a>'.'</td>';
                     }
                     elseif ($resultado['nombre'] == 'Confirmado') {
