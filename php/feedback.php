@@ -410,4 +410,11 @@
       require_once 'feedbackTemplate.php';
     }
 
+    function successCancelation() {
+      $title = "Sucess Cancelation";
+      $h1 = "¡Se ha cancelado la reserva!";
+      $msg = "<p>Se canceló la reserva..</p>";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
+    }
 ?>
