@@ -331,7 +331,7 @@
       $msg = "<p>Se puntuó correctamente al usuario ¡Gracias!.</p>";
       $linkTxt = "Volver a controlar reservas";
       $linkHref = "index.php";
-      $optLink = '<a class="btn btn-success btn-lg" href="couchReservations.php?id='.$idreserva.'" role="button">'.$linkTxt.'</a>';
+      $optLink = '<a class="btn btn-success btn-lg" href="myCouches.php" role="button">'.$linkTxt.'</a>';
       require_once 'feedbackTemplate.php';
     }
 
