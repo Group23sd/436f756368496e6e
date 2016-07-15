@@ -18,6 +18,7 @@ try {
   $statement = $connect-> prepare($sql);
   $statement -> execute($data);
   successCancelation();
+  exit();
 } catch (Exception $e) {
   wrongRejection();
   exit();
