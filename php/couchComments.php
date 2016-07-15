@@ -27,7 +27,6 @@
 
 	<?php
 		$idcouch = $_GET['idcouch'];
-
 	?>
 
 	<!-- NAVBAR -->
@@ -60,24 +59,19 @@
 														 <tbody>
 															 	<?php
 																	require_once 'comentarioDeCouch.php';
-
 																	$userLoggued = $_SESSION['user'] -> getId();
 																	$sql = "SELECT idusuario FROM couch WHERE idcouch = $idcouch";
 																	$result = queryByAssoc($sql);
-
 																	$couchOwn = $result['idusuario'];
 																	$userIsCouchOwn = true;
-
 																	if($userLoggued != $couchOwn){
 																		$userIsCouchOwn = false;
 																		echo "<br />";
-
 																		echo '<div class="row">';
 																			echo '<div class="col-md-12 col-sm-offset-11">';
 																				echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#botonPreguntarModal" >Preguntar</button>';
 																			echo "</div>";
 																		echo '</div>';
-
 																		echo '<div class="modal fade" id="botonPreguntarModal" aria-labelledby="botonPreguntarModal" tabindex="-1" role="dialog" >';
 																		echo '<div class="modal-dialog" role="document">';
     																	echo '<div class="modal-content">';
@@ -96,7 +90,6 @@
 																							echo '<span class="glyphicon form-control-feedback" aria-hidden="true"></span>';
 																							echo '<div class="help-block with-errors"></div>';
 																						echo '</div>';
-
         																		echo '<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>';
         																		echo '<button type="submit" class="btn btn-primary">Enviar</button>';
 																					echo '</form>';
@@ -104,23 +97,19 @@
     																	echo '</div>';
   																	echo '</div>';
 																		echo '</div>';
-
 																		echo "<br />";
-
 																	}
-
 																	$sql = "SELECT * FROM comentario WHERE idcouch = $idcouch ORDER BY fecha DESC";
 																	$result = queryAllByAssoc($sql);
 																	$i = 0;
 																	foreach($result as $coment){
 																		$comentario = new Comentario();
 																		$comentario -> loadData($coment);
+																		$id = $comentario -> getId();
 																		$userName = $comentario -> getNombreUsuario();
 																		$couchName = $comentario -> getNombreCouch();
 																		$pregunta = $comentario -> getComentario();
 																		$rta = $comentario -> getRespuesta();
-
-
 																		echo "<br />";
 																		echo "<tr>";
 																			echo "<h5 class=text-success> El usuario <strong>$userName</strong> pregunt&oacute lo siguiente:</h5>";
@@ -136,21 +125,20 @@
 																					if($userIsCouchOwn){
 																						echo '<div class="row">';
 																							echo '<div class="col-md-12 col-sm-offset-10">';
-																								echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#botonResponderModal" >Responder</button>';
+																								echo '<a href="responderComentario.php?idComment='.$id.'" role="button" type="submit" class="btn btn-primary">'."Responder".'</a>';
+																								//echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#botonResponderModal" >Responder</button>';
 																							echo "</div>";
 																						echo '</div>';
 
-																						echo '<div class="modal fade" id="botonResponderModal" aria-labelledby="botonResponderModal" tabindex="-1" role="dialog" >';
+
+																					/*	echo '<div class="modal fade" id="botonResponderModal" aria-labelledby="botonResponderModal" tabindex="-1" role="dialog" >';
 																						echo '<div class="modal-dialog" role="document">';
 				    																	echo '<div class="modal-content">';
 				      																	echo '<div class="modal-header">';
 				        																	echo '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
 				        																echo '</div>';
-
 																								echo '<div class="modal-body">';
-
 																									echo "<p>$pregunta</p>";
-
 				        																	echo '<form class="form-block" role="form" data-toggle="validator" id="newAnswer" name="newAnswer" action="altaRespuestaComentario.php" method="post">';
 																										?>
 																										<input type="hidden" name="index" id="index" <?php echo 'value='.$i ?> class="form-control" required> </input>
@@ -161,23 +149,19 @@
 																											echo '<span class="glyphicon form-control-feedback" aria-hidden="true"></span>';
 																											echo '<div class="help-block with-errors"></div>';
 																										echo '</div>';
-
 				        																		echo '<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>';
 				        																		echo '<button type="submit" class="btn btn-primary">Enviar</button>';
 																									echo '</form>';
 				      																	echo '</div>';
-
 																							echo '</div>';
 																						echo '</div>';
-																						echo '</div>';
-
+																						echo '</div>';	*/
 																					}
 																				}
 																			echo "</div>";
 																		echo "</tr>";
 																	$i = $i + 1;
 																}
-
 																?>
 
 														 </tbody>

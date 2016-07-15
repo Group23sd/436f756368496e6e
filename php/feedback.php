@@ -387,10 +387,27 @@
       $title = "Comentario Publicada";
       $h1 = "Respuesta publicada correctamente";
       $msg = "<p>Su respuesta a la inquietud del usuario ya puede ser visualizada.</p> <br />
-            <p>Esto hara que los usuarios tomen una mejor decici&oacute al momento de elegir su Couch. Muchas gracias!";
+            <p>Esto hara que los usuarios tomen una mejor decici&oacute al momento de elegir su Couch.</p> <br />
+            <p>Muchas gracias!</p>";
       $optLink = '';
       require_once 'feedbackTemplate.php';
 
+    }
+
+    function tipoDeCouchCargadoExitosamente(){
+      $title = "Tipo De Couch Cargado Exitosamente";
+      $h1 = "Nuevo tipo cargado";
+      $msg = "<p> La carga del nuevo tipo de Couch ha resultado exitosa.</p>";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
+    }
+
+    function tipoDeCouchExistente(){
+      $title = "Tipo De Couch Existente";
+      $h1 = "¡Error!";
+      $msg = "<p> El tipo de Couch que intenta cargar ya existe en el sistema.</p>";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
     }
 
 ?>

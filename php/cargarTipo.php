@@ -1,5 +1,5 @@
 <?php
-
+  require_once 'feedback.php';
     if(isset($_POST['nombreDelTipo'])){
       require_once 'database.php';
       $nuevoTipo= $_POST['nombreDelTipo'];
@@ -15,20 +15,19 @@
           $statement = $database -> prepare($sql);
           $statement -> execute($data);
 
+          tipoDeCouchCargadoExitosamente();
+
       }
       catch (Exception $e) {
-          echo "<script type='text/javascript'>alert('".$e->getMessage()."');";
-          echo "window.location='index.php'</script>";
+          databaseError();
       }
-
-      echo "<script type='text/javascript'>alert('El nuevo tipo de couch fue cargado exitosamente!');";
-      echo "window.location='listar_tCouch.php'</script>";
-
+      }
+      else{
+        tipoDeCouchExistente();
       }
 
     else{
-      echo "<script type='text/javascript'>alert('IMPOSIBLE AGREGAR.Este tipo de couch ya existe!');";
-      echo "window.location='listar_tCouch.php'</script>";
+      genericError();
     }
   }
 

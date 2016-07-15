@@ -1,10 +1,11 @@
 <?php
   require_once 'feedback.php';
+  require_once 'database.php';
 
   if(isset($_POST['answer-text'])){
-    require_once 'comentarioDeCouch.php';
-    echo var_dump($_POST);
-    $i = $_POST['index'];
+
+    try{
+    $id = $_POST['idComment'];
     $answer = $_POST['answer-text'];
 
     $sql = "UPDATE comentario SET respuesta = :respuesta WHERE idcomentario = $id";
@@ -13,7 +14,11 @@
     $statement -> bindParam(':respuesta', $answer, PDO::PARAM_STR);
     $statement -> execute();
 
-    //respuestaPublicada();
+    respuestaPublicada();
+  }
+  catch(Exception $e ){
+    databaseError();
+  }
 
   }
   else{
