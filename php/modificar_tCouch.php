@@ -46,6 +46,7 @@ if ( ! $_SESSION['user'] -> isAdmin() ) {
               <div class="help-block with-errors"></div>
             </div>
             <button type="submit" class="btn btn-sm btn-success " >ENVIAR</button>
+            <a role="button" href="listar_tCouch.php" class="btn btn-sm btn-danger " >Atras</a>
           </form>
         </div>
         </div>
