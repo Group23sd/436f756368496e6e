@@ -163,6 +163,17 @@
 																		echo "</tr>";
 																	$i = $i + 1;
 																}
+																if(empty($result)){
+																	echo "<br />";
+																	echo '<h2 class="text-success text-center"> Ning&uacuten usuario ha realizado una pregunta al dueño de este couch.</h2>';
+																	if(!$userIsCouchOwn){
+																		echo '<br />';
+																		echo '<h2 class="text-success text-center"> An&iacutemate , se el primero en hacer una pregunta!</h2>';
+																	}
+
+																}
+
+
 																?>
 
 														 </tbody>

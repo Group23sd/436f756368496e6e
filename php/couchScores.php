@@ -86,6 +86,11 @@
 
 																	}
 
+																	if(empty($result)){
+																		echo '<br />';
+																		echo '<h1 class="text-center text-success"> Este Couch todavia no fue puntuado</h1>';
+																	}
+
 																?>
 
 															</tbody>
