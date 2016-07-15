@@ -66,7 +66,7 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
       <div class="col-md-12 content-wrapper">
         <div class="row main-content">
           <h2>Listar Ganancias</h2>
-          <div class="col-md-5 col-md-offset-3">
+          <div class="col-md-6 col-md-offset-3">
             <table class="table table-bordered " class="container">
               <thead>
                 <tr>
@@ -134,7 +134,7 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
                 <div class="row">
                   <div class="col-sm-8 5">
 
-                    <a class="btn btn-danger" href="index.php" role="button">Cancelar</a>
+                    <a class="btn btn-danger" href="listEarnings.php" role="button">Atras</a>
                   </div>
                 </div>
 
