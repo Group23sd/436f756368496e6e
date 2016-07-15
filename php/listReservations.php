@@ -90,6 +90,12 @@ $porcentajeActual = queryByAssoc($sql)['valor'];
                 </tbody>
 
               </table>
+              <div class="row">
+                <div class="col-sm-8 5">
+
+                  <a class="btn btn-danger" href="index.php" role="button">Cancelar</a>
+                </div>
+              </div>  
             </div>
           </div>
         </div>
