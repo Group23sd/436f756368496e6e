@@ -101,7 +101,11 @@
                                             echo "<a class='btn btn-xs btn-danger couchTable' onclick='return confirm(\"Esta seguro que desea cancelar esta reserva?\")' href='cancelReservation.php?id=".$reservationId."' role='button'>Cancelar</a>";
                                         break;
                                         case 'Liberado':
-                                            echo "<a class='btn btn-xs btn-warning couchTable' href='rateUserForm.php?id=".$reservationId."' role='button'>Puntuar</a>";
+                                            if ($reservation['puntaje_usuario']) {
+                                                echo "<a class='btn btn-xs btn-success couchTable disabled' role='button'>Puntuado</a>";
+                                            } else {
+                                                echo "<a class='btn btn-xs btn-warning couchTable' href='rateUserForm.php?id=".$reservationId."' role='button'>Puntuar</a>";
+                                            }
                                         break;
                                     }
                                     echo "</td>";
