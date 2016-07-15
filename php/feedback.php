@@ -417,4 +417,13 @@
       $optLink = '';
       require_once 'feedbackTemplate.php';
     }
+
+    function preguntaEnBlanco(){
+      $title = "Pregunta En Blanco";
+      $h1 = "¡Error!";
+      $msg = "<p> No se pudo publicar su pregunta ya que dejo el campo en blanco.</p>";
+      $optLink = '';
+      require_once 'feedbackTemplate.php';
+    }
+
 ?>

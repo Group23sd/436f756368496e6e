@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+	require_once 'userSession.php';
+?>
 
 <html lang="en">
 	<head>
@@ -42,13 +45,18 @@
                      <h5> Con CouchInn puedes organizar tu viaje de familia o con amigos de manera sencilla y rápida , como  ninguna otra empresa de viajes lo hace.</h5>
                      <br />
                      <br />
-                     <strong><h1 class="text-success"> Regístrate ahora mismo  .. </h1></strong>
 
-                     <div class="row">
-      									 <div class="col-md-12 col-sm-offset-4">
-                           <a href="newAccount.php"<h1 class="splash-page-slogan">Tu viaje comienza aquí</h1></a>
-                        </div>
-                    </div>
+										 <?php
+										 if(!$_SESSION['user'] -> isLogged()){
+                     	echo '<strong><h1 class="text-success"> Regístrate ahora mismo  .. </h1></strong>';
+
+                     	echo '<div class="row">';
+      									 	echo '<div class="col-md-12 col-sm-offset-4">';
+                           	echo '<a href="newAccount.php"<h1 class="splash-page-slogan">Tu viaje comienza aquí</h1></a>';
+                        	echo '</div>';
+                    	echo '</div>';
+										}
+										?>
 
                     </div>
 
